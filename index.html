@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEHATI - Kantong Persalinan Ibu Hamil Desa Botolinggo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pink: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome & Lucide Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- SheetJS (xlsx export) -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fff5f7;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fbcfe8;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #f472b6;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-slate-700 min-h-screen flex flex-col antialiased bg-pink-50/50">
+
+    <!-- LOGIN CONTAINER -->
+    <div id="loginSection" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pink-100/80 backdrop-blur-md">
+        <div class="bg-white rounded-3xl shadow-xl border border-pink-200 w-full max-w-md p-8 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-200 rounded-full blur-2xl opacity-60"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-300 rounded-full blur-2xl opacity-40"></div>
+            
+            <div class="text-center mb-8 relative z-10">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-tr from-pink-400 to-pink-200 text-white shadow-lg mb-3">
+                    <i class="fa-solid font-bold text-3xl fa-heart-pulse"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-pink-700 tracking-tight">SEHATI</h1>
+                <p class="text-xs text-pink-500 font-medium">Kantong Persalinan Ibu Hamil - Desa Botolinggo</p>
+            </div>
+
+            <form id="loginForm" class="space-y-4 relative z-10" onsubmit="handleLogin(event)">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Email Petugas / Bidan</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-pink-400"></i>
+                        <input type="email" id="loginEmail" value="bidan@botolinggo.desa.id" required class="w-full pl-10 pr-4 py-2.5 text-sm bg-pink-50/50 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Kata Sandi</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-pink-400"></i>
+                        <input type="password" id="loginPassword" value="sehati123" required class="w-full pl-10 pr-4 py-2.5 text-sm bg-pink-50/50 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition">
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition transform active:scale-98">
+                    Masuk ke Aplikasi
+                </button>
+                <div class="text-center text-xs text-slate-400 mt-2">
+                    <p>Demo Login: Gunakan email & password default</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN APP WRAPPER -->
+    <div id="appContainer" class="hidden flex-col min-h-screen">
+
+        <!-- HEADER / NAVIGATION -->
+        <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-pink-100 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    
+                    <!-- Branding Left -->
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-pink-500 flex items-center justify-center text-white shadow">
+                            <i class="fa-solid fa-heart-pulse text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="font-bold text-lg text-pink-700 tracking-tight block leading-tight">SEHATI</span>
+                            <span class="text-[10px] text-pink-500 font-medium block">Desa Botolinggo</span>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Bar Desktop -->
+                    <nav class="hidden md:flex space-x-1 lg:space-x-2">
+                        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn px-3 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-2 bg-pink-50 text-pink-600">
+                            <i class="fa-solid fa-chart-pie"></i><span>Dashboard</span>
+                        </button>
+                        <button onclick="switchTab('kantong')" id="nav-kantong" class="nav-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-pink-50 hover:text-pink-600 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-box-archive"></i><span>Kantong Persalinan</span>
+                        </button>
+                        <button onclick="switchTab('bumil')" id="nav-bumil" class="nav-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-pink-50 hover:text-pink-600 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-user-nurse"></i><span>Data Ibu Hamil</span>
+                        </button>
+                        <button onclick="switchTab('peta')" id="nav-peta" class="nav-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-pink-50 hover:text-pink-600 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-map-location-dot"></i><span>Peta Sebaran Risti</span>
+                        </button>
+                        <button onclick="switchTab('pengaturan')" id="nav-pengaturan" class="nav-btn px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-pink-50 hover:text-pink-600 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-gear"></i><span>Pengaturan</span>
+                        </button>
+                    </nav>
+
+                    <!-- Header Right Logo & User Profile -->
+                    <div class="flex items-center space-x-3">
+                        <!-- Custom Logo Slot (Feature 6 requirement) -->
+                        <div class="border-l border-pink-100 pl-3 flex items-center space-x-2">
+                            <img id="headerAppLogo" src="https://placehold.co/100x100/fbcfe8/be185d?text=PKM" alt="Logo Puskesmas" class="h-9 w-9 object-contain rounded-lg border border-pink-200">
+                            <button onclick="logout()" class="p-2 text-slate-400 hover:text-pink-600 transition" title="Keluar">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Bottom Nav -->
+            <div class="md:hidden border-t border-pink-100 bg-white flex justify-around p-2">
+                <button onclick="switchTab('dashboard')" class="flex flex-col items-center text-[10px] font-medium text-pink-600">
+                    <i class="fa-solid fa-chart-pie text-base"></i><span>Dashboard</span>
+                </button>
+                <button onclick="switchTab('kantong')" class="flex flex-col items-center text-[10px] font-medium text-slate-500">
+                    <i class="fa-solid fa-box-archive text-base"></i><span>Kantong</span>
+                </button>
+                <button onclick="switchTab('bumil')" class="flex flex-col items-center text-[10px] font-medium text-slate-500">
+                    <i class="fa-solid fa-user-nurse text-base"></i><span>Ibu Hamil</span>
+                </button>
+                <button onclick="switchTab('peta')" class="flex flex-col items-center text-[10px] font-medium text-slate-500">
+                    <i class="fa-solid fa-map-location-dot text-base"></i><span>Peta</span>
+                </button>
+                <button onclick="switchTab('pengaturan')" class="flex flex-col items-center text-[10px] font-medium text-slate-500">
+                    <i class="fa-solid fa-gear text-base"></i><span>Setel</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT CONTAINER -->
+        <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+            <!-- TAB 1: DASHBOARD -->
+            <section id="tab-dashboard" class="tab-content space-y-6">
+                <!-- Top Actions Banner -->
+                <div class="bg-gradient-to-r from-pink-500 to-pink-600 rounded-3xl p-6 text-white shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold mb-1">Kantong Persalinan SEHATI Desa Botolinggo</h2>
+                        <p class="text-xs text-pink-100">Pemantauan Risiko Tinggi (Risti) & Estimasi Persalinan Ibu Hamil Terpadu.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="exportToExcel()" class="px-3.5 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-xl text-xs font-semibold text-white transition flex items-center space-x-2">
+                            <i class="fa-solid fa-file-excel text-emerald-300"></i>
+                            <span>Export Excel</span>
+                        </button>
+                        <button onclick="openWhatsAppReportModal()" class="px-3.5 py-2 bg-emerald-500 hover:bg-emerald-600 rounded-xl text-xs font-semibold text-white transition shadow flex items-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                            <span>Kirim Rekap WA</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-slate-500">Total Ibu Hamil</span>
+                            <div class="w-8 h-8 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-person-pregnant"></i>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-slate-800" id="kpiTotalBumil">0</div>
+                        <p class="text-[10px] text-slate-400 mt-1">Terdaftar aktif</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-slate-500">Risiko Tinggi (Risti)</span>
+                            <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-rose-600" id="kpiRistiTinggi">0</div>
+                        <p class="text-[10px] text-rose-500 font-medium mt-1">Kategori Merah</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-slate-500">Risiko Sedang</span>
+                            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-amber-600" id="kpiRistiSedang">0</div>
+                        <p class="text-[10px] text-amber-500 font-medium mt-1">Kategori Kuning</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-slate-500">Risiko Rendah</span>
+                            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-bold text-emerald-600" id="kpiRistiRendah">0</div>
+                        <p class="text-[10px] text-emerald-500 font-medium mt-1">Kategori Hijau</p>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-sm">
+                        <h3 class="text-sm font-bold text-slate-700 mb-4 flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-column text-pink-500"></i>
+                            <span>Estimasi Bulan Persalinan (HPL)</span>
+                        </h3>
+                        <div class="h-64 relative">
+                            <canvas id="chartHPL"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-sm">
+                        <h3 class="text-sm font-bold text-slate-700 mb-4 flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-pie text-pink-500"></i>
+                            <span>Sebaran Berdasarkan Dusun</span>
+                        </h3>
+                        <div class="h-64 relative">
+                            <canvas id="chartDusun"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: KANTONG PERSALINAN -->
+            <section id="tab-kantong" class="tab-content hidden space-y-6">
+                <!-- Controls bar -->
+                <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 w-full md:w-auto">
+                        <i class="fa-solid fa-calendar-days text-pink-500"></i>
+                        <span class="text-sm font-semibold text-slate-700">Tahun HPL:</span>
+                        <select id="kantongYearSelect" onchange="renderKantongPersalinan()" class="bg-pink-50 border border-pink-200 rounded-xl text-sm font-semibold text-slate-700 px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-pink-400">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="flex items-center space-x-2 w-full md:w-auto">
+                        <div class="relative w-full md:w-64">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="kantongSearch" onkeyup="renderKantongPersalinan()" placeholder="Cari nama ibu / suami..." class="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="flex items-center space-x-4 text-xs">
+                    <span class="font-semibold text-slate-600">Kategori Risiko:</span>
+                    <span class="inline-flex items-center space-x-1"><span class="w-3 h-3 rounded-full bg-rose-500"></span><span class="text-slate-600">Tinggi (Merah)</span></span>
+                    <span class="inline-flex items-center space-x-1"><span class="w-3 h-3 rounded-full bg-amber-400"></span><span class="text-slate-600">Sedang (Kuning)</span></span>
+                    <span class="inline-flex items-center space-x-1"><span class="w-3 h-3 rounded-full bg-emerald-500"></span><span class="text-slate-600">Rendah (Hijau)</span></span>
+                </div>
+
+                <!-- 12 Month Pocket Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="kantongGrid">
+                    <!-- Populated dynamically -->
+                </div>
+            </section>
+
+            <!-- TAB 3: DATA IBU HAMIL -->
+            <section id="tab-bumil" class="tab-content hidden space-y-6">
+                <!-- Search & Add Bar -->
+                <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="relative w-full sm:w-72">
+                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="bumilSearchInput" onkeyup="filterBumilTable()" placeholder="Cari nama, dusun, NIK..." class="w-full pl-9 pr-3 py-2 text-xs bg-pink-50/50 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    </div>
+
+                    <button onclick="openBumilModal()" class="w-full sm:w-auto px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white font-semibold text-xs rounded-xl shadow transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Tambah Data Ibu Hamil</span>
+                    </button>
+                </div>
+
+                <!-- Table Data Ibu Hamil -->
+                <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-pink-50/80 text-pink-800 font-bold border-b border-pink-100">
+                                    <th class="p-3">Nama Ibu & Suami</th>
+                                    <th class="p-3">Dusun & Alamat</th>
+                                    <th class="p-3">Usia & HPL</th>
+                                    <th class="p-3">Komponen P4K</th>
+                                    <th class="p-3">Kategori Risiko</th>
+                                    <th class="p-3">Kontak WA</th>
+                                    <th class="p-3 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bumilTableBody" class="divide-y divide-pink-50">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: PETA SEBARAN RISTI -->
+            <section id="tab-peta" class="tab-content hidden space-y-6">
+                <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-700">Peta Sebaran Ibu Hamil Risiko Tinggi</h3>
+                        <p class="text-xs text-slate-500">Peta wilayah Desa Botolinggo dengan penanda blok dusun (Krajan, Bille, Cemper, Kedawung, Lucu, Ninggil, Sundang).</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="resetMapView()" class="px-3 py-1.5 bg-pink-50 text-pink-700 hover:bg-pink-100 rounded-xl text-xs font-semibold transition">
+                            <i class="fa-solid fa-rotate-right mr-1"></i>Reset Kamera
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                    <!-- Map Canvas -->
+                    <div class="lg:col-span-3 bg-white p-2 rounded-2xl border border-pink-100 shadow-sm">
+                        <div id="map" class="w-full h-[450px] rounded-xl z-10"></div>
+                    </div>
+
+                    <!-- Dusun Quick Info -->
+                    <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm space-y-3">
+                        <h4 class="text-xs font-bold text-pink-700 uppercase tracking-wider">Rekapitulasi Dusun</h4>
+                        <div id="dusunMapSummaryList" class="space-y-2 text-xs">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: PENGATURAN -->
+            <section id="tab-pengaturan" class="tab-content hidden space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Pengaturan Database & Web App GAS -->
+                    <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-sm space-y-4">
+                        <div class="flex items-center space-x-3 text-pink-700 border-b border-pink-50 pb-3">
+                            <i class="fa-solid fa-database text-lg"></i>
+                            <h3 class="font-bold text-sm">Integrasi Google Sheets API</h3>
+                        </div>
+                        <div class="space-y-3 text-xs">
+                            <div>
+                                <label class="block font-semibold text-slate-600 mb-1">URL Web App Google Apps Script</label>
+                                <input type="url" id="gasApiUrl" placeholder="https://script.google.com/macros/s/..." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                            </div>
+                            <button onclick="saveGasUrl()" class="px-4 py-2 bg-pink-500 text-white rounded-xl font-semibold hover:bg-pink-600 transition shadow">
+                                Simpan Konfigurasi Database
+                            </button>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">
+                                Fitur ini menggunakan Google Sheets sebagai basis data utama. Data disimpan di memori lokal secara otomatis apabila skrip belum dihubungkan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pengaturan Informasi Bidan & Puskesmas -->
+                    <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-sm space-y-4">
+                        <div class="flex items-center space-x-3 text-pink-700 border-b border-pink-50 pb-3">
+                            <i class="fa-solid fa-hospital-user text-lg"></i>
+                            <h3 class="font-bold text-sm">Profil Wilayah & Bidan Desa</h3>
+                        </div>
+                        <form id="settingForm" onsubmit="saveSettings(event)" class="space-y-3 text-xs">
+                            <div>
+                                <label class="block font-semibold text-slate-600 mb-1">Nama Desa</label>
+                                <input type="text" id="setNamaDesa" value="Desa Botolinggo" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-600 mb-1">Nama Bidan Desa</label>
+                                <input type="text" id="setNamaBidan" value="Bidan Siti Rahma, S.Tr.Keb" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-600 mb-1">Puskesmas Pembina</label>
+                                <input type="text" id="setPuskesmas" value="Puskesmas Botolinggo" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-600 mb-1">URL Logo Lembaga (Tampil di Pojok Kanan)</label>
+                                <input type="url" id="setLogoUrl" value="https://placehold.co/100x100/fbcfe8/be185d?text=PKM" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                            </div>
+                            <button type="submit" class="px-4 py-2 bg-pink-500 text-white rounded-xl font-semibold hover:bg-pink-600 transition shadow">
+                                Perbarui Profil
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL FORM IBU HAMIL (TAMBAH / EDIT) -->
+    <div id="modalBumil" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl shadow-xl border border-pink-100 w-full max-w-xl max-h-[90vh] overflow-y-auto p-6 custom-scrollbar">
+            <div class="flex items-center justify-between border-b border-pink-100 pb-3 mb-4">
+                <h3 class="text-base font-bold text-pink-700" id="modalBumilTitle">Form Data Ibu Hamil</h3>
+                <button onclick="closeBumilModal()" class="text-slate-400 hover:text-pink-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form id="formBumil" onsubmit="saveBumilData(event)" class="space-y-4 text-xs">
+                <input type="hidden" id="bumilId">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-600 mb-1">Nama Ibu Hamil *</label>
+                        <input type="text" id="bumilNama" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-600 mb-1">Nama Suami *</label>
+                        <input type="text" id="bumilSuami" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    </div>
+                </div>
+
+                <!-- ALAMAT LENGKAP -->
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Alamat Lengkap (RT/RW, Jalan, No. Rumah) *</label>
+                    <input type="text" id="bumilAlamat" placeholder="Contoh: RT 02 / RW 01, Dsn. Krajan Tengah" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-600 mb-1">Usia (Tahun)</label>
+                        <input type="number" id="bumilUsia" value="25" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-600 mb-1">Dusun *</label>
+                        <select id="bumilDusun" onchange="updateDefaultCoordsByDusun(true)" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold">
+                            <option value="Krajan">Krajan</option>
+                            <option value="Bille">Bille</option>
+                            <option value="Cemper">Cemper</option>
+                            <option value="Kedawung">Kedawung</option>
+                            <option value="Lucu">Lucu</option>
+                            <option value="Ninggil">Ninggil</option>
+                            <option value="Sundang">Sundang</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-600 mb-1">Kategori Risiko *</label>
+                        <select id="bumilRisiko" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-bold">
+                            <option value="Tinggi" class="text-rose-600 font-bold">Tinggi (Merah)</option>
+                            <option value="Sedang" class="text-amber-600 font-bold">Sedang (Kuning)</option>
+                            <option value="Rendah" class="text-emerald-600 font-bold" selected>Rendah (Hijau)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- KOMPONEN P4K (Program Perencanaan Persalinan dan Pencegahan Komplikasi) -->
+                <div class="bg-gradient-to-br from-pink-50 to-pink-100/60 p-3.5 rounded-2xl border border-pink-200 space-y-3">
+                    <div class="flex items-center space-x-2 border-b border-pink-200 pb-2">
+                        <i class="fa-solid fa-clipboard-check text-pink-600"></i>
+                        <h4 class="font-bold text-xs text-pink-800">Komponen P4K (Perencanaan Persalinan)</h4>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-600 mb-1">Penolong Persalinan</label>
+                            <select id="p4kPenolong" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
+                                <option value="Bidan Desa">Bidan Desa</option>
+                                <option value="Dokter SpOG / RS">Dokter SpOG / Puskesmas / RS</option>
+                                <option value="Bidan Mandiri">Bidan Mandiri (PMB)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-600 mb-1">Tempat Persalinan</label>
+                            <select id="p4kTempat" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
+                                <option value="Puskesmas Botolinggo">Puskesmas Botolinggo</option>
+                                <option value="Polindes / Pustu">Polindes / Poskesdes</option>
+                                <option value="Rumah Sakit Rujukan">Rumah Sakit Rujukan (RSUD)</option>
+                                <option value="Rumah Ibu">Rumah Sendiri</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-600 mb-1">Pendamping Persalinan</label>
+                            <input type="text" id="p4kPendamping" placeholder="Suami / Suami & Ibu" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-600 mb-1">Transportasi / Ambulans Desa</label>
+                            <input type="text" id="p4kTransportasi" placeholder="Mobil Siaga / Mobil Pribadi" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-600 mb-1">Calon Pendonor Darah (Gol. Darah & Nama)</label>
+                            <input type="text" id="p4kPendonor" placeholder="Contoh: Gol A - Ahmad (Kakak)" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-600 mb-1">Stiker P4K Terpasang?</label>
+                            <select id="p4kStiker" class="w-full p-2 bg-white border border-pink-200 rounded-xl font-medium">
+                                <option value="Sudah">Sudah Terpasang di Rumah</option>
+                                <option value="Belum">Belum Terpasang</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-600 mb-1">HP / No WhatsApp (contoh: 628123456789)</label>
+                        <input type="tel" id="bumilWa" placeholder="628..." class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-600 mb-1">Hari Perkiraan Lahir (HPL) *</label>
+                        <input type="date" id="bumilHpl" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl">
+                    </div>
+                </div>
+
+                <!-- GPS Coords & Interactive Picker Map -->
+                <div class="bg-pink-50/50 p-3 rounded-2xl border border-pink-100 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="block font-semibold text-pink-700 text-xs">
+                            <i class="fa-solid fa-map-pin mr-1"></i>Penentuan Lokasi Rumah (Klik pada Peta / Otomatis Dusun)
+                        </label>
+                        <span id="pickerMapHint" class="text-[10px] text-pink-500 font-medium">Klik peta untuk geser marker</span>
+                    </div>
+                    
+                    <!-- Interactive Mini Map Picker -->
+                    <div id="pickerMap" class="w-full h-48 rounded-xl border border-pink-200 z-10"></div>
+                    
+                    <div class="grid grid-cols-2 gap-2 text-xs pt-1">
+                        <div>
+                            <label class="block text-[10px] font-medium text-slate-500 mb-0.5">Latitude</label>
+                            <input type="text" id="bumilLat" placeholder="Latitude" readonly class="w-full p-2 bg-white border border-pink-200 rounded-lg text-slate-700 font-mono text-[11px]">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-medium text-slate-500 mb-0.5">Longitude</label>
+                            <input type="text" id="bumilLng" placeholder="Longitude" readonly class="w-full p-2 bg-white border border-pink-200 rounded-lg text-slate-700 font-mono text-[11px]">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Faktor Risiko / Catatan Medis Ringkas</label>
+                    <textarea id="bumilCatatan" rows="2" placeholder="Misal: Kekurangan Energi Kronis (KEK), Hipertensi, Usia > 35th..." class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl"></textarea>
+                </div>
+
+                <div class="flex items-center justify-end space-x-2 pt-3 border-t border-pink-100">
+                    <button type="button" onclick="closeBumilModal()" class="px-4 py-2 bg-slate-100 text-slate-600 rounded-xl font-semibold hover:bg-slate-200">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-5 py-2 bg-pink-500 text-white rounded-xl font-semibold hover:bg-pink-600 shadow">
+                        Simpan Data
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL REKAP WHATSAPP -->
+    <div id="modalWaReport" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl shadow-xl border border-pink-100 w-full max-w-md p-6">
+            <div class="flex items-center justify-between border-b border-pink-100 pb-3 mb-4">
+                <h3 class="text-base font-bold text-emerald-700 flex items-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Kirim Rekap Laporan WA</span>
+                </h3>
+                <button onclick="closeWhatsAppModal()" class="text-slate-400 hover:text-pink-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Nomor WA Tujuan (Puskesmas/Kades/Bidan)</label>
+                    <input type="tel" id="waRecipientNumber" placeholder="628123456789" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Preview Pesan Rekapitulasi</label>
+                    <textarea id="waPreviewText" rows="6" readonly class="w-full p-2.5 bg-slate-100 border border-slate-200 rounded-xl font-mono text-[11px]"></textarea>
+                </div>
+                <button onclick="sendDirectWhatsAppReport()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-xl shadow transition flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Buka WhatsApp Sekarang</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLICATION JAVASCRIPT LOGIC -->
+    <script>
+        // Default Dusun Coords (Desa Botolinggo Area)
+        const DUSUN_COORDS = {
+            "Krajan": { lat: -7.8105, lng: 113.9100 },
+            "Bille": { lat: -7.8150, lng: 113.9180 },
+            "Cemper": { lat: -7.8040, lng: 113.9050 },
+            "Kedawung": { lat: -7.8210, lng: 113.9010 },
+            "Lucu": { lat: -7.8080, lng: 113.9250 },
+            "Ninggil": { lat: -7.8250, lng: 113.9200 },
+            "Sundang": { lat: -7.7980, lng: 113.9120 }
+        };
+
+        // Initial Sample Data for Demo with Alamat & P4K
+        let bumilData = [
+            { 
+                id: "BM-001", nama: "Siti Nurhaliza", suami: "Bambang", alamat: "RT 01 / RW 01 Dsn. Krajan", usia: 24, dusun: "Krajan", risiko: "Rendah", wa: "6281234567890", hpl: "2026-04-15", lat: -7.8105, lng: 113.9100, catatan: "Kondisi sehat",
+                p4k: { penolong: "Bidan Desa", tempat: "Puskesmas Botolinggo", pendamping: "Suami", transportasi: "Mobil Siaga Desa", pendonor: "Gol O - Agus", stiker: "Sudah" }
+            },
+            { 
+                id: "BM-002", nama: "Aminah", suami: "Supri", alamat: "RT 03 / RW 02 Dsn. Bille", usia: 36, dusun: "Bille", risiko: "Tinggi", wa: "6282334455667", hpl: "2026-05-10", lat: -7.8150, lng: 113.9180, catatan: "Usia > 35th, Anemia",
+                p4k: { penolong: "Dokter SpOG / RS", tempat: "Rumah Sakit Rujukan", pendamping: "Suami & Ibu", transportasi: "Ambulans Puskesmas", pendonor: "Gol B - Supri", stiker: "Sudah" }
+            },
+            { 
+                id: "BM-003", nama: "Dewi Sartika", suami: "Hadi", alamat: "RT 02 / RW 01 Dsn. Cemper", usia: 21, dusun: "Cemper", risiko: "Sedang", wa: "6285667788990", hpl: "2026-04-28", lat: -7.8040, lng: 113.9050, catatan: "KEK Ringan",
+                p4k: { penolong: "Bidan Desa", tempat: "Puskesmas Botolinggo", pendamping: "Suami", transportasi: "Sepeda Motor", pendonor: "Gol A - Hadi", stiker: "Sudah" }
+            },
+            { 
+                id: "BM-004", nama: "Rina Kusuma", suami: "Joko", alamat: "RT 01 / RW 03 Dsn. Kedawung", usia: 29, dusun: "Kedawung", risiko: "Tinggi", wa: "6281987654321", hpl: "2026-06-02", lat: -7.8210, lng: 113.9010, catatan: "Riwayat Sesar & Hipertensi",
+                p4k: { penolong: "Dokter SpOG / RS", tempat: "Rumah Sakit Rujukan", pendamping: "Suami", transportasi: "Ambulans Puskesmas", pendonor: "Gol AB - Budi", stiker: "Sudah" }
+            },
+            { 
+                id: "BM-005", nama: "Fatimah", suami: "Zainal", alamat: "RT 04 / RW 01 Dsn. Lucu", usia: 28, dusun: "Lucu", risiko: "Rendah", wa: "6287711223344", hpl: "2026-07-20", lat: -7.8080, lng: 113.9250, catatan: "Normal",
+                p4k: { penolong: "Bidan Desa", tempat: "Polindes / Pustu", pendamping: "Suami", transportasi: "Mobil Pribadi", pendonor: "Gol O - Zainal", stiker: "Sudah" }
+            },
+            { 
+                id: "BM-006", nama: "Laila", suami: "Hasan", alamat: "RT 02 / RW 02 Dsn. Ninggil", usia: 32, dusun: "Ninggil", risiko: "Sedang", wa: "6283889900112", hpl: "2026-05-25", lat: -7.8250, lng: 113.9200, catatan: "Janin sungsang",
+                p4k: { penolong: "Bidan Desa", tempat: "Puskesmas Botolinggo", pendamping: "Mertua", transportasi: "Mobil Siaga Desa", pendonor: "Gol B - Hasan", stiker: "Belum" }
+            },
+            { 
+                id: "BM-007", nama: "Surti", suami: "Tono", alamat: "RT 01 / RW 01 Dsn. Sundang", usia: 23, dusun: "Sundang", risiko: "Rendah", wa: "6289900112233", hpl: "2026-08-11", lat: -7.7980, lng: 113.9120, catatan: "Sehat",
+                p4k: { penolong: "Bidan Desa", tempat: "Polindes / Pustu", pendamping: "Suami", transportasi: "Sepeda Motor", pendonor: "Gol A - Tono", stiker: "Sudah" }
+            }
+        ];
+
+        // Global Charts & Map Variables
+        let chartHplInstance = null;
+        let chartDusunInstance = null;
+        let leafletMap = null;
+        let mapMarkers = [];
+        
+        // Location Picker Map Variables
+        let pickerMapInstance = null;
+        let pickerMarker = null;
+
+        // Application State Init
+        window.addEventListener('DOMContentLoaded', () => {
+            loadLocalData();
+            updateKPIs();
+            loadSettings();
+        });
+
+        function loadLocalData() {
+            const saved = localStorage.getItem('sehati_bumil_data');
+            if (saved) {
+                try { bumilData = JSON.parse(saved); } catch (e) {}
+            }
+        }
+
+        function saveLocalData() {
+            localStorage.setItem('sehati_bumil_data', JSON.stringify(bumilData));
+            updateKPIs();
+        }
+
+        // AUTHENTICATION
+        function handleLogin(e) {
+            e.preventDefault();
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('appContainer').classList.remove('hidden');
+            document.getElementById('appContainer').classList.add('flex');
+            
+            // Init components after view is visible
+            initCharts();
+            renderKantongPersalinan();
+            renderBumilTable();
+            initLeafletMap();
+        }
+
+        function logout() {
+            document.getElementById('appContainer').classList.add('hidden');
+            document.getElementById('loginSection').classList.remove('hidden');
+        }
+
+        // NAVIGATION TAB SWITCHER
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-pink-50', 'text-pink-600');
+                btn.classList.add('text-slate-600');
+            });
+            const activeBtn = document.getElementById(`nav-${tabName}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-pink-50', 'text-pink-600');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            if (tabName === 'peta' && leafletMap) {
+                setTimeout(() => leafletMap.invalidateSize(), 200);
+            }
+        }
+
+        // LEAFLET MAP INIALIZATION & CONTROL
+        function initLeafletMap() {
+            if (leafletMap) return;
+
+            const centerLat = -7.8105;
+            const centerLng = 113.9100;
+
+            leafletMap = L.map('map').setView([centerLat, centerLng], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(leafletMap);
+
+            renderMapMarkers();
+        }
+
+        function resetMapView() {
+            if (leafletMap) {
+                leafletMap.setView([-7.8105, 113.9100], 13);
+            }
+        }
+
+        // MINI MAP PICKER FOR INPUT FORM
+        function initPickerMap(lat, lng) {
+            if (!pickerMapInstance) {
+                pickerMapInstance = L.map('pickerMap').setView([lat, lng], 14);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18
+                }).addTo(pickerMapInstance);
+
+                pickerMarker = L.marker([lat, lng], { draggable: true }).addTo(pickerMapInstance);
+
+                pickerMarker.on('dragend', function (e) {
+                    const position = pickerMarker.getLatLng();
+                    document.getElementById('bumilLat').value = position.lat.toFixed(6);
+                    document.getElementById('bumilLng').value = position.lng.toFixed(6);
+                });
+
+                pickerMapInstance.on('click', function (e) {
+                    const { lat, lng } = e.latlng;
+                    pickerMarker.setLatLng([lat, lng]);
+                    document.getElementById('bumilLat').value = lat.toFixed(6);
+                    document.getElementById('bumilLng').value = lng.toFixed(6);
+                });
+            } else {
+                pickerMapInstance.invalidateSize();
+                pickerMapInstance.setView([lat, lng], 14);
+                pickerMarker.setLatLng([lat, lng]);
+            }
+        }
+
+        function updateDefaultCoordsByDusun(forceMapPan = true) {
+            const dusun = document.getElementById('bumilDusun').value;
+            if (DUSUN_COORDS[dusun]) {
+                const { lat, lng } = DUSUN_COORDS[dusun];
+                document.getElementById('bumilLat').value = lat.toFixed(6);
+                document.getElementById('bumilLng').value = lng.toFixed(6);
+
+                if (forceMapPan && pickerMapInstance && pickerMarker) {
+                    pickerMapInstance.setView([lat, lng], 14);
+                    pickerMarker.setLatLng([lat, lng]);
+                }
+            }
+        }
+
+        // KPI & SUMMARY CALCULATIONS
+        function updateKPIs() {
+            const total = bumilData.length;
+            const tinggi = bumilData.filter(d => d.risiko === 'Tinggi').length;
+            const sedang = bumilData.filter(d => d.risiko === 'Sedang').length;
+            const rendah = bumilData.filter(d => d.risiko === 'Rendah').length;
+
+            document.getElementById('kpiTotalBumil').textContent = total;
+            document.getElementById('kpiRistiTinggi').textContent = tinggi;
+            document.getElementById('kpiRistiSedang').textContent = sedang;
+            document.getElementById('kpiRistiRendah').textContent = rendah;
+
+            if (chartHplInstance && chartDusunInstance) {
+                updateChartsData();
+            }
+        }
+
+        // CHARTS SETUP
+        function initCharts() {
+            // Chart HPL
+            const ctxHpl = document.getElementById('chartHPL').getContext('2d');
+            chartHplInstance = new Chart(ctxHpl, {
+                type: 'bar',
+                data: getHplChartData(),
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                    }
+                }
+            });
+
+            // Chart Dusun
+            const ctxDusun = document.getElementById('chartDusun').getContext('2d');
+            chartDusunInstance = new Chart(ctxDusun, {
+                type: 'doughnut',
+                data: getDusunChartData(),
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } }
+                }
+            });
+        }
+
+        function getHplChartData() {
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+            const counts = new Array(12).fill(0);
+
+            bumilData.forEach(item => {
+                if (item.hpl) {
+                    const d = new Date(item.hpl);
+                    counts[d.getMonth()]++;
+                }
+            });
+
+            return {
+                labels: months,
+                datasets: [{
+                    label: 'Jumlah HPL',
+                    data: counts,
+                    backgroundColor: '#ec4899',
+                    borderRadius: 6
+                }]
+            };
+        }
+
+        function getDusunChartData() {
+            const dusuns = Object.keys(DUSUN_COORDS);
+            const counts = dusuns.map(ds => bumilData.filter(b => b.dusun === ds).length);
+
+            return {
+                labels: dusuns,
+                datasets: [{
+                    data: counts,
+                    backgroundColor: ['#f472b6', '#fb7185', '#f43f5e', '#e11d48', '#be185d', '#9f1239', '#881337']
+                }]
+            };
+        }
+
+        function updateChartsData() {
+            chartHplInstance.data = getHplChartData();
+            chartHplInstance.update();
+
+            chartDusunInstance.data = getDusunChartData();
+            chartDusunInstance.update();
+        }
+
+        // KANTONG PERSALINAN (FEATURE 3)
+        function renderKantongPersalinan() {
+            const selectYear = document.getElementById('kantongYearSelect');
+            const searchVal = (document.getElementById('kantongSearch').value || '').toLowerCase();
+            const currentYear = new Date().getFullYear();
+
+            // Populate Years
+            if (selectYear.options.length === 0) {
+                for (let y = currentYear - 1; y <= currentYear + 3; y++) {
+                    const opt = document.createElement('option');
+                    opt.value = y;
+                    opt.textContent = `Tahun ${y}`;
+                    if (y === currentYear) opt.selected = true;
+                    selectYear.appendChild(opt);
+                }
+            }
+
+            const targetYear = parseInt(selectYear.value);
+            const months = [
+                "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+            ];
+
+            const grid = document.getElementById('kantongGrid');
+            grid.innerHTML = '';
+
+            months.forEach((bulanNama, idx) => {
+                // Filter data for this month & year
+                const listBumil = bumilData.filter(b => {
+                    if (!b.hpl) return false;
+                    const d = new Date(b.hpl);
+                    const matchMonth = d.getMonth() === idx && d.getFullYear() === targetYear;
+                    const matchSearch = b.nama.toLowerCase().includes(searchVal) || b.suami.toLowerCase().includes(searchVal);
+                    return matchMonth && matchSearch;
+                });
+
+                // Month Pocket Container Card
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl border border-pink-100 shadow-sm p-4 flex flex-col justify-between h-72 hover:border-pink-300 transition";
+
+                let cardsHtml = '';
+                listBumil.forEach(b => {
+                    let badgeBg = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+                    let dotColor = 'bg-emerald-500';
+                    if (b.risiko === 'Tinggi') {
+                        badgeBg = 'bg-rose-50 text-rose-700 border-rose-200';
+                        dotColor = 'bg-rose-500';
+                    } else if (b.risiko === 'Sedang') {
+                        badgeBg = 'bg-amber-50 text-amber-700 border-amber-200';
+                        dotColor = 'bg-amber-500';
+                    }
+
+                    cardsHtml += `
+                        <div class="p-2 rounded-xl border ${badgeBg} flex items-center justify-between text-xs mb-1.5 shadow-xs">
+                            <div class="truncate">
+                                <span class="font-bold block truncate">${b.nama} (Ny)</span>
+                                <span class="text-[10px] opacity-80 block font-medium">Ds. ${b.dusun} | HPL: ${b.hpl}</span>
+                            </div>
+                            <span class="w-3 h-3 rounded-full ${dotColor} flex-shrink-0" title="Risiko ${b.risiko}"></span>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between border-b border-pink-50 pb-2 mb-2">
+                            <span class="font-bold text-xs text-pink-700 flex items-center space-x-1">
+                                <i class="fa-solid fa-folder-open text-pink-400"></i>
+                                <span>${bulanNama}</span>
+                            </span>
+                            <span class="px-2 py-0.5 bg-pink-100 text-pink-700 text-[10px] font-bold rounded-full">${listBumil.length} Ibu</span>
+                        </div>
+                        <div class="overflow-y-auto max-h-48 custom-scrollbar pr-1">
+                            ${cardsHtml || '<p class="text-[11px] text-slate-300 italic text-center py-8">Tidak ada persalinan</p>'}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // DATA IBU HAMIL TAB (FEATURE 4)
+        function renderBumilTable() {
+            const tbody = document.getElementById('bumilTableBody');
+            tbody.innerHTML = '';
+
+            const searchVal = (document.getElementById('bumilSearchInput')?.value || '').toLowerCase();
+
+            const filteredData = bumilData.filter(item => {
+                return item.nama.toLowerCase().includes(searchVal) ||
+                       item.suami.toLowerCase().includes(searchVal) ||
+                       item.dusun.toLowerCase().includes(searchVal) ||
+                       (item.alamat && item.alamat.toLowerCase().includes(searchVal));
+            });
+
+            filteredData.forEach((item) => {
+                let badgeClass = 'bg-emerald-100 text-emerald-800';
+                if (item.risiko === 'Tinggi') badgeClass = 'bg-rose-100 text-rose-800 font-bold';
+                else if (item.risiko === 'Sedang') badgeClass = 'bg-amber-100 text-amber-800';
+
+                const p4kStikerBadge = (item.p4k && item.p4k.stiker === 'Sudah') 
+                    ? '<span class="px-1.5 py-0.5 bg-emerald-100 text-emerald-700 text-[9px] font-bold rounded">Stiker P4K OK</span>' 
+                    : '<span class="px-1.5 py-0.5 bg-rose-100 text-rose-700 text-[9px] font-bold rounded">Stiker Belum</span>';
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-pink-50/40 transition";
+                tr.innerHTML = `
+                    <td class="p-3">
+                        <div class="font-bold text-slate-800">${item.nama}</div>
+                        <div class="text-[10px] text-slate-500">Suami: ${item.suami}</div>
+                    </td>
+                    <td class="p-3">
+                        <div class="font-medium text-slate-700">Dusun ${item.dusun}</div>
+                        <div class="text-[10px] text-slate-500 truncate max-w-[150px]" title="${item.alamat || '-'}">${item.alamat || '-'}</div>
+                    </td>
+                    <td class="p-3">
+                        <div class="font-medium">${item.usia} Thn</div>
+                        <div class="text-[10px] text-pink-600 font-bold">HPL: ${item.hpl}</div>
+                    </td>
+                    <td class="p-3">
+                        <div class="text-[10px] font-semibold text-slate-700">${item.p4k?.penolong || 'Bidan Desa'}</div>
+                        <div class="text-[10px] text-slate-500">${item.p4k?.tempat || '-'}</div>
+                        <div class="mt-0.5">${p4kStikerBadge}</div>
+                    </td>
+                    <td class="p-3">
+                        <span class="px-2.5 py-1 rounded-full text-[10px] ${badgeClass}">${item.risiko}</span>
+                    </td>
+                    <td class="p-3">
+                        ${item.wa ? `
+                            <a href="https://wa.me/${item.wa}?text=${encodeURIComponent('Halo Ibu ' + item.nama + ', kami dari Bidan Desa Botolinggo SEHATI ingin menanyakan perkembangan kesehatan ibu.')}" target="_blank" class="inline-flex items-center space-x-1 px-2.5 py-1 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg text-[10px] font-semibold transition shadow-xs">
+                                <i class="fa-brands fa-whatsapp text-xs"></i>
+                                <span>Kirim WA</span>
+                            </a>
+                        ` : '<span class="text-slate-300 italic">-</span>'}
+                    </td>
+                    <td class="p-3 text-center">
+                        <div class="flex items-center justify-center space-x-1">
+                            <button onclick="openBumilModal('${item.id}')" class="p-1.5 bg-amber-50 text-amber-600 hover:bg-amber-100 rounded-lg text-xs" title="Edit Data">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button onclick="deleteBumil('${item.id}')" class="p-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-lg text-xs" title="Hapus Data">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterBumilTable() {
+            renderBumilTable();
+        }
+
+        function deleteBumil(id) {
+            bumilData = bumilData.filter(b => b.id !== id);
+            saveLocalData();
+            renderBumilTable();
+            renderKantongPersalinan();
+            renderMapMarkers();
+            syncWithGoogleSheetsAPI();
+        }
+
+        function openBumilModal(editId = null) {
+            document.getElementById('formBumil').reset();
+            document.getElementById('bumilId').value = '';
+            document.getElementById('modalBumilTitle').textContent = 'Tambah Data Ibu Hamil Baru';
+
+            document.getElementById('modalBumil').classList.remove('hidden');
+
+            let initialLat = DUSUN_COORDS["Krajan"].lat;
+            let initialLng = DUSUN_COORDS["Krajan"].lng;
+
+            if (editId) {
+                const item = bumilData.find(b => b.id === editId);
+                if (item) {
+                    document.getElementById('modalBumilTitle').textContent = 'Edit Data Ibu Hamil';
+                    document.getElementById('bumilId').value = item.id;
+                    document.getElementById('bumilNama').value = item.nama;
+                    document.getElementById('bumilSuami').value = item.suami;
+                    document.getElementById('bumilAlamat').value = item.alamat || '';
+                    document.getElementById('bumilUsia').value = item.usia;
+                    document.getElementById('bumilDusun').value = item.dusun;
+                    document.getElementById('bumilRisiko').value = item.risiko;
+                    document.getElementById('bumilWa').value = item.wa || '';
+                    document.getElementById('bumilHpl').value = item.hpl;
+                    document.getElementById('bumilCatatan').value = item.catatan || '';
+
+                    // Load P4K Component Values
+                    if (item.p4k) {
+                        document.getElementById('p4kPenolong').value = item.p4k.penolong || 'Bidan Desa';
+                        document.getElementById('p4kTempat').value = item.p4k.tempat || 'Puskesmas Botolinggo';
+                        document.getElementById('p4kPendamping').value = item.p4k.pendamping || '';
+                        document.getElementById('p4kTransportasi').value = item.p4k.transportasi || '';
+                        document.getElementById('p4kPendonor').value = item.p4k.pendonor || '';
+                        document.getElementById('p4kStiker').value = item.p4k.stiker || 'Sudah';
+                    }
+
+                    initialLat = item.lat || DUSUN_COORDS[item.dusun]?.lat || initialLat;
+                    initialLng = item.lng || DUSUN_COORDS[item.dusun]?.lng || initialLng;
+                }
+            } else {
+                updateDefaultCoordsByDusun(false);
+                const currentDusun = document.getElementById('bumilDusun').value;
+                if (DUSUN_COORDS[currentDusun]) {
+                    initialLat = DUSUN_COORDS[currentDusun].lat;
+                    initialLng = DUSUN_COORDS[currentDusun].lng;
+                }
+            }
+
+            document.getElementById('bumilLat').value = initialLat.toFixed(6);
+            document.getElementById('bumilLng').value = initialLng.toFixed(6);
+
+            setTimeout(() => {
+                initPickerMap(initialLat, initialLng);
+            }, 200);
+        }
+
+        function closeBumilModal() {
+            document.getElementById('modalBumil').classList.add('hidden');
+        }
+
+        function saveBumilData(e) {
+            e.preventDefault();
+            const id = document.getElementById('bumilId').value;
+            const nama = document.getElementById('bumilNama').value;
+            const suami = document.getElementById('bumilSuami').value;
+            const alamat = document.getElementById('bumilAlamat').value;
+            const usia = parseInt(document.getElementById('bumilUsia').value);
+            const dusun = document.getElementById('bumilDusun').value;
+            const risiko = document.getElementById('bumilRisiko').value;
+            const wa = document.getElementById('bumilWa').value;
+            const hpl = document.getElementById('bumilHpl').value;
+            const lat = parseFloat(document.getElementById('bumilLat').value) || DUSUN_COORDS[dusun].lat;
+            const lng = parseFloat(document.getElementById('bumilLng').value) || DUSUN_COORDS[dusun].lng;
+            const catatan = document.getElementById('bumilCatatan').value;
+
+            // Collect P4K Object
+            const p4k = {
+                penolong: document.getElementById('p4kPenolong').value,
+                tempat: document.getElementById('p4kTempat').value,
+                pendamping: document.getElementById('p4kPendamping').value,
+                transportasi: document.getElementById('p4kTransportasi').value,
+                pendonor: document.getElementById('p4kPendonor').value,
+                stiker: document.getElementById('p4kStiker').value
+            };
+
+            const payload = { id: id || ("BM-" + String(Date.now()).slice(-4)), nama, suami, alamat, usia, dusun, risiko, wa, hpl, lat, lng, catatan, p4k };
+
+            if (id) {
+                // Update
+                const idx = bumilData.findIndex(b => b.id === id);
+                if (idx !== -1) bumilData[idx] = payload;
+            } else {
+                // Create
+                bumilData.push(payload);
+            }
+
+            saveLocalData();
+            renderBumilTable();
+            renderKantongPersalinan();
+            renderMapMarkers();
+            closeBumilModal();
+
+            // Sync with GAS API if configured
+            syncWithGoogleSheetsAPI();
+        }
+
+        // LEAFLET MAP & RISTI SEBARAN WITH DETAILED BUMIL LIST POPUP
+        function renderMapMarkers() {
+            if (!leafletMap) return;
+
+            // Clear markers
+            mapMarkers.forEach(m => leafletMap.removeLayer(m));
+            mapMarkers = [];
+
+            const dusunList = Object.keys(DUSUN_COORDS);
+            const summaryContainer = document.getElementById('dusunMapSummaryList');
+            summaryContainer.innerHTML = '';
+
+            dusunList.forEach(ds => {
+                const bumilInDusun = bumilData.filter(b => b.dusun === ds);
+                const ristiCount = bumilInDusun.filter(b => b.risiko === 'Tinggi').length;
+                const sedangCount = bumilInDusun.filter(b => b.risiko === 'Sedang').length;
+                const rendahCount = bumilInDusun.filter(b => b.risiko === 'Rendah').length;
+
+                // Color pin based on highest risk in that dusun
+                let pinColor = '#10b981'; // Green
+                if (ristiCount > 0) pinColor = '#f43f5e'; // Red
+                else if (sedangCount > 0) pinColor = '#f59e0b'; // Yellow
+
+                const baseCoord = DUSUN_COORDS[ds];
+
+                const customIcon = L.divIcon({
+                    className: 'custom-map-pin',
+                    html: `<div style="background-color: ${pinColor}; width: 26px; height: 26px; border-radius: 50%; border: 3px solid white; box-shadow: 0 3px 8px rgba(0,0,0,0.3); display:flex; items-center; justify-center; text-align:center; color:white; font-size:11px; font-weight:bold; line-height:20px;">${bumilInDusun.length}</div>`,
+                    iconSize: [26, 26]
+                });
+
+                const marker = L.marker([baseCoord.lat, baseCoord.lng], { icon: customIcon }).addTo(leafletMap);
+
+                // Build detailed popup showing names of all ibu hamil in this dusun
+                let bumilListHtml = '';
+                if (bumilInDusun.length > 0) {
+                    bumilInDusun.forEach((b, i) => {
+                        let badgeBg = 'background-color:#d1fae5; color:#065f46;';
+                        if (b.risiko === 'Tinggi') badgeBg = 'background-color:#ffe4e6; color:#9f1239; font-weight:bold;';
+                        else if (b.risiko === 'Sedang') badgeBg = 'background-color:#fef3c7; color:#92400e;';
+
+                        bumilListHtml += `
+                            <div style="padding:6px; border-bottom:1px solid #fce7f3; display:flex; align-items:center; justify-between; gap:8px;">
+                                <div>
+                                    <strong style="font-size:11px; color:#1e293b; display:block;">${i+1}. Ny. ${b.nama}</strong>
+                                    <span style="font-size:10px; color:#64748b; display:block;">Suami: ${b.suami} | HPL: ${b.hpl}</span>
+                                    <span style="font-size:9px; color:#ec4899; display:block;">${b.alamat || 'Dsn. ' + b.dusun}</span>
+                                </div>
+                                <span style="font-size:9px; padding:2px 6px; border-radius:10px; ${badgeBg}">${b.risiko}</span>
+                            </div>
+                        `;
+                    });
+                } else {
+                    bumilListHtml = '<p style="font-size:10px; color:#94a3b8; text-align:center; padding:8px;">Tidak ada ibu hamil terdaftar</p>';
+                }
+
+                const popupContent = `
+                    <div style="font-family:'Plus Jakarta Sans', sans-serif; width: 230px; max-height: 250px; overflow-y: auto;">
+                        <div style="border-bottom: 2px solid #f472b6; padding-bottom: 4px; margin-bottom: 6px;">
+                            <h4 style="margin:0; font-size:13px; font-weight:bold; color:#be185d;">Dusun ${ds}</h4>
+                            <span style="font-size:10px; color:#64748b;">Total: ${bumilInDusun.length} Ibu | Risti: ${ristiCount}</span>
+                        </div>
+                        <div style="display:flex; flex-direction:column;">
+                            ${bumilListHtml}
+                        </div>
+                    </div>
+                `;
+
+                marker.bindPopup(popupContent);
+                mapMarkers.push(marker);
+
+                // Populate Sidebar Summary
+                const summaryCard = document.createElement('div');
+                summaryCard.className = "p-2 bg-pink-50/50 rounded-xl border border-pink-100 flex items-center justify-between hover:bg-pink-100/50 transition cursor-pointer";
+                summaryCard.onclick = () => {
+                    leafletMap.setView([baseCoord.lat, baseCoord.lng], 15);
+                    marker.openPopup();
+                };
+                summaryCard.innerHTML = `
+                    <div>
+                        <span class="font-bold text-slate-700">Dsn. ${ds}</span>
+                        <div class="text-[10px] text-slate-500">${bumilInDusun.length} Ibu Hamil</div>
+                    </div>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${ristiCount > 0 ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">
+                        ${ristiCount} Risti
+                    </span>
+                `;
+                summaryContainer.appendChild(summaryCard);
+            });
+        }
+
+        // WHATSAPP REPORTING MODAL
+        function openWhatsAppReportModal() {
+            const tinggi = bumilData.filter(d => d.risiko === 'Tinggi').length;
+            const sedang = bumilData.filter(d => d.risiko === 'Sedang').length;
+            const rendah = bumilData.filter(d => d.risiko === 'Rendah').length;
+
+            const previewText = 
+`*REKAPITULASI KANTONG PERSALINAN SEHATI*
+Desa Botolinggo - ${new Date().toLocaleDateString('id-ID')}
+
+Total Ibu Hamil: ${bumilData.length} orang
+- Risiko Tinggi (Merah): ${tinggi}
+- Risiko Sedang (Kuning): ${sedang}
+- Risiko Rendah (Hijau): ${rendah}
+
+_Laporan otomatis disinkronkan via Aplikasi SEHATI._`;
+
+            document.getElementById('waPreviewText').value = previewText;
+            document.getElementById('modalWaReport').classList.remove('hidden');
+        }
+
+        function closeWhatsAppModal() {
+            document.getElementById('modalWaReport').classList.add('hidden');
+        }
+
+        function sendDirectWhatsAppReport() {
+            const phone = document.getElementById('waRecipientNumber').value;
+            const text = encodeURIComponent(document.getElementById('waPreviewText').value);
+            if (!phone) {
+                alert('Silakan masukkan nomor WhatsApp tujuan.');
+                return;
+            }
+            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+        }
+
+        // CONFIGURATION & GOOGLE SHEETS API
+        function saveGasUrl() {
+            const url = document.getElementById('gasApiUrl').value;
+            localStorage.setItem('sehati_gas_url', url);
+            alert('URL Google Apps Script berhasil disimpan!');
+        }
+
+        function saveSettings(e) {
+            e.preventDefault();
+            const logoUrl = document.getElementById('setLogoUrl').value;
+            localStorage.setItem('sehati_logo_url', logoUrl);
+
+            const headerLogo = document.getElementById('headerAppLogo');
+            if (headerLogo) headerLogo.src = logoUrl;
+
+            alert('Profil berhasil diperbarui!');
+        }
+
+        function loadSettings() {
+            const gasUrl = localStorage.getItem('sehati_gas_url') || '';
+            const logoUrl = localStorage.getItem('sehati_logo_url') || 'https://placehold.co/100x100/fbcfe8/be185d?text=PKM';
+
+            if (document.getElementById('gasApiUrl')) document.getElementById('gasApiUrl').value = gasUrl;
+            if (document.getElementById('setLogoUrl')) document.getElementById('setLogoUrl').value = logoUrl;
+            if (document.getElementById('headerAppLogo')) document.getElementById('headerAppLogo').src = logoUrl;
+        }
+
+        function syncWithGoogleSheetsAPI() {
+            const gasUrl = localStorage.getItem('sehati_gas_url');
+            if (!gasUrl) return;
+
+            fetch(gasUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bumilData)
+            }).catch(err => console.log('GAS sync error:', err));
+        }
+
+        // EXPORT TO EXCEL WITH ALAMAT & P4K DETAILS
+        function exportToExcel() {
+            const dataToExport = bumilData.map((b, idx) => ({
+                "No": idx + 1,
+                "ID Register": b.id,
+                "Nama Ibu": b.nama,
+                "Nama Suami": b.suami,
+                "Alamat Lengkap": b.alamat || "-",
+                "Usia (Th)": b.usia,
+                "Dusun": b.dusun,
+                "Kategori Risiko": b.risiko,
+                "Penolong Persalinan (P4K)": b.p4k?.penolong || "-",
+                "Tempat Persalinan (P4K)": b.p4k?.tempat || "-",
+                "Pendamping (P4K)": b.p4k?.pendamping || "-",
+                "Transportasi (P4K)": b.p4k?.transportasi || "-",
+                "Pendonor Darah (P4K)": b.p4k?.pendonor || "-",
+                "Stiker P4K": b.p4k?.stiker || "-",
+                "No. WhatsApp": b.wa,
+                "HPL": b.hpl,
+                "Latitude": b.lat,
+                "Longitude": b.lng,
+                "Catatan Medis": b.catatan
+            }));
+
+            const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Data Ibu Hamil SEHATI");
+
+            XLSX.writeFile(workbook, `Rekap_SEHATI_Botolinggo_${new Date().toISOString().slice(0,10)}.xlsx`);
+        }
+    </script>
+</body>
+</html>
