@@ -537,33 +537,33 @@
                         <input type="date" id="bumilHpl" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                     </div>
                     <div>
-                        <label class="block font-semibold text-slate-600 mb-1">No. WhatsApp Ibu / Keluarga</label>
-                        <input type="text" id="bumilWa" placeholder="628123456789" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
-                    </div>
-                </div>
-
-                <!-- KOMPONEN P4K -->
-                <div class="p-3 bg-pink-50/60 rounded-2xl border border-pink-200 space-y-2.5">
-                    <h4 class="font-bold text-pink-800 text-[11px] uppercase tracking-wide flex items-center space-x-1.5">
-                        <i class="fa-solid fa-file-medical"></i>
-                        <span>Komponen P4K (Perencanaan Persalinan)</span>
-                    </h4>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                         <div>
-                            <label class="block text-[10px] font-semibold text-slate-600 mb-0.5">Penolong Persalinan</label>
-                            <select id="p4kPenolong" class="w-full p-2 bg-white border border-pink-200 rounded-lg text-xs">
-                                <option value="Bidan Desa">Bidan Desa</option>
-                                <option value="Dokter SpOG">Dokter SpOG</option>
-                                <option value="Bidan Puskesmas">Bidan Puskesmas</option>
-                            </select>
+                            <label class="block font-semibold text-slate-600 mb-1">Usia Ibu (Th) *</label>
+                            <input type="number" id="bumilUsia" required min="12" max="60" placeholder="25" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                         </div>
                         <div>
-                            <label class="block text-[10px] font-semibold text-slate-600 mb-0.5">Tempat Persalinan</label>
-                            <select id="p4kTempat" class="w-full p-2 bg-white border border-pink-200 rounded-lg text-xs">
-                                <option value="Puskesmas Botolinggo">Puskesmas Botolinggo</option>
-                                <option value="Polindes Desa">Polindes Desa</option>
-                                <option value="Rumah Sakit Rujukan">Rumah Sakit Rujukan</option>
+                            <label class="block font-semibold text-slate-600 mb-1">Dusun *</label>
+                            <select id="bumilDusun" onchange="updateDefaultCoordsByDusun()" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold">
+                                <option value="Krajan">Dusun Krajan</option>
+                                <option value="Sundang">Dusun Sundang</option>
+                                <option value="Waduk">Dusun Waduk</option>
+                                <option value="Bille">Dusun Bille</option>
+                                <option value="Taman">Dusun Taman</option>
+                                <option value="Cottok">Dusun Cottok</option>
+                                <option value="Lucu">Dusun Lucu</option>
+                                <option value="Cemper">Dusun Cemper</option>
+                                <option value="Kedawung Timur">Dusun Kedawung Timur</option>
+                                <option value="Kedawung Barat">Dusun Kedawung Barat</option>
+                                <option value="Ninggil">Dusun Ninggil</option>
+                            </select>
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <label class="block font-semibold text-slate-600 mb-1">Kategori Risiko *</label>
+                            <select id="bumilRisiko" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold text-pink-700">
+                                <option value="Rendah">Rendah (Hijau)</option>
+                                <option value="Sedang">Sedang (Kuning)</option>
+                                <option value="Tinggi">Tinggi (Merah)</option>
                             </select>
                         </div>
                     </div>
@@ -716,15 +716,21 @@
 
     <!-- APPLICATION LOGIC JAVASCRIPT -->
     <script>
-        // Coords Dusun Desa Botolinggo
+        // Koordinat Presisi PONKESDES Botolinggo & 11 Dusun Desa Botolinggo (Hasil Presisi Lapangan)
+        const PONKESDES_COORDS = { lat: -7.830602, lng: 113.977607, name: "PONKESDES Botolinggo" };
+
         const DUSUN_COORDS = {
-            "Krajan": { lat: -7.8105, lng: 113.9100 },
-            "Bille": { lat: -7.8150, lng: 113.9180 },
-            "Cemper": { lat: -7.8040, lng: 113.9050 },
-            "Kedawung": { lat: -7.8210, lng: 113.9010 },
-            "Lucu": { lat: -7.8080, lng: 113.9250 },
-            "Ninggil": { lat: -7.8250, lng: 113.9200 },
-            "Sundang": { lat: -7.7980, lng: 113.9120 }
+            "Krajan": { lat: -7.817532, lng: 113.975721 },
+            "Sundang": { lat: -7.826488, lng: 113.975118 },
+            "Waduk": { lat: -7.832902, lng: 113.973543 },
+            "Bille": { lat: -7.844637, lng: 113.985955 },
+            "Taman": { lat: -7.838410, lng: 113.977186 },
+            "Cottok": { lat: -7.844541, lng: 113.976983 },
+            "Lucu": { lat: -7.844959, lng: 113.969798 },
+            "Cemper": { lat: -7.879670, lng: 114.001472 },
+            "Kedawung Timur": { lat: -7.870761, lng: 113.988748 },
+            "Kedawung Barat": { lat: -7.872612, lng: 113.983703 },
+            "Ninggil": { lat: -7.860117, lng: 113.992829 }
         };
 
         // Single Default Account State (Bidan Desa)
@@ -733,11 +739,10 @@
         ];
 
         let activeUser = null;
-        let tempPhotoDataUrl = null; // Holds uploaded profile picture preview DataURL
+        let tempPhotoDataUrl = null;
 
-        // Clean initial data state (NO DEMO DATA)
         let bumilData = [];
-        let kantongViewMode = 'tile'; // 'tile' or 'list'
+        let kantongViewMode = 'tile';
 
         let chartHplInstance = null;
         let chartDusunInstance = null;
@@ -753,6 +758,40 @@
             loadSettings();
         });
 
+        // TAB SWITCHER FUNCTION
+        function switchTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.add('hidden'));
+
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+            }
+
+            // Update bottom navigation bar active states
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('text-pink-600');
+                btn.classList.add('text-slate-400');
+                const iconBox = btn.querySelector('.icon-box');
+                if (iconBox) iconBox.classList.remove('bg-pink-100');
+            });
+
+            const activeNavBtn = document.getElementById(`nav-${tabId}`);
+            if (activeNavBtn) {
+                activeNavBtn.classList.remove('text-slate-400');
+                activeNavBtn.classList.add('text-pink-600');
+                const iconBox = activeNavBtn.querySelector('.icon-box');
+                if (iconBox) iconBox.classList.add('bg-pink-100');
+            }
+
+            if (tabId === 'peta' && leafletMap) {
+                setTimeout(() => {
+                    leafletMap.invalidateSize();
+                }, 200);
+            }
+        }
+
         // LOGIN & LOGOUT HANDLERS
         function handleLogin(e) {
             if (e) e.preventDefault();
@@ -766,7 +805,6 @@
                 activeUser = matchedUser;
                 if (errorMsg) errorMsg.classList.add('hidden');
                 
-                // Hide Login, Show App Container
                 document.getElementById('loginSection').classList.add('hidden');
                 document.getElementById('appContainer').classList.remove('hidden');
                 document.getElementById('appContainer').classList.add('flex');
@@ -824,6 +862,56 @@
             updateUserDisplay();
         }
 
+        function updateUserDisplay() {
+            if (!activeUser) return;
+
+            const headerAvatar = document.getElementById('headerProfileAvatar');
+            const headerInitials = document.getElementById('headerProfileInitials');
+            const headerName = document.getElementById('headerProfileName');
+            const activeUserLabel = document.getElementById('activeUserLabel');
+
+            if (headerName) headerName.textContent = activeUser.nama || 'Bidan Desa';
+            if (activeUserLabel) activeUserLabel.textContent = `${activeUser.nama || 'Bidan Desa'} (${activeUser.role || 'Bidan Desa'})`;
+
+            const userInitials = (activeUser.nama || 'BD').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+            if (activeUser.photo) {
+                if (headerAvatar) {
+                    headerAvatar.src = activeUser.photo;
+                    headerAvatar.classList.remove('hidden');
+                }
+                if (headerInitials) headerInitials.classList.add('hidden');
+            } else {
+                if (headerAvatar) headerAvatar.classList.add('hidden');
+                if (headerInitials) {
+                    headerInitials.textContent = userInitials;
+                    headerInitials.classList.remove('hidden');
+                }
+            }
+
+            const settingsAvatar = document.getElementById('settingsProfileAvatar');
+            const settingsInitials = document.getElementById('settingsProfileInitials');
+            const displayNama = document.getElementById('displayUserNama');
+            const displayUsername = document.getElementById('displayUserUsername');
+
+            if (displayNama) displayNama.textContent = activeUser.nama || 'Bidan Desa';
+            if (displayUsername) displayUsername.textContent = activeUser.username || 'admin';
+
+            if (activeUser.photo) {
+                if (settingsAvatar) {
+                    settingsAvatar.src = activeUser.photo;
+                    settingsAvatar.classList.remove('hidden');
+                }
+                if (settingsInitials) settingsInitials.classList.add('hidden');
+            } else {
+                if (settingsAvatar) settingsAvatar.classList.add('hidden');
+                if (settingsInitials) {
+                    settingsInitials.textContent = userInitials;
+                    settingsInitials.classList.remove('hidden');
+                }
+            }
+        }
+
         function loadLocalData() {
             const saved = localStorage.getItem('sehati_bumil_data');
             if (saved) {
@@ -865,7 +953,6 @@
 
             if (!ctxHpl || !ctxDusun) return;
 
-            // Group by Month (HPL)
             const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
             const monthCounts = Array(12).fill(0);
 
@@ -898,10 +985,9 @@
                 }
             });
 
-            // Group by Dusun
             const dusunList = Object.keys(DUSUN_COORDS);
             const dusunCounts = dusunList.map(ds => bumilData.filter(b => b.dusun === ds).length);
-            const dusunColors = ['#f472b6', '#fb7185', '#e879f9', '#c084fc', '#818cf8', '#60a5fa', '#34d399'];
+            const dusunColors = ['#f472b6', '#fb7185', '#e879f9', '#c084fc', '#818cf8', '#60a5fa', '#34d399', '#f59e0b', '#10b981', '#6366f1', '#ec4899'];
 
             if (chartDusunInstance) chartDusunInstance.destroy();
             chartDusunInstance = new Chart(ctxDusun, {
@@ -1085,6 +1171,182 @@
             }
         }
 
+        function openBumilModal(id = null) {
+            const modal = document.getElementById('modalBumil');
+            const title = document.getElementById('modalBumilTitle');
+            const form = document.getElementById('formBumil');
+
+            if (!modal) return;
+            form.reset();
+
+            if (id) {
+                const item = bumilData.find(b => b.id === id);
+                if (item) {
+                    if (title) title.textContent = "Edit Data Ibu Hamil";
+                    document.getElementById('bumilId').value = item.id;
+                    document.getElementById('bumilNama').value = item.nama;
+                    document.getElementById('bumilSuami').value = item.suami || '';
+                    document.getElementById('bumilUsia').value = item.usia || '';
+                    document.getElementById('bumilDusun').value = item.dusun || 'Krajan';
+                    document.getElementById('bumilRisiko').value = item.risiko || 'Rendah';
+                    document.getElementById('bumilAlamat').value = item.alamat || '';
+                    document.getElementById('bumilHpl').value = item.hpl || '';
+                    document.getElementById('p4kPendamping').value = item.p4k?.pendamping || '';
+                    document.getElementById('p4kTransportasi').value = item.p4k?.transportasi || '';
+                    document.getElementById('p4kPendonor').value = item.p4k?.pendonor || '';
+                    document.getElementById('p4kStiker').value = item.p4k?.stiker || 'Belum';
+                    document.getElementById('bumilLat').value = item.lat || DUSUN_COORDS[item.dusun]?.lat || PONKESDES_COORDS.lat;
+                    document.getElementById('bumilLng').value = item.lng || DUSUN_COORDS[item.dusun]?.lng || PONKESDES_COORDS.lng;
+                    document.getElementById('bumilCatatan').value = item.catatan || '';
+                    
+                    initPickerMap(item.lat || DUSUN_COORDS[item.dusun]?.lat || PONKESDES_COORDS.lat, item.lng || DUSUN_COORDS[item.dusun]?.lng || PONKESDES_COORDS.lng);
+                }
+            } else {
+                if (title) title.textContent = "Tambah Data Ibu Hamil";
+                document.getElementById('bumilId').value = '';
+                updateDefaultCoordsByDusun(false);
+                initPickerMap(parseFloat(document.getElementById('bumilLat').value), parseFloat(document.getElementById('bumilLng').value));
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeBumilModal() {
+            const modal = document.getElementById('modalBumil');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function saveBumilData(e) {
+            e.preventDefault();
+            const id = document.getElementById('bumilId').value;
+            const nama = document.getElementById('bumilNama').value.trim();
+            const suami = document.getElementById('bumilSuami').value.trim();
+            const usia = parseInt(document.getElementById('bumilUsia').value) || 0;
+            const dusun = document.getElementById('bumilDusun').value;
+            const risiko = document.getElementById('bumilRisiko').value;
+            const alamat = document.getElementById('bumilAlamat').value.trim();
+            const hpl = document.getElementById('bumilHpl').value;
+            const pendamping = document.getElementById('p4kPendamping').value.trim();
+            const transportasi = document.getElementById('p4kTransportasi').value.trim();
+            const pendonor = document.getElementById('p4kPendonor').value.trim();
+            const stiker = document.getElementById('p4kStiker').value;
+            const lat = parseFloat(document.getElementById('bumilLat').value) || PONKESDES_COORDS.lat;
+            const lng = parseFloat(document.getElementById('bumilLng').value) || PONKESDES_COORDS.lng;
+            const catatan = document.getElementById('bumilCatatan').value.trim();
+
+            const bumilObj = {
+                id: id || `BM-${Date.now()}`,
+                nama, suami, usia, dusun, risiko, alamat, hpl,
+                p4k: { pendamping, transportasi, pendonor, stiker },
+                lat, lng, catatan, wa: ''
+            };
+
+            if (id) {
+                const idx = bumilData.findIndex(b => b.id === id);
+                if (idx !== -1) bumilData[idx] = bumilObj;
+            } else {
+                bumilData.push(bumilObj);
+            }
+
+            saveLocalData();
+            closeBumilModal();
+            renderMapMarkers();
+            syncWithGoogleSheetsAPI();
+        }
+
+        function openUserModal() {
+            if (!activeUser) return;
+            const modal = document.getElementById('modalUser');
+            if (!modal) return;
+
+            document.getElementById('userId').value = activeUser.id;
+            document.getElementById('userNama').value = activeUser.nama || '';
+            document.getElementById('userUsername').value = activeUser.username || '';
+            document.getElementById('userPassword').value = activeUser.password || '';
+
+            const preview = document.getElementById('modalProfilePreview');
+            const initials = document.getElementById('modalProfileInitials');
+            tempPhotoDataUrl = activeUser.photo || null;
+
+            if (tempPhotoDataUrl) {
+                if (preview) { preview.src = tempPhotoDataUrl; preview.classList.remove('hidden'); }
+                if (initials) initials.classList.add('hidden');
+            } else {
+                if (preview) preview.classList.add('hidden');
+                if (initials) {
+                    initials.textContent = (activeUser.nama || 'BD').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+                    initials.classList.remove('hidden');
+                }
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeUserModal() {
+            const modal = document.getElementById('modalUser');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function previewUserPhoto(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                tempPhotoDataUrl = event.target.result;
+                const preview = document.getElementById('modalProfilePreview');
+                const initials = document.getElementById('modalProfileInitials');
+                if (preview) { preview.src = tempPhotoDataUrl; preview.classList.remove('hidden'); }
+                if (initials) initials.classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveUserData(e) {
+            e.preventDefault();
+            if (!activeUser) return;
+
+            activeUser.nama = document.getElementById('userNama').value.trim();
+            activeUser.username = document.getElementById('userUsername').value.trim();
+            activeUser.password = document.getElementById('userPassword').value.trim();
+            if (tempPhotoDataUrl !== null) {
+                activeUser.photo = tempPhotoDataUrl;
+            }
+
+            const idx = usersData.findIndex(u => u.id === activeUser.id);
+            if (idx !== -1) usersData[idx] = activeUser;
+
+            saveLocalUsers();
+            closeUserModal();
+            syncWithGoogleSheetsAPI();
+        }
+
+        function exportToExcel() {
+            if (bumilData.length === 0) {
+                alert("Belum ada data ibu hamil untuk diexport!");
+                return;
+            }
+            const exportData = bumilData.map(b => ({
+                "Nama Ibu": b.nama,
+                "Nama Suami": b.suami,
+                "Usia": b.usia,
+                "Dusun": b.dusun,
+                "Alamat": b.alamat,
+                "Kategori Risiko": b.risiko,
+                "HPL": b.hpl,
+                "Pendamping P4K": b.p4k?.pendamping || '-',
+                "Transportasi P4K": b.p4k?.transportasi || '-',
+                "Pendonor P4K": b.p4k?.pendonor || '-',
+                "Stiker P4K": b.p4k?.stiker || 'Belum',
+                "Catatan": b.catatan || '-'
+            }));
+
+            const ws = XLSX.utils.json_to_sheet(exportData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Data Ibu Hamil");
+            XLSX.writeFile(wb, `Data_SEHATI_Botolinggo_${new Date().toISOString().slice(0, 10)}.xlsx`);
+        }
+
         function updateDefaultCoordsByDusun(updatePicker = true) {
             const selectedDusun = document.getElementById('bumilDusun').value;
             if (DUSUN_COORDS[selectedDusun]) {
@@ -1135,10 +1397,9 @@
             if (!mapEl) return;
 
             if (!leafletMap) {
-                const center = DUSUN_COORDS["Krajan"];
-                leafletMap = L.map('map').setView([center.lat, center.lng], 13);
+                leafletMap = L.map('map').setView([PONKESDES_COORDS.lat, PONKESDES_COORDS.lng], 14);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap SEHATI'
+                    attribution: '© OpenStreetMap SEHATI - Desa Botolinggo'
                 }).addTo(leafletMap);
             }
             renderMapMarkers();
@@ -1146,290 +1407,31 @@
 
         function resetMapView() {
             if (leafletMap) {
-                const center = DUSUN_COORDS["Krajan"];
-                leafletMap.setView([center.lat, center.lng], 13);
+                leafletMap.setView([PONKESDES_COORDS.lat, PONKESDES_COORDS.lng], 14);
             }
         }
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            const target = document.getElementById(`tab-${tabId}`);
-            if (target) target.classList.remove('hidden');
-
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('text-pink-600');
-                btn.classList.add('text-slate-400');
-                const box = btn.querySelector('.icon-box');
-                if (box) box.classList.remove('bg-pink-100');
-            });
-
-            const activeNav = document.getElementById(`nav-${tabId}`);
-            if (activeNav) {
-                activeNav.classList.remove('text-slate-400');
-                activeNav.classList.add('text-pink-600');
-                const box = activeNav.querySelector('.icon-box');
-                if (box) box.classList.add('bg-pink-100');
-            }
-
-            if (tabId === 'peta') {
-                setTimeout(() => {
-                    if (leafletMap) leafletMap.invalidateSize();
-                }, 200);
-            }
-        }
-
-        function exportToExcel() {
-            if (bumilData.length === 0) {
-                alert('Tidak ada data ibu hamil untuk diexport!');
-                return;
-            }
-
-            const exportRows = bumilData.map((b, i) => ({
-                "No": i + 1,
-                "ID": b.id,
-                "Nama Ibu Hamil": b.nama,
-                "Nama Suami": b.suami,
-                "Usia": b.usia,
-                "Dusun": b.dusun,
-                "Alamat Lengkap": b.alamat || '-',
-                "Kategori Risiko": b.risiko,
-                "Estimasi Lahir (HPL)": b.hpl,
-                "WhatsApp": b.wa || '-',
-                "P4K Penolong": b.p4k?.penolong || '-',
-                "P4K Tempat": b.p4k?.tempat || '-',
-                "P4K Pendamping": b.p4k?.pendamping || '-',
-                "P4K Transportasi": b.p4k?.transportasi || '-',
-                "P4K Pendonor": b.p4k?.pendonor || '-',
-                "P4K Stiker": b.p4k?.stiker || '-',
-                "Latitude": b.lat,
-                "Longitude": b.lng,
-                "Catatan": b.catatan || '-'
-            }));
-
-            const ws = XLSX.utils.json_to_sheet(exportRows);
-            const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Data Bumil");
-            XLSX.writeFile(wb, `SEHATI_Data_Bumil_Desa_Botolinggo_${new Date().toISOString().slice(0, 10)}.xlsx`);
-        }
-
-        function updateUserDisplay() {
-            if (usersData.length > 0) {
-                const u = usersData[0];
-                const displayNama = document.getElementById('displayUserNama');
-                const displayUser = document.getElementById('displayUserUsername');
-                const headerProfileName = document.getElementById('headerProfileName');
-                
-                if (displayNama) displayNama.textContent = u.nama;
-                if (displayUser) displayUser.textContent = u.username;
-                if (headerProfileName) headerProfileName.textContent = u.nama;
-
-                // Render Profile Avatar on Header & Settings
-                const photoUrl = u.photo || '';
-                const initials = getInitials(u.nama);
-
-                const headerImg = document.getElementById('headerProfileAvatar');
-                const headerInit = document.getElementById('headerProfileInitials');
-                const settingsImg = document.getElementById('settingsProfileAvatar');
-                const settingsInit = document.getElementById('settingsProfileInitials');
-
-                if (photoUrl) {
-                    if (headerImg) { headerImg.src = photoUrl; headerImg.classList.remove('hidden'); }
-                    if (headerInit) { headerInit.classList.add('hidden'); }
-                    if (settingsImg) { settingsImg.src = photoUrl; settingsImg.classList.remove('hidden'); }
-                    if (settingsInit) { settingsInit.classList.add('hidden'); }
-                } else {
-                    if (headerImg) { headerImg.src = ''; headerImg.classList.add('hidden'); }
-                    if (headerInit) { headerInit.textContent = initials; headerInit.classList.remove('hidden'); }
-                    if (settingsImg) { settingsImg.src = ''; settingsImg.classList.add('hidden'); }
-                    if (settingsInit) { settingsInit.textContent = initials; settingsInit.classList.remove('hidden'); }
-                }
-            }
-        }
-
-        function getInitials(name) {
-            if (!name) return 'BD';
-            const parts = name.trim().split(' ');
-            if (parts.length >= 2) {
-                return (parts[0][0] + parts[1][0]).toUpperCase();
-            }
-            return name.substring(0, 2).toUpperCase();
-        }
-
-        function previewUserPhoto(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    tempPhotoDataUrl = e.target.result;
-                    const previewImg = document.getElementById('modalProfilePreview');
-                    const previewInit = document.getElementById('modalProfileInitials');
-                    if (previewImg) {
-                        previewImg.src = tempPhotoDataUrl;
-                        previewImg.classList.remove('hidden');
-                    }
-                    if (previewInit) {
-                        previewInit.classList.add('hidden');
-                    }
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // USER MANAGEMENT (MODAL)
-        function openUserModal() {
-            const u = usersData[0] || { id: 'USR-01', nama: 'Bidan Desa', username: 'admin', password: '123456', photo: '' };
-            document.getElementById('userId').value = u.id;
-            document.getElementById('userNama').value = u.nama;
-            document.getElementById('userUsername').value = u.username;
-            document.getElementById('userPassword').value = u.password;
-            
-            tempPhotoDataUrl = u.photo || '';
-            const previewImg = document.getElementById('modalProfilePreview');
-            const previewInit = document.getElementById('modalProfileInitials');
-            const initials = getInitials(u.nama);
-
-            if (tempPhotoDataUrl) {
-                if (previewImg) { previewImg.src = tempPhotoDataUrl; previewImg.classList.remove('hidden'); }
-                if (previewInit) { previewInit.classList.add('hidden'); }
-            } else {
-                if (previewImg) { previewImg.src = ''; previewImg.classList.add('hidden'); }
-                if (previewInit) { previewInit.textContent = initials; previewInit.classList.remove('hidden'); }
-            }
-
-            document.getElementById('modalUser').classList.remove('hidden');
-        }
-
-        function closeUserModal() { 
-            tempPhotoDataUrl = null;
-            document.getElementById('modalUser').classList.add('hidden'); 
-        }
-
-        function saveUserData(e) {
-            e.preventDefault();
-            const id = document.getElementById('userId').value || 'USR-01';
-            const nama = document.getElementById('userNama').value.trim();
-            const username = document.getElementById('userUsername').value.trim();
-            const password = document.getElementById('userPassword').value.trim();
-            const photo = tempPhotoDataUrl !== null ? tempPhotoDataUrl : (usersData[0]?.photo || '');
-
-            usersData = [{ id, nama, username, password, role: "Bidan Desa", photo }];
-
-            saveLocalUsers();
-            
-            if (activeUser) {
-                activeUser = usersData[0];
-                if (document.getElementById('activeUserLabel')) {
-                    document.getElementById('activeUserLabel').textContent = `${activeUser.nama} (${activeUser.role})`;
-                }
-            }
-
-            closeUserModal();
-            // Panggil sync agar perubahan username, nama & password admin langsung tersimpan di Google Sheets
-            syncWithGoogleSheetsAPI();
-        }
-
-        function openBumilModal(editId = null) {
-            document.getElementById('formBumil').reset();
-            document.getElementById('bumilId').value = '';
-            document.getElementById('modalBumilTitle').textContent = 'Tambah Data Ibu Hamil Baru';
-            document.getElementById('modalBumil').classList.remove('hidden');
-
-            let initialLat = DUSUN_COORDS["Krajan"].lat;
-            let initialLng = DUSUN_COORDS["Krajan"].lng;
-
-            if (editId) {
-                const item = bumilData.find(b => b.id === editId);
-                if (item) {
-                    document.getElementById('modalBumilTitle').textContent = 'Edit Data Ibu Hamil';
-                    document.getElementById('bumilId').value = item.id;
-                    document.getElementById('bumilNama').value = item.nama;
-                    document.getElementById('bumilSuami').value = item.suami;
-                    document.getElementById('bumilAlamat').value = item.alamat || '';
-                    document.getElementById('bumilUsia').value = item.usia;
-                    document.getElementById('bumilDusun').value = item.dusun;
-                    document.getElementById('bumilRisiko').value = item.risiko;
-                    document.getElementById('bumilWa').value = item.wa || '';
-                    document.getElementById('bumilHpl').value = item.hpl;
-                    document.getElementById('bumilCatatan').value = item.catatan || '';
-
-                    if (item.p4k) {
-                        document.getElementById('p4kPenolong').value = item.p4k.penolong || 'Bidan Desa';
-                        document.getElementById('p4kTempat').value = item.p4k.tempat || 'Puskesmas Botolinggo';
-                        document.getElementById('p4kPendamping').value = item.p4k.pendamping || '';
-                        document.getElementById('p4kTransportasi').value = item.p4k.transportasi || '';
-                        document.getElementById('p4kPendonor').value = item.p4k.pendonor || '';
-                        document.getElementById('p4kStiker').value = item.p4k.stiker || 'Sudah';
-                    }
-
-                    initialLat = item.lat || DUSUN_COORDS[item.dusun]?.lat || initialLat;
-                    initialLng = item.lng || DUSUN_COORDS[item.dusun]?.lng || initialLng;
-                }
-            } else {
-                updateDefaultCoordsByDusun(false);
-                const currentDusun = document.getElementById('bumilDusun').value;
-                if (DUSUN_COORDS[currentDusun]) {
-                    initialLat = DUSUN_COORDS[currentDusun].lat;
-                    initialLng = DUSUN_COORDS[currentDusun].lng;
-                }
-            }
-
-            document.getElementById('bumilLat').value = initialLat.toFixed(6);
-            document.getElementById('bumilLng').value = initialLng.toFixed(6);
-
-            setTimeout(() => { initPickerMap(initialLat, initialLng); }, 200);
-        }
-
-        function closeBumilModal() { document.getElementById('modalBumil').classList.add('hidden'); }
-
-        function saveBumilData(e) {
-            e.preventDefault();
-            const id = document.getElementById('bumilId').value;
-            const nama = document.getElementById('bumilNama').value;
-            const suami = document.getElementById('bumilSuami').value;
-            const alamat = document.getElementById('bumilAlamat').value;
-            const usia = parseInt(document.getElementById('bumilUsia').value);
-            const dusun = document.getElementById('bumilDusun').value;
-            const risiko = document.getElementById('bumilRisiko').value;
-            const wa = document.getElementById('bumilWa').value;
-            const hpl = document.getElementById('bumilHpl').value;
-            const lat = parseFloat(document.getElementById('bumilLat').value) || DUSUN_COORDS[dusun].lat;
-            const lng = parseFloat(document.getElementById('bumilLng').value) || DUSUN_COORDS[dusun].lng;
-            const catatan = document.getElementById('bumilCatatan').value;
-
-            const p4k = {
-                penolong: document.getElementById('p4kPenolong').value,
-                tempat: document.getElementById('p4kTempat').value,
-                pendamping: document.getElementById('p4kPendamping').value,
-                transportasi: document.getElementById('p4kTransportasi').value,
-                pendonor: document.getElementById('p4kPendonor').value,
-                stiker: document.getElementById('p4kStiker').value
-            };
-
-            const payload = { id: id || ("BM-" + String(Date.now()).slice(-4)), nama, suami, alamat, usia, dusun, risiko, wa, hpl, lat, lng, catatan, p4k };
-
-            if (id) {
-                const idx = bumilData.findIndex(b => b.id === id);
-                if (idx !== -1) bumilData[idx] = payload;
-            } else {
-                bumilData.push(payload);
-            }
-
-            saveLocalData();
-            renderBumilTable();
-            renderKantongPersalinan();
-            renderMapMarkers();
-            closeBumilModal();
-            syncWithGoogleSheetsAPI();
-        }
-
-        // POPUP PETA & MAP MARKERS
         function renderMapMarkers() {
             if (!leafletMap) return;
             mapMarkers.forEach(m => leafletMap.removeLayer(m));
             mapMarkers = [];
 
+            const ponkesdesIcon = L.divIcon({
+                className: 'custom-ponkesdes-pin',
+                html: `<div style="background-color: #be185d; width: 34px; height: 34px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; color:white; font-size:16px;" title="Ponkesdes Botolinggo"><i class="fa-solid fa-house-medical"></i></div>`,
+                iconSize: [34, 34]
+            });
+            const ponkesdesMarker = L.marker([PONKESDES_COORDS.lat, PONKESDES_COORDS.lng], { icon: ponkesdesIcon }).addTo(leafletMap);
+            ponkesdesMarker.bindPopup(`
+                <div style="font-family:'Plus Jakarta Sans', sans-serif; text-align:center; padding: 4px;">
+                    <div style="color:#be185d; font-weight:bold; font-size:13px;"><i class="fa-solid fa-house-medical"></i> PONKESDES BOTOLINGGO</div>
+                    <p style="font-size:10px; color:#64748b; margin-top:2px;">Pos Pusat Pelayanan Bidan Desa & Kesehatan Botolinggo</p>
+                </div>
+            `);
+            mapMarkers.push(ponkesdesMarker);
+
             const summaryContainer = document.getElementById('dusunMapSummaryList');
-            summaryContainer.innerHTML = '';
+            if (summaryContainer) summaryContainer.innerHTML = '';
 
             Object.keys(DUSUN_COORDS).forEach(ds => {
                 const bumilInDusun = bumilData.filter(b => b.dusun === ds);
@@ -1481,26 +1483,27 @@
                 `);
                 mapMarkers.push(marker);
 
-                const summaryCard = document.createElement('div');
-                summaryCard.className = "p-2 bg-pink-50/50 rounded-xl border border-pink-100 flex items-center justify-between cursor-pointer active:scale-95";
-                summaryCard.onclick = () => {
-                    leafletMap.setView([baseCoord.lat, baseCoord.lng], 15);
-                    marker.openPopup();
-                };
-                summaryCard.innerHTML = `
-                    <div>
-                        <span class="font-bold text-slate-700 text-xs">Dsn. ${ds}</span>
-                        <div class="text-[10px] text-slate-500">${bumilInDusun.length} Ibu Hamil</div>
-                    </div>
-                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold ${ristiCount > 0 ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">
-                        ${ristiCount} Risti
-                    </span>
-                `;
-                summaryContainer.appendChild(summaryCard);
+                if (summaryContainer) {
+                    const summaryCard = document.createElement('div');
+                    summaryCard.className = "p-2 bg-pink-50/50 rounded-xl border border-pink-100 flex items-center justify-between cursor-pointer active:scale-95";
+                    summaryCard.onclick = () => {
+                        leafletMap.setView([baseCoord.lat, baseCoord.lng], 15);
+                        marker.openPopup();
+                    };
+                    summaryCard.innerHTML = `
+                        <div>
+                            <span class="font-bold text-slate-700 text-xs">Dsn. ${ds}</span>
+                            <div class="text-[10px] text-slate-500">${bumilInDusun.length} Ibu Hamil</div>
+                        </div>
+                        <span class="px-2 py-0.5 rounded-full text-[9px] font-bold ${ristiCount > 0 ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">
+                            ${ristiCount} Risti
+                        </span>
+                    `;
+                    summaryContainer.appendChild(summaryCard);
+                }
             });
         }
 
-        // WHATSAPP REPORTING
         function openWhatsAppReportModal() {
             const tinggi = bumilData.filter(d => d.risiko === 'Tinggi').length;
             const sedang = bumilData.filter(d => d.risiko === 'Sedang').length;
@@ -1530,15 +1533,51 @@ _Laporan otomatis disinkronkan via Aplikasi SEHATI._`;
             window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
         }
 
-        // CONFIGURATION & GOOGLE SHEETS
         function saveGasUrl() {
-            localStorage.setItem('sehati_gas_url', document.getElementById('gasApiUrl').value);
-            alert('URL Google Apps Script disimpan!');
+            const url = document.getElementById('gasApiUrl').value.trim();
+            if(!url) {
+                alert('Silahkan masukkan URL Web App Google Apps Script!');
+                return;
+            }
+            localStorage.setItem('sehati_gas_url', url);
+            alert('URL Google Apps Script berhasil disimpan! Memulai tes sinkronisasi...');
+            syncWithGoogleSheetsAPI();
         }
 
         function loadSettings() {
             const gasUrl = localStorage.getItem('sehati_gas_url') || '';
             if (document.getElementById('gasApiUrl')) document.getElementById('gasApiUrl').value = gasUrl;
+        }
+
+        async function syncWithGoogleSheetsAPI() {
+            const apiUrl = localStorage.getItem('sehati_gas_url');
+            if (!apiUrl) return;
+
+            const payload = {
+                bumil: bumilData,
+                users: usersData
+            };
+
+            const jsonString = JSON.stringify(payload);
+
+            try {
+                await fetch(apiUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: jsonString
+                });
+                console.log('Sync payload successfully sent to Google Sheets API.');
+            } catch (err) {
+                console.warn('POST Request Error, mencoba metode fallback...', err);
+                try {
+                    navigator.sendBeacon(apiUrl, jsonString);
+                } catch(e) {
+                    console.error('Semua metode pengiriman gagal:', e);
+                }
+            }
         }
     </script>
 </body>
