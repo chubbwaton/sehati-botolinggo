@@ -139,7 +139,7 @@
                         </div>
                         <div>
                             <span class="font-extrabold text-base sm:text-lg text-pink-700 tracking-tight block leading-none">SEHATI</span>
-                            <span id="activeUserLabel" class="text-[9px] sm:text-[10px] text-pink-500 font-medium block mt-0.5">Bidan Desa</span>
+                            <span id="activeUserLabel" class="text-[9px] sm:text-[10px] text-pink-500 font-medium block mt-0.5">Kantong Persalinan Ibu Hamil - Desa Botolinggo</span>
                         </div>
                     </div>
 
@@ -345,7 +345,7 @@
                 <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-pink-100 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-slate-700">Peta Sebaran Ibu Hamil Risti</h3>
-                        <p class="text-[10px] sm:text-xs text-slate-500">Pemetaan lokasi dusun Desa Botolinggo (Krajan, Bille, Cemper, Kedawung, Lucu, Ninggil, Sundang).</p>
+                        <p class="text-[10px] sm:text-xs text-slate-500">Pemetaan lokasi 11 dusun Desa Botolinggo (Krajan, Sundang, Waduk, Bille, Taman, Cottok, Lucu, Cemper, Kedawung Timur, Kedawung Barat, Ninggil).</p>
                     </div>
                     <button onclick="resetMapView()" class="px-3 py-1.5 bg-pink-50 text-pink-700 hover:bg-pink-100 rounded-xl text-xs font-semibold transition self-end sm:self-auto">
                         <i class="fa-solid fa-rotate-right mr-1"></i>Reset Kamera
@@ -506,14 +506,18 @@
                     </div>
                     <div>
                         <label class="block font-semibold text-slate-600 mb-1">Dusun *</label>
-                        <select id="bumilDusun" onchange="updateDefaultCoordsByDusun()" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold">
-                            <option value="Krajan">Krajan</option>
-                            <option value="Bille">Bille</option>
-                            <option value="Cemper">Cemper</option>
-                            <option value="Kedawung">Kedawung</option>
-                            <option value="Lucu">Lucu</option>
-                            <option value="Ninggil">Ninggil</option>
-                            <option value="Sundang">Sundang</option>
+                        <select id="bumilDusun" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold">
+                            <option value="Krajan">Dusun Krajan</option>
+                            <option value="Sundang">Dusun Sundang</option>
+                            <option value="Waduk">Dusun Waduk</option>
+                            <option value="Bille">Dusun Bille</option>
+                            <option value="Taman">Dusun Taman</option>
+                            <option value="Cottok">Dusun Cottok</option>
+                            <option value="Lucu">Dusun Lucu</option>
+                            <option value="Cemper">Dusun Cemper</option>
+                            <option value="Kedawung Timur">Dusun Kedawung Timur</option>
+                            <option value="Kedawung Barat">Dusun Kedawung Barat</option>
+                            <option value="Ninggil">Dusun Ninggil</option>
                         </select>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
@@ -537,35 +541,16 @@
                         <input type="date" id="bumilHpl" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                     </div>
                     <div>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <div>
-                            <label class="block font-semibold text-slate-600 mb-1">Usia Ibu (Th) *</label>
-                            <input type="number" id="bumilUsia" required min="12" max="60" placeholder="25" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-600 mb-1">Dusun *</label>
-                            <select id="bumilDusun" onchange="updateDefaultCoordsByDusun()" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold">
-                                <option value="Krajan">Dusun Krajan</option>
-                                <option value="Sundang">Dusun Sundang</option>
-                                <option value="Waduk">Dusun Waduk</option>
-                                <option value="Bille">Dusun Bille</option>
-                                <option value="Taman">Dusun Taman</option>
-                                <option value="Cottok">Dusun Cottok</option>
-                                <option value="Lucu">Dusun Lucu</option>
-                                <option value="Cemper">Dusun Cemper</option>
-                                <option value="Kedawung Timur">Dusun Kedawung Timur</option>
-                                <option value="Kedawung Barat">Dusun Kedawung Barat</option>
-                                <option value="Ninggil">Dusun Ninggil</option>
-                            </select>
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label class="block font-semibold text-slate-600 mb-1">Kategori Risiko *</label>
-                            <select id="bumilRisiko" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold text-pink-700">
-                                <option value="Rendah">Rendah (Hijau)</option>
-                                <option value="Sedang">Sedang (Kuning)</option>
-                                <option value="Tinggi">Tinggi (Merah)</option>
-                            </select>
-                        </div>
+                        <label class="block font-semibold text-slate-600 mb-1">Nomor WA / Telepon</label>
+                        <input type="text" id="bumilWa" placeholder="Contoh: 628123456789" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                    </div>
+                </div>
+
+                <!-- KOMPONEN PERENCANAAN PERSALINAN (P4K) -->
+                <div class="bg-pink-50/60 p-3 rounded-2xl border border-pink-100 space-y-2">
+                    <div class="font-bold text-pink-700 text-[11px] flex items-center space-x-1.5">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                        <span>Perencanaan P4K (Stiker Persalinan)</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -589,16 +574,6 @@
                             <option value="Sudah">Sudah Terpasang di Rumah</option>
                             <option value="Belum">Belum Terpasang</option>
                         </select>
-                    </div>
-                </div>
-
-                <!-- PETA LOKASI RUMAH -->
-                <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Titik Lokasi Rumah (Klik/Geser Pointer di Peta)</label>
-                    <div id="pickerMap" class="w-full h-36 rounded-xl border border-pink-200 z-10 mb-2"></div>
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" id="bumilLat" readonly placeholder="Lat" class="p-2 bg-slate-100 border border-slate-200 rounded-lg text-[10px] font-mono">
-                        <input type="text" id="bumilLng" readonly placeholder="Lng" class="p-2 bg-slate-100 border border-slate-200 rounded-lg text-[10px] font-mono">
                     </div>
                 </div>
 
@@ -716,7 +691,7 @@
 
     <!-- APPLICATION LOGIC JAVASCRIPT -->
     <script>
-        // Koordinat Presisi PONKESDES Botolinggo & 11 Dusun Desa Botolinggo (Hasil Presisi Lapangan)
+        // Koordinat Presisi PONKESDES Botolinggo & 11 Dusun Desa Botolinggo (Data Hasil Presisi Lapangan)
         const PONKESDES_COORDS = { lat: -7.830602, lng: 113.977607, name: "PONKESDES Botolinggo" };
 
         const DUSUN_COORDS = {
@@ -748,8 +723,6 @@
         let chartDusunInstance = null;
         let leafletMap = null;
         let mapMarkers = [];
-        let pickerMapInstance = null;
-        let pickerMarker = null;
 
         window.addEventListener('DOMContentLoaded', () => {
             loadLocalUsers();
@@ -871,7 +844,7 @@
             const activeUserLabel = document.getElementById('activeUserLabel');
 
             if (headerName) headerName.textContent = activeUser.nama || 'Bidan Desa';
-            if (activeUserLabel) activeUserLabel.textContent = `${activeUser.nama || 'Bidan Desa'} (${activeUser.role || 'Bidan Desa'})`;
+            if (activeUserLabel) activeUserLabel.textContent = "Kantong Persalinan Ibu Hamil - Desa Botolinggo";
 
             const userInitials = (activeUser.nama || 'BD').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
 
@@ -1191,21 +1164,16 @@
                     document.getElementById('bumilRisiko').value = item.risiko || 'Rendah';
                     document.getElementById('bumilAlamat').value = item.alamat || '';
                     document.getElementById('bumilHpl').value = item.hpl || '';
+                    document.getElementById('bumilWa').value = item.wa || '';
                     document.getElementById('p4kPendamping').value = item.p4k?.pendamping || '';
                     document.getElementById('p4kTransportasi').value = item.p4k?.transportasi || '';
                     document.getElementById('p4kPendonor').value = item.p4k?.pendonor || '';
                     document.getElementById('p4kStiker').value = item.p4k?.stiker || 'Belum';
-                    document.getElementById('bumilLat').value = item.lat || DUSUN_COORDS[item.dusun]?.lat || PONKESDES_COORDS.lat;
-                    document.getElementById('bumilLng').value = item.lng || DUSUN_COORDS[item.dusun]?.lng || PONKESDES_COORDS.lng;
                     document.getElementById('bumilCatatan').value = item.catatan || '';
-                    
-                    initPickerMap(item.lat || DUSUN_COORDS[item.dusun]?.lat || PONKESDES_COORDS.lat, item.lng || DUSUN_COORDS[item.dusun]?.lng || PONKESDES_COORDS.lng);
                 }
             } else {
                 if (title) title.textContent = "Tambah Data Ibu Hamil";
                 document.getElementById('bumilId').value = '';
-                updateDefaultCoordsByDusun(false);
-                initPickerMap(parseFloat(document.getElementById('bumilLat').value), parseFloat(document.getElementById('bumilLng').value));
             }
 
             modal.classList.remove('hidden');
@@ -1226,19 +1194,23 @@
             const risiko = document.getElementById('bumilRisiko').value;
             const alamat = document.getElementById('bumilAlamat').value.trim();
             const hpl = document.getElementById('bumilHpl').value;
+            const wa = document.getElementById('bumilWa').value.trim();
             const pendamping = document.getElementById('p4kPendamping').value.trim();
             const transportasi = document.getElementById('p4kTransportasi').value.trim();
             const pendonor = document.getElementById('p4kPendonor').value.trim();
             const stiker = document.getElementById('p4kStiker').value;
-            const lat = parseFloat(document.getElementById('bumilLat').value) || PONKESDES_COORDS.lat;
-            const lng = parseFloat(document.getElementById('bumilLng').value) || PONKESDES_COORDS.lng;
             const catatan = document.getElementById('bumilCatatan').value.trim();
+
+            // Koordinat otomatis diambil berdasarkan Dusun yang dipilih
+            const coords = DUSUN_COORDS[dusun] || PONKESDES_COORDS;
+            const lat = coords.lat;
+            const lng = coords.lng;
 
             const bumilObj = {
                 id: id || `BM-${Date.now()}`,
-                nama, suami, usia, dusun, risiko, alamat, hpl,
+                nama, suami, usia, dusun, risiko, alamat, hpl, wa,
                 p4k: { pendamping, transportasi, pendonor, stiker },
-                lat, lng, catatan, wa: ''
+                lat, lng, catatan
             };
 
             if (id) {
@@ -1334,6 +1306,7 @@
                 "Alamat": b.alamat,
                 "Kategori Risiko": b.risiko,
                 "HPL": b.hpl,
+                "No WA": b.wa || '-',
                 "Pendamping P4K": b.p4k?.pendamping || '-',
                 "Transportasi P4K": b.p4k?.transportasi || '-',
                 "Pendonor P4K": b.p4k?.pendonor || '-',
@@ -1345,49 +1318,6 @@
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, "Data Ibu Hamil");
             XLSX.writeFile(wb, `Data_SEHATI_Botolinggo_${new Date().toISOString().slice(0, 10)}.xlsx`);
-        }
-
-        function updateDefaultCoordsByDusun(updatePicker = true) {
-            const selectedDusun = document.getElementById('bumilDusun').value;
-            if (DUSUN_COORDS[selectedDusun]) {
-                const c = DUSUN_COORDS[selectedDusun];
-                document.getElementById('bumilLat').value = c.lat.toFixed(6);
-                document.getElementById('bumilLng').value = c.lng.toFixed(6);
-                if (updatePicker && pickerMapInstance && pickerMarker) {
-                    pickerMapInstance.setView([c.lat, c.lng], 15);
-                    pickerMarker.setLatLng([c.lat, c.lng]);
-                }
-            }
-        }
-
-        function initPickerMap(lat, lng) {
-            const pickerEl = document.getElementById('pickerMap');
-            if (!pickerEl) return;
-
-            if (!pickerMapInstance) {
-                pickerMapInstance = L.map('pickerMap').setView([lat, lng], 15);
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap'
-                }).addTo(pickerMapInstance);
-
-                pickerMarker = L.marker([lat, lng], { draggable: true }).addTo(pickerMapInstance);
-
-                pickerMarker.on('dragend', function (e) {
-                    const pos = pickerMarker.getLatLng();
-                    document.getElementById('bumilLat').value = pos.lat.toFixed(6);
-                    document.getElementById('bumilLng').value = pos.lng.toFixed(6);
-                });
-
-                pickerMapInstance.on('click', function (e) {
-                    pickerMarker.setLatLng(e.latlng);
-                    document.getElementById('bumilLat').value = e.latlng.lat.toFixed(6);
-                    document.getElementById('bumilLng').value = e.latlng.lng.toFixed(6);
-                });
-            } else {
-                pickerMapInstance.setView([lat, lng], 15);
-                pickerMarker.setLatLng([lat, lng]);
-                pickerMapInstance.invalidateSize();
-            }
         }
 
         function initCharts() { renderDashboardCharts(); }
