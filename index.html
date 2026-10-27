@@ -70,8 +70,21 @@
             <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-300 rounded-full blur-2xl opacity-40"></div>
             
             <div class="text-center mb-6 relative z-10">
-                <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-pink-500 to-pink-300 text-white shadow-lg mb-3">
-                    <i class="fa-solid font-bold text-2xl sm:text-3xl fa-heart-pulse"></i>
+                <!-- LOGO UTAMA APLIKASI (IBU & BAYI DALAM HATI) -->
+                <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-pink-400 p-2 shadow-lg mb-3 border-2 border-white">
+                    <svg viewBox="0 0 500 500" class="w-full h-full text-white fill-current">
+                        <rect width="500" height="500" rx="60" fill="#f472b6"/>
+                        <!-- Heart Contour -->
+                        <path d="M250 445C240 435 70 330 65 210C60 120 130 60 210 90C235 100 250 125 250 125C250 125 265 100 290 90C370 60 440 120 435 210C430 330 260 435 250 445Z" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M250 420C242 410 88 315 84 205C80 128 140 78 210 102C232 110 250 130 250 130C250 130 268 110 290 102C360 78 420 128 416 205C412 315 258 410 250 420Z" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+                        <!-- Mother and Baby Line Art -->
+                        <path d="M230 140C215 140 200 152 195 170C190 188 198 205 215 215C200 220 180 235 165 255C150 275 145 300 150 330C155 360 175 385 205 400C220 408 238 412 250 412C262 412 280 408 295 400C325 385 345 360 350 330C355 300 350 275 335 255C320 235 300 220 285 215C302 205 310 188 305 170C300 152 285 140 270 140C255 140 245 150 240 160C235 150 225 140 230 140Z" fill="#ffffff"/>
+                        <!-- Inner cutouts for line art effect -->
+                        <path d="M250 170C255 155 268 150 275 162C282 174 278 192 265 198C252 204 242 195 245 180C247 172 250 170 250 170Z" fill="#f472b6"/>
+                        <path d="M225 170C220 155 207 150 200 162C193 174 197 192 210 198C223 204 233 195 230 180C228 172 225 170 225 170Z" fill="#f472b6"/>
+                        <path d="M220 260C210 250 200 255 195 270C190 285 200 300 215 305C230 310 245 300 248 285C251 270 235 255 220 260Z" fill="#f472b6"/>
+                        <path d="M280 260C290 250 300 255 305 270C310 285 300 300 285 305C270 310 255 300 252 285C249 270 265 255 280 260Z" fill="#f472b6"/>
+                    </svg>
                 </div>
                 <h1 class="text-2xl font-extrabold text-pink-700 tracking-tight">SEHATI</h1>
                 <p class="text-xs text-pink-500 font-medium">Kantong Persalinan Ibu Hamil - Desa Botolinggo</p>
@@ -79,18 +92,24 @@
 
             <form id="loginForm" class="space-y-4 relative z-10" onsubmit="handleLogin(event)">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Email Petugas / Bidan</label>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Username / Email Petugas</label>
                     <div class="relative">
-                        <i class="fa-solid fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-pink-400 text-sm"></i>
-                        <input type="email" id="loginEmail" value="bidan@botolinggo.desa.id" required class="w-full pl-10 pr-4 py-3 text-sm bg-pink-50/50 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition">
+                        <i class="fa-solid fa-user absolute left-3.5 top-1/2 -translate-y-1/2 text-pink-400 text-sm"></i>
+                        <input type="text" id="loginUsername" value="admin" required class="w-full pl-10 pr-4 py-3 text-sm bg-pink-50/50 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition" placeholder="Masukkan username">
                     </div>
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Kata Sandi</label>
                     <div class="relative">
                         <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-pink-400 text-sm"></i>
-                        <input type="password" id="loginPassword" value="sehati123" required class="w-full pl-10 pr-4 py-3 text-sm bg-pink-50/50 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition">
+                        <input type="password" id="loginPassword" value="123456" required class="w-full pl-10 pr-10 py-3 text-sm bg-pink-50/50 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition" placeholder="Masukkan kata sandi">
+                        <button type="button" onclick="togglePasswordVisibility('loginPassword', 'loginEyeIcon')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-pink-600 focus:outline-none">
+                            <i id="loginEyeIcon" class="fa-solid fa-eye"></i>
+                        </button>
                     </div>
+                </div>
+                <div id="loginErrorMessage" class="hidden text-xs font-semibold text-rose-600 text-center bg-rose-50 p-2 rounded-xl border border-rose-200">
+                    Username atau kata sandi salah!
                 </div>
                 <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition transform active:scale-95 text-sm">
                     Masuk ke Aplikasi
@@ -109,18 +128,31 @@
                     
                     <!-- App Title Left -->
                     <div class="flex items-center space-x-2.5">
-                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-pink-500 flex items-center justify-center text-white shadow">
-                            <i class="fa-solid fa-heart-pulse text-sm sm:text-base"></i>
+                        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-pink-500 p-1 flex items-center justify-center text-white shadow">
+                            <!-- Header Mini Logo SVG -->
+                            <svg viewBox="0 0 500 500" class="w-full h-full fill-current text-white">
+                                <path d="M250 445C240 435 70 330 65 210C60 120 130 60 210 90C235 100 250 125 250 125C250 125 265 100 290 90C370 60 440 120 435 210C430 330 260 435 250 445Z" fill="none" stroke="#ffffff" stroke-width="24"/>
+                                <circle cx="230" cy="200" r="45" fill="#ffffff"/>
+                                <circle cx="285" cy="260" r="35" fill="#ffffff"/>
+                                <path d="M170 340C170 280 220 260 250 260C280 260 330 280 330 340C330 370 290 390 250 390C210 390 170 370 170 340Z" fill="#ffffff"/>
+                            </svg>
                         </div>
                         <div>
                             <span class="font-extrabold text-base sm:text-lg text-pink-700 tracking-tight block leading-none">SEHATI</span>
-                            <span class="text-[9px] sm:text-[10px] text-pink-500 font-medium block mt-0.5">Desa Botolinggo</span>
+                            <span id="activeUserLabel" class="text-[9px] sm:text-[10px] text-pink-500 font-medium block mt-0.5">Bidan Desa</span>
                         </div>
                     </div>
 
                     <!-- App Right Logo & Actions -->
                     <div class="flex items-center space-x-2">
-                        <img id="headerAppLogo" src="https://placehold.co/100x100/fbcfe8/be185d?text=PKM" alt="Logo Puskesmas" class="h-8 w-8 object-contain rounded-lg border border-pink-200">
+                        <!-- Profile Photo Avatar & User Name (Clickable to jump to Settings) -->
+                        <button onclick="switchTab('pengaturan')" class="flex items-center space-x-2 p-1 pr-2.5 rounded-full border border-pink-200 bg-pink-50/60 hover:bg-pink-100/80 hover:border-pink-300 transition" title="Profil Bidan / Admin">
+                            <div class="relative w-8 h-8 rounded-full border-2 border-pink-300 overflow-hidden shadow-xs flex items-center justify-center bg-pink-100 flex-shrink-0">
+                                <img id="headerProfileAvatar" src="" alt="Foto Profil" class="w-full h-full object-cover hidden" onerror="this.classList.add('hidden'); document.getElementById('headerProfileInitials').classList.remove('hidden');">
+                                <div id="headerProfileInitials" class="font-bold text-xs text-pink-700 flex items-center justify-center">BD</div>
+                            </div>
+                            <span id="headerProfileName" class="font-bold text-xs text-pink-800 truncate max-w-[100px] sm:max-w-[140px] text-left">Bidan Desa</span>
+                        </button>
                         <button onclick="logout()" class="p-2 text-slate-400 hover:text-pink-600 transition rounded-lg active:bg-pink-50" title="Keluar">
                             <i class="fa-solid fa-right-from-bracket text-sm sm:text-base"></i>
                         </button>
@@ -340,109 +372,113 @@
             <section id="tab-pengaturan" class="tab-content hidden space-y-4 sm:space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     
+                    <!-- Pengelolaan Akun & Password -->
+                    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-pink-100 shadow-sm space-y-3 sm:space-y-4">
+                        <div class="flex items-center justify-between border-b border-pink-50 pb-2.5">
+                            <div class="flex items-center space-x-3 text-pink-700">
+                                <i class="fa-solid fa-user-gear text-base sm:text-lg"></i>
+                                <h3 class="font-bold text-xs sm:text-sm">Pengaturan Akses Akun Bidan Desa</h3>
+                            </div>
+                        </div>
+                        
+                        <!-- Info Akun Aktif & Edit -->
+                        <div class="space-y-3 text-xs">
+                            <div class="p-3 bg-pink-50/50 rounded-xl border border-pink-100 flex items-center space-x-3">
+                                <div class="relative w-12 h-12 rounded-full border-2 border-pink-300 overflow-hidden bg-pink-100 flex-shrink-0 flex items-center justify-center shadow-inner">
+                                    <img id="settingsProfileAvatar" src="" alt="Foto Profil" class="w-full h-full object-cover hidden" onerror="this.classList.add('hidden'); document.getElementById('settingsProfileInitials').classList.remove('hidden');">
+                                    <div id="settingsProfileInitials" class="font-bold text-base text-pink-700 flex items-center justify-center">BD</div>
+                                </div>
+                                <div class="space-y-0.5 flex-grow min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-slate-500 font-medium text-[10px]">Nama Petugas:</span>
+                                        <span id="displayUserNama" class="font-bold text-slate-800 truncate">Bidan Desa</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-slate-500 font-medium text-[10px]">Username:</span>
+                                        <span id="displayUserUsername" class="font-bold text-pink-700 truncate">admin</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-slate-500 font-medium text-[10px]">Kata Sandi:</span>
+                                        <span class="font-mono text-slate-600">••••••••</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button onclick="openUserModal()" class="w-full py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-xl shadow transition flex items-center justify-center space-x-2 active:scale-95">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <span>Ubah Profile, Username & Password</span>
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Integrasi Google Sheets -->
                     <div class="bg-white p-4 sm:p-5 rounded-2xl border border-pink-100 shadow-sm space-y-3 sm:space-y-4">
                         <div class="flex items-center space-x-3 text-pink-700 border-b border-pink-50 pb-2.5">
-                            <i class="fa-solid fa-database text-base sm:text-lg"></i>
+                            <i class="fa-solid fa-file-csv text-base sm:text-lg"></i>
                             <h3 class="font-bold text-xs sm:text-sm">Integrasi Google Sheets API</h3>
                         </div>
-                        <div class="space-y-3 text-xs">
-                            <div>
-                                <label class="block font-semibold text-slate-600 mb-1">URL Web App Google Apps Script</label>
-                                <input type="url" id="gasApiUrl" placeholder="https://script.google.com/macros/s/..." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
-                            </div>
-                            <button onclick="saveGasUrl()" class="w-full sm:w-auto px-4 py-2.5 bg-pink-500 text-white rounded-xl font-bold hover:bg-pink-600 transition shadow active:scale-95">
-                                Simpan Database GAS
+                        
+                        <div class="space-y-2 text-xs">
+                            <label class="block font-semibold text-slate-600">URL Web App Google Apps Script (GAS)</label>
+                            <input type="text" id="gasApiUrl" placeholder="https://script.google.com/macros/s/.../exec" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 font-mono text-[11px]">
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Hubungkan database spreadsheet Google Sheets untuk sinkronisasi otomatis data secara real-time.</p>
+                            <button onclick="saveGasUrl()" class="px-4 py-2 bg-pink-600 text-white rounded-xl font-bold hover:bg-pink-700 shadow active:scale-95 text-xs mt-1">
+                                Simpan URL Database
                             </button>
-                            <p class="text-[11px] text-slate-400 leading-relaxed">
-                                Data tersimpan di memori perangkat secara otomatis jika URL Apps Script belum dikonfigurasikan.
-                            </p>
                         </div>
                     </div>
-
-                    <!-- Profil Wilayah -->
-                    <div class="bg-white p-4 sm:p-5 rounded-2xl border border-pink-100 shadow-sm space-y-3 sm:space-y-4">
-                        <div class="flex items-center space-x-3 text-pink-700 border-b border-pink-50 pb-2.5">
-                            <i class="fa-solid fa-hospital-user text-base sm:text-lg"></i>
-                            <h3 class="font-bold text-xs sm:text-sm">Profil Wilayah & Bidan Desa</h3>
-                        </div>
-                        <form id="settingForm" onsubmit="saveSettings(event)" class="space-y-3 text-xs">
-                            <div>
-                                <label class="block font-semibold text-slate-600 mb-1">Nama Desa</label>
-                                <input type="text" id="setNamaDesa" value="Desa Botolinggo" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-slate-600 mb-1">Nama Bidan Desa</label>
-                                <input type="text" id="setNamaBidan" value="Bidan Siti Rahma, S.Tr.Keb" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-slate-600 mb-1">Puskesmas Pembina</label>
-                                <input type="text" id="setPuskesmas" value="Puskesmas Botolinggo" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-slate-600 mb-1">URL Logo Lembaga</label>
-                                <input type="url" id="setLogoUrl" value="https://placehold.co/100x100/fbcfe8/be185d?text=PKM" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
-                            </div>
-                            <button type="submit" class="w-full sm:w-auto px-4 py-2.5 bg-pink-500 text-white rounded-xl font-bold hover:bg-pink-600 transition shadow active:scale-95">
-                                Perbarui Profil
-                            </button>
-                        </form>
-                    </div>
-
                 </div>
             </section>
 
         </main>
 
-        <!-- BOTTOM NAVIGATION BAR (KHUSUS ANDROID / MOBILE) -->
-        <nav class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-pink-100 px-2 py-1.5 shadow-lg">
-            <div class="max-w-md mx-auto flex items-center justify-around">
-                
-                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn flex-1 flex flex-col items-center justify-center py-1 rounded-2xl text-pink-600 transition active:scale-95">
-                    <div class="icon-box w-7 h-7 flex items-center justify-center rounded-xl bg-pink-100">
-                        <i class="fa-solid fa-chart-pie text-sm"></i>
+        <!-- BOTTOM NAVIGATION BAR (KHUSUS MOBILE / ANDROID) -->
+        <nav id="bottomNavBar" class="fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-t border-pink-100 shadow-lg">
+            <div class="max-w-md mx-auto flex items-center justify-around py-2 px-1">
+                <button id="nav-dashboard" onclick="switchTab('dashboard')" class="nav-btn flex flex-col items-center justify-center w-full text-pink-600 transition active:scale-95">
+                    <div class="icon-box p-1 rounded-xl bg-pink-100">
+                        <i class="fa-solid fa-chart-pie text-base"></i>
                     </div>
-                    <span class="text-[10px] font-bold mt-1">Dashboard</span>
+                    <span class="text-[10px] font-bold mt-0.5">Beranda</span>
                 </button>
 
-                <button onclick="switchTab('kantong')" id="nav-kantong" class="nav-btn flex-1 flex flex-col items-center justify-center py-1 rounded-2xl text-slate-400 transition active:scale-95">
-                    <div class="icon-box w-7 h-7 flex items-center justify-center rounded-xl">
-                        <i class="fa-solid fa-box-archive text-sm"></i>
+                <button id="nav-kantong" onclick="switchTab('kantong')" class="nav-btn flex flex-col items-center justify-center w-full text-slate-400 transition active:scale-95">
+                    <div class="icon-box p-1 rounded-xl">
+                        <i class="fa-solid fa-box-archive text-base"></i>
                     </div>
-                    <span class="text-[10px] font-semibold mt-1">Kantong</span>
+                    <span class="text-[10px] font-medium mt-0.5">Kantong</span>
                 </button>
 
-                <button onclick="switchTab('bumil')" id="nav-bumil" class="nav-btn flex-1 flex flex-col items-center justify-center py-1 rounded-2xl text-slate-400 transition active:scale-95">
-                    <div class="icon-box w-7 h-7 flex items-center justify-center rounded-xl">
-                        <i class="fa-solid fa-user-nurse text-sm"></i>
+                <button id="nav-bumil" onclick="switchTab('bumil')" class="nav-btn flex flex-col items-center justify-center w-full text-slate-400 transition active:scale-95">
+                    <div class="icon-box p-1 rounded-xl">
+                        <i class="fa-solid fa-person-pregnant text-base"></i>
                     </div>
-                    <span class="text-[10px] font-semibold mt-1">Bumil</span>
+                    <span class="text-[10px] font-medium mt-0.5">Ibu Hamil</span>
                 </button>
 
-                <button onclick="switchTab('peta')" id="nav-peta" class="nav-btn flex-1 flex flex-col items-center justify-center py-1 rounded-2xl text-slate-400 transition active:scale-95">
-                    <div class="icon-box w-7 h-7 flex items-center justify-center rounded-xl">
-                        <i class="fa-solid fa-map-location-dot text-sm"></i>
+                <button id="nav-peta" onclick="switchTab('peta')" class="nav-btn flex flex-col items-center justify-center w-full text-slate-400 transition active:scale-95">
+                    <div class="icon-box p-1 rounded-xl">
+                        <i class="fa-solid fa-map-location-dot text-base"></i>
                     </div>
-                    <span class="text-[10px] font-semibold mt-1">Peta</span>
+                    <span class="text-[10px] font-medium mt-0.5">Peta</span>
                 </button>
 
-                <button onclick="switchTab('pengaturan')" id="nav-pengaturan" class="nav-btn flex-1 flex flex-col items-center justify-center py-1 rounded-2xl text-slate-400 transition active:scale-95">
-                    <div class="icon-box w-7 h-7 flex items-center justify-center rounded-xl">
-                        <i class="fa-solid fa-gear text-sm"></i>
+                <button id="nav-pengaturan" onclick="switchTab('pengaturan')" class="nav-btn flex flex-col items-center justify-center w-full text-slate-400 transition active:scale-95">
+                    <div class="icon-box p-1 rounded-xl">
+                        <i class="fa-solid fa-gear text-base"></i>
                     </div>
-                    <span class="text-[10px] font-semibold mt-1">Setel</span>
+                    <span class="text-[10px] font-medium mt-0.5">Setel</span>
                 </button>
-
             </div>
         </nav>
 
     </div>
 
-    <!-- MODAL FORM IBU HAMIL (TAMBAH / EDIT) -->
-    <div id="modalBumil" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-sm">
-        <div class="bg-white rounded-3xl shadow-xl border border-pink-100 w-full max-w-xl max-h-[90vh] overflow-y-auto p-4 sm:p-6 custom-scrollbar">
-            <div class="flex items-center justify-between border-b border-pink-100 pb-3 mb-3 sm:mb-4">
-                <h3 class="text-sm sm:text-base font-bold text-pink-700" id="modalBumilTitle">Form Data Ibu Hamil</h3>
+    <!-- MODAL BUMIL (TAMBAH / EDIT IBU HAMIL & P4K) -->
+    <div id="modalBumil" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-sm overflow-y-auto">
+        <div class="bg-white rounded-3xl shadow-2xl border border-pink-100 w-full max-w-xl p-4 sm:p-6 my-auto max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div class="flex items-center justify-between border-b border-pink-100 pb-3 mb-3">
+                <h3 class="text-sm sm:text-base font-bold text-pink-700" id="modalBumilTitle">Tambah Data Ibu Hamil</h3>
                 <button onclick="closeBumilModal()" class="text-slate-400 hover:text-pink-600 p-1">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
@@ -450,32 +486,27 @@
 
             <form id="formBumil" onsubmit="saveBumilData(event)" class="space-y-3.5 text-xs">
                 <input type="hidden" id="bumilId">
-                
+
+                <!-- Informasi Utama -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                         <label class="block font-semibold text-slate-600 mb-1">Nama Ibu Hamil *</label>
-                        <input type="text" id="bumilNama" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        <input type="text" id="bumilNama" required placeholder="Contoh: Ny. Siti Fatimah" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                     </div>
                     <div>
                         <label class="block font-semibold text-slate-600 mb-1">Nama Suami *</label>
-                        <input type="text" id="bumilSuami" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        <input type="text" id="bumilSuami" required placeholder="Contoh: En. Ahmad" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                     </div>
                 </div>
 
-                <!-- ALAMAT LENGKAP -->
-                <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Alamat Lengkap (RT/RW, Jalan, No. Rumah) *</label>
-                    <input type="text" id="bumilAlamat" placeholder="Contoh: RT 02 / RW 01, Dsn. Krajan Tengah" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-600 mb-1">Usia (Tahun)</label>
-                        <input type="number" id="bumilUsia" value="25" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl">
+                        <label class="block font-semibold text-slate-600 mb-1">Usia Ibu (Th) *</label>
+                        <input type="number" id="bumilUsia" required min="12" max="60" placeholder="25" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                     </div>
                     <div>
                         <label class="block font-semibold text-slate-600 mb-1">Dusun *</label>
-                        <select id="bumilDusun" onchange="updateDefaultCoordsByDusun(true)" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold">
+                        <select id="bumilDusun" onchange="updateDefaultCoordsByDusun()" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold">
                             <option value="Krajan">Krajan</option>
                             <option value="Bille">Bille</option>
                             <option value="Cemper">Cemper</option>
@@ -485,99 +516,95 @@
                             <option value="Sundang">Sundang</option>
                         </select>
                     </div>
-                    <div>
+                    <div class="col-span-2 sm:col-span-1">
                         <label class="block font-semibold text-slate-600 mb-1">Kategori Risiko *</label>
-                        <select id="bumilRisiko" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-bold">
-                            <option value="Tinggi" class="text-rose-600 font-bold">Tinggi (Merah)</option>
-                            <option value="Sedang" class="text-amber-600 font-bold">Sedang (Kuning)</option>
-                            <option value="Rendah" class="text-emerald-600 font-bold" selected>Rendah (Hijau)</option>
+                        <select id="bumilRisiko" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl font-semibold text-pink-700">
+                            <option value="Rendah">Rendah (Hijau)</option>
+                            <option value="Sedang">Sedang (Kuning)</option>
+                            <option value="Tinggi">Tinggi (Merah)</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- KOMPONEN P4K -->
-                <div class="bg-gradient-to-br from-pink-50 to-pink-100/60 p-3 rounded-2xl border border-pink-200 space-y-2.5">
-                    <div class="flex items-center space-x-2 border-b border-pink-200 pb-1.5">
-                        <i class="fa-solid fa-clipboard-check text-pink-600"></i>
-                        <h4 class="font-bold text-xs text-pink-800">Komponen P4K (Perencanaan Persalinan)</h4>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                        <div>
-                            <label class="block font-semibold text-slate-600 mb-1">Penolong Persalinan</label>
-                            <select id="p4kPenolong" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
-                                <option value="Bidan Desa">Bidan Desa</option>
-                                <option value="Dokter SpOG / RS">Dokter SpOG / Puskesmas / RS</option>
-                                <option value="Bidan Mandiri">Bidan Mandiri (PMB)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-600 mb-1">Tempat Persalinan</label>
-                            <select id="p4kTempat" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
-                                <option value="Puskesmas Botolinggo">Puskesmas Botolinggo</option>
-                                <option value="Polindes / Pustu">Polindes / Poskesdes</option>
-                                <option value="Rumah Sakit Rujukan">Rumah Sakit Rujukan (RSUD)</option>
-                                <option value="Rumah Ibu">Rumah Sendiri</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-600 mb-1">Pendamping Persalinan</label>
-                            <input type="text" id="p4kPendamping" placeholder="Suami / Suami & Ibu" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-600 mb-1">Transportasi / Ambulans</label>
-                            <input type="text" id="p4kTransportasi" placeholder="Mobil Siaga / Motor" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-600 mb-1">Calon Pendonor Darah</label>
-                            <input type="text" id="p4kPendonor" placeholder="Gol O - Agus" class="w-full p-2 bg-white border border-pink-200 rounded-xl">
-                        </div>
-                        <div>
-                            <label class="block font-semibold text-slate-600 mb-1">Stiker P4K Terpasang?</label>
-                            <select id="p4kStiker" class="w-full p-2 bg-white border border-pink-200 rounded-xl font-medium">
-                                <option value="Sudah">Sudah Terpasang di Rumah</option>
-                                <option value="Belum">Belum Terpasang</option>
-                            </select>
-                        </div>
-                    </div>
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Alamat Lengkap (RT/RW, Jalan)</label>
+                    <input type="text" id="bumilAlamat" placeholder="Contoh: RT 02 / RW 01, Dusun Krajan Tengah" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-600 mb-1">HP / WhatsApp (628...)</label>
-                        <input type="tel" id="bumilWa" placeholder="628123456789" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl">
+                        <label class="block font-semibold text-slate-600 mb-1">Estimasi Lahir (HPL) *</label>
+                        <input type="date" id="bumilHpl" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                     </div>
                     <div>
-                        <label class="block font-semibold text-slate-600 mb-1">HPL (Perkiraan Lahir) *</label>
-                        <input type="date" id="bumilHpl" required class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl">
+                        <label class="block font-semibold text-slate-600 mb-1">No. WhatsApp Ibu / Keluarga</label>
+                        <input type="text" id="bumilWa" placeholder="628123456789" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
                     </div>
                 </div>
 
-                <!-- GPS Coords & Mini Map Picker -->
-                <div class="bg-pink-50/50 p-2.5 sm:p-3 rounded-2xl border border-pink-100 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="block font-semibold text-pink-700 text-xs">
-                            <i class="fa-solid fa-map-pin mr-1"></i>Penentuan Lokasi Rumah (Geser Pin / Klik Peta)
-                        </label>
+                <!-- KOMPONEN P4K -->
+                <div class="p-3 bg-pink-50/60 rounded-2xl border border-pink-200 space-y-2.5">
+                    <h4 class="font-bold text-pink-800 text-[11px] uppercase tracking-wide flex items-center space-x-1.5">
+                        <i class="fa-solid fa-file-medical"></i>
+                        <span>Komponen P4K (Perencanaan Persalinan)</span>
+                    </h4>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block text-[10px] font-semibold text-slate-600 mb-0.5">Penolong Persalinan</label>
+                            <select id="p4kPenolong" class="w-full p-2 bg-white border border-pink-200 rounded-lg text-xs">
+                                <option value="Bidan Desa">Bidan Desa</option>
+                                <option value="Dokter SpOG">Dokter SpOG</option>
+                                <option value="Bidan Puskesmas">Bidan Puskesmas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-semibold text-slate-600 mb-0.5">Tempat Persalinan</label>
+                            <select id="p4kTempat" class="w-full p-2 bg-white border border-pink-200 rounded-lg text-xs">
+                                <option value="Puskesmas Botolinggo">Puskesmas Botolinggo</option>
+                                <option value="Polindes Desa">Polindes Desa</option>
+                                <option value="Rumah Sakit Rujukan">Rumah Sakit Rujukan</option>
+                            </select>
+                        </div>
                     </div>
-                    
-                    <div id="pickerMap" class="w-full h-40 sm:h-48 rounded-xl border border-pink-200 z-10"></div>
-                    
-                    <div class="grid grid-cols-2 gap-2 text-xs pt-1">
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                         <div>
-                            <label class="block text-[10px] font-medium text-slate-500 mb-0.5">Latitude</label>
-                            <input type="text" id="bumilLat" readonly class="w-full p-2 bg-white border border-pink-200 rounded-lg text-slate-700 font-mono text-[11px]">
+                            <label class="block text-[10px] font-semibold text-slate-600 mb-0.5">Pendamping</label>
+                            <input type="text" id="p4kPendamping" placeholder="Suami / Suami & Ibu" class="w-full p-2 bg-white border border-pink-200 rounded-lg text-xs">
                         </div>
                         <div>
-                            <label class="block text-[10px] font-medium text-slate-500 mb-0.5">Longitude</label>
-                            <input type="text" id="bumilLng" readonly class="w-full p-2 bg-white border border-pink-200 rounded-lg text-slate-700 font-mono text-[11px]">
+                            <label class="block text-[10px] font-semibold text-slate-600 mb-0.5">Transportasi</label>
+                            <input type="text" id="p4kTransportasi" placeholder="Ambulans Desa / Motor" class="w-full p-2 bg-white border border-pink-200 rounded-lg text-xs">
                         </div>
+                        <div>
+                            <label class="block text-[10px] font-semibold text-slate-600 mb-0.5">Calon Pendonor</label>
+                            <input type="text" id="p4kPendonor" placeholder="Gol. Darah & Nama" class="w-full p-2 bg-white border border-pink-200 rounded-lg text-xs">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-semibold text-slate-600 mb-0.5">Stiker P4K Terpasang?</label>
+                        <select id="p4kStiker" class="w-full p-2 bg-white border border-pink-200 rounded-lg text-xs">
+                            <option value="Sudah">Sudah Terpasang di Rumah</option>
+                            <option value="Belum">Belum Terpasang</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- PETA LOKASI RUMAH -->
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Titik Lokasi Rumah (Klik/Geser Pointer di Peta)</label>
+                    <div id="pickerMap" class="w-full h-36 rounded-xl border border-pink-200 z-10 mb-2"></div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" id="bumilLat" readonly placeholder="Lat" class="p-2 bg-slate-100 border border-slate-200 rounded-lg text-[10px] font-mono">
+                        <input type="text" id="bumilLng" readonly placeholder="Lng" class="p-2 bg-slate-100 border border-slate-200 rounded-lg text-[10px] font-mono">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Faktor Risiko / Catatan Medis Ringkas</label>
-                    <textarea id="bumilCatatan" rows="2" placeholder="Catatan medis..." class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl"></textarea>
+                    <label class="block font-semibold text-slate-600 mb-1">Catatan Tambahan / Faktor Risiko</label>
+                    <textarea id="bumilCatatan" rows="2" placeholder="Tuliskan riwayat hipertensi, anemia, dll..." class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 text-xs"></textarea>
                 </div>
 
                 <div class="flex items-center justify-end space-x-2 pt-3 border-t border-pink-100">
@@ -592,32 +619,97 @@
         </div>
     </div>
 
+    <!-- MODAL USER (EDIT KREDENSIAL) -->
+    <div id="modalUser" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl shadow-xl border border-pink-100 w-full max-w-sm p-4 sm:p-6">
+            <div class="flex items-center justify-between border-b border-pink-100 pb-3 mb-3">
+                <h3 class="text-sm sm:text-base font-bold text-pink-700" id="modalUserTitle">Ubah Akses & Foto Profil</h3>
+                <button onclick="closeUserModal()" class="text-slate-400 hover:text-pink-600 p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form id="formUser" onsubmit="saveUserData(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="userId">
+                
+                <!-- Unggah Foto Profil Bidan/Admin -->
+                <div class="flex flex-col items-center justify-center space-y-2 py-1">
+                    <div class="relative w-16 h-16 rounded-full border-2 border-pink-400 overflow-hidden bg-pink-100 flex items-center justify-center shadow-md">
+                        <img id="modalProfilePreview" src="" alt="Pratinjau Foto" class="w-full h-full object-cover hidden">
+                        <div id="modalProfileInitials" class="font-bold text-lg text-pink-700">BD</div>
+                    </div>
+                    <label class="cursor-pointer px-3 py-1.5 bg-pink-50 text-pink-700 border border-pink-200 hover:bg-pink-100 rounded-xl font-bold text-[11px] transition flex items-center space-x-1.5 active:scale-95">
+                        <i class="fa-solid fa-camera text-pink-500"></i>
+                        <span>Pilih Foto Profil Baru</span>
+                        <input type="file" id="userPhotoInput" accept="image/*" onchange="previewUserPhoto(event)" class="hidden">
+                    </label>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Nama Petugas *</label>
+                    <input type="text" id="userNama" required placeholder="Contoh: Bidan Siti Rahma" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Username Baru *</label>
+                    <input type="text" id="userUsername" required placeholder="Masukkan username baru" class="w-full p-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-600 mb-1">Kata Sandi Baru *</label>
+                    <div class="relative">
+                        <input type="password" id="userPassword" required placeholder="Masukkan kata sandi baru" class="w-full pl-3 pr-9 py-2.5 bg-pink-50/40 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        <button type="button" onclick="togglePasswordVisibility('userPassword', 'modalEyeIcon')" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-pink-600 focus:outline-none">
+                            <i id="modalEyeIcon" class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end space-x-2 pt-3 border-t border-pink-100">
+                    <button type="button" onclick="closeUserModal()" class="px-4 py-2 bg-slate-100 text-slate-600 rounded-xl font-semibold hover:bg-slate-200 active:scale-95">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-5 py-2 bg-pink-500 text-white rounded-xl font-bold hover:bg-pink-600 shadow active:scale-95">
+                        Simpan Perubahan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- MODAL REKAP WHATSAPP -->
-    <div id="modalWaReport" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-        <div class="bg-white rounded-3xl shadow-xl border border-pink-100 w-full max-w-md p-5 sm:p-6">
+    <div id="modalWaReport" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl shadow-xl border border-pink-100 w-full max-w-md p-4 sm:p-6">
             <div class="flex items-center justify-between border-b border-pink-100 pb-3 mb-3">
                 <h3 class="text-sm sm:text-base font-bold text-emerald-700 flex items-center space-x-2">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Kirim Rekap Laporan WA</span>
+                    <span>Kirim Rekap Laporan WhatsApp</span>
                 </h3>
                 <button onclick="closeWhatsAppModal()" class="text-slate-400 hover:text-pink-600 p-1">
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-            
+
             <div class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Nomor WA Tujuan (Puskesmas/Kades/Bidan)</label>
-                    <input type="tel" id="waRecipientNumber" placeholder="628123456789" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl">
+                    <label class="block font-semibold text-slate-600 mb-1">Nomor WhatsApp Tujuan</label>
+                    <input type="text" id="waRecipientNumber" placeholder="Contoh: 628123456789" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400">
                 </div>
+
                 <div>
-                    <label class="block font-semibold text-slate-600 mb-1">Preview Pesan Rekapitulasi</label>
-                    <textarea id="waPreviewText" rows="6" readonly class="w-full p-2.5 bg-slate-100 border border-slate-200 rounded-xl font-mono text-[11px]"></textarea>
+                    <label class="block font-semibold text-slate-600 mb-1">Pratinjau Pesan Rekap</label>
+                    <textarea id="waPreviewText" rows="6" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400 text-[11px] font-mono"></textarea>
                 </div>
-                <button onclick="sendDirectWhatsAppReport()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow transition flex items-center justify-center space-x-2 active:scale-95">
-                    <i class="fa-brands fa-whatsapp text-base"></i>
-                    <span>Buka WhatsApp Sekarang</span>
-                </button>
+
+                <div class="flex items-center justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeWhatsAppModal()" class="px-4 py-2 bg-slate-100 text-slate-600 rounded-xl font-semibold hover:bg-slate-200 active:scale-95">
+                        Batal
+                    </button>
+                    <button type="button" onclick="sendDirectWhatsAppReport()" class="px-5 py-2 bg-emerald-500 text-white rounded-xl font-bold hover:bg-emerald-600 shadow active:scale-95 flex items-center space-x-1.5">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span>Kirim WhatsApp</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -635,6 +727,14 @@
             "Sundang": { lat: -7.7980, lng: 113.9120 }
         };
 
+        // Single Default Account State (Bidan Desa)
+        let usersData = [
+            { id: "USR-01", nama: "Bidan Desa", username: "admin", password: "123456", role: "Bidan Desa", photo: "" }
+        ];
+
+        let activeUser = null;
+        let tempPhotoDataUrl = null; // Holds uploaded profile picture preview DataURL
+
         // Clean initial data state (NO DEMO DATA)
         let bumilData = [];
         let kantongViewMode = 'tile'; // 'tile' or 'list'
@@ -647,15 +747,89 @@
         let pickerMarker = null;
 
         window.addEventListener('DOMContentLoaded', () => {
+            loadLocalUsers();
             loadLocalData();
             updateKPIs();
             loadSettings();
         });
 
+        // LOGIN & LOGOUT HANDLERS
+        function handleLogin(e) {
+            if (e) e.preventDefault();
+            const usernameInput = document.getElementById('loginUsername').value.trim();
+            const passwordInput = document.getElementById('loginPassword').value.trim();
+            const errorMsg = document.getElementById('loginErrorMessage');
+
+            const matchedUser = usersData.find(u => u.username === usernameInput && u.password === passwordInput);
+
+            if (matchedUser) {
+                activeUser = matchedUser;
+                if (errorMsg) errorMsg.classList.add('hidden');
+                
+                // Hide Login, Show App Container
+                document.getElementById('loginSection').classList.add('hidden');
+                document.getElementById('appContainer').classList.remove('hidden');
+                document.getElementById('appContainer').classList.add('flex');
+
+                if (document.getElementById('activeUserLabel')) {
+                    document.getElementById('activeUserLabel').textContent = `${activeUser.nama} (${activeUser.role})`;
+                }
+
+                updateUserDisplay();
+                renderKantongPersalinan();
+                renderBumilTable();
+
+                setTimeout(() => {
+                    initCharts();
+                    initLeafletMap();
+                }, 300);
+            } else {
+                if (errorMsg) errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function logout() {
+            activeUser = null;
+            document.getElementById('appContainer').classList.add('hidden');
+            document.getElementById('appContainer').classList.remove('flex');
+            document.getElementById('loginSection').classList.remove('hidden');
+            document.getElementById('loginPassword').value = '';
+        }
+
+        function togglePasswordVisibility(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (!input || !icon) return;
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function loadLocalUsers() {
+            const saved = localStorage.getItem('sehati_users_data');
+            if (saved) {
+                try { usersData = JSON.parse(saved); } catch (e) { }
+            }
+        }
+
+        function saveLocalUsers() {
+            localStorage.setItem('sehati_users_data', JSON.stringify(usersData));
+            updateUserDisplay();
+        }
+
         function loadLocalData() {
             const saved = localStorage.getItem('sehati_bumil_data');
             if (saved) {
                 try { bumilData = JSON.parse(saved); } catch (e) { bumilData = []; }
+            } else {
+                bumilData = [];
             }
         }
 
@@ -664,166 +838,158 @@
             updateKPIs();
         }
 
-        // AUTHENTICATION
-        function handleLogin(e) {
-            e.preventDefault();
-            document.getElementById('loginSection').classList.add('hidden');
-            document.getElementById('appContainer').classList.remove('hidden');
-            document.getElementById('appContainer').classList.add('flex');
-            
-            initCharts();
+        function updateKPIs() {
+            const total = bumilData.length;
+            const tinggi = bumilData.filter(b => b.risiko === 'Tinggi').length;
+            const sedang = bumilData.filter(b => b.risiko === 'Sedang').length;
+            const rendah = bumilData.filter(b => b.risiko === 'Rendah').length;
+
+            const elTotal = document.getElementById('kpiTotalBumil');
+            const elTinggi = document.getElementById('kpiRistiTinggi');
+            const elSedang = document.getElementById('kpiRistiSedang');
+            const elRendah = document.getElementById('kpiRistiRendah');
+
+            if (elTotal) elTotal.textContent = total;
+            if (elTinggi) elTinggi.textContent = tinggi;
+            if (elSedang) elSedang.textContent = sedang;
+            if (elRendah) elRendah.textContent = rendah;
+
+            renderDashboardCharts();
             renderKantongPersalinan();
             renderBumilTable();
-            initLeafletMap();
         }
 
-        function logout() {
-            document.getElementById('appContainer').classList.add('hidden');
-            document.getElementById('loginSection').classList.remove('hidden');
-        }
+        function renderDashboardCharts() {
+            const ctxHpl = document.getElementById('chartHPL');
+            const ctxDusun = document.getElementById('chartDusun');
 
-        // NAVIGATION SWITCHER (BOTTOM BAR MOBILE)
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            if (!ctxHpl || !ctxDusun) return;
 
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('text-pink-600');
-                btn.classList.add('text-slate-400');
-                const box = btn.querySelector('.icon-box');
-                if(box) box.classList.remove('bg-pink-100');
+            // Group by Month (HPL)
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+            const monthCounts = Array(12).fill(0);
+
+            bumilData.forEach(item => {
+                if (item.hpl) {
+                    const d = new Date(item.hpl);
+                    if (!isNaN(d.getTime())) {
+                        monthCounts[d.getMonth()]++;
+                    }
+                }
             });
 
-            const activeBtn = document.getElementById(`nav-${tabName}`);
-            if (activeBtn) {
-                activeBtn.classList.add('text-pink-600');
-                activeBtn.classList.remove('text-slate-400');
-                const box = activeBtn.querySelector('.icon-box');
-                if(box) box.classList.add('bg-pink-100');
-            }
-
-            if (tabName === 'peta' && leafletMap) {
-                setTimeout(() => leafletMap.invalidateSize(), 200);
-            }
-        }
-
-        // MAPS LEAFLET
-        function initLeafletMap() {
-            if (leafletMap) return;
-
-            leafletMap = L.map('map').setView([-7.8105, 113.9100], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '&copy; OpenStreetMap'
-            }).addTo(leafletMap);
-
-            renderMapMarkers();
-        }
-
-        function resetMapView() {
-            if (leafletMap) leafletMap.setView([-7.8105, 113.9100], 13);
-        }
-
-        // MINI MAP PICKER
-        function initPickerMap(lat, lng) {
-            if (!pickerMapInstance) {
-                pickerMapInstance = L.map('pickerMap').setView([lat, lng], 14);
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(pickerMapInstance);
-
-                pickerMarker = L.marker([lat, lng], { draggable: true }).addTo(pickerMapInstance);
-
-                pickerMarker.on('dragend', function () {
-                    const pos = pickerMarker.getLatLng();
-                    document.getElementById('bumilLat').value = pos.lat.toFixed(6);
-                    document.getElementById('bumilLng').value = pos.lng.toFixed(6);
-                });
-
-                pickerMapInstance.on('click', function (e) {
-                    const { lat, lng } = e.latlng;
-                    pickerMarker.setLatLng([lat, lng]);
-                    document.getElementById('bumilLat').value = lat.toFixed(6);
-                    document.getElementById('bumilLng').value = lng.toFixed(6);
-                });
-            } else {
-                pickerMapInstance.invalidateSize();
-                pickerMapInstance.setView([lat, lng], 14);
-                pickerMarker.setLatLng([lat, lng]);
-            }
-        }
-
-        function updateDefaultCoordsByDusun(forceMapPan = true) {
-            const dusun = document.getElementById('bumilDusun').value;
-            if (DUSUN_COORDS[dusun]) {
-                const { lat, lng } = DUSUN_COORDS[dusun];
-                document.getElementById('bumilLat').value = lat.toFixed(6);
-                document.getElementById('bumilLng').value = lng.toFixed(6);
-
-                if (forceMapPan && pickerMapInstance && pickerMarker) {
-                    pickerMapInstance.setView([lat, lng], 14);
-                    pickerMarker.setLatLng([lat, lng]);
-                }
-            }
-        }
-
-        // KPI & SUMMARY CALCULATIONS
-        function updateKPIs() {
-            document.getElementById('kpiTotalBumil').textContent = bumilData.length;
-            document.getElementById('kpiRistiTinggi').textContent = bumilData.filter(d => d.risiko === 'Tinggi').length;
-            document.getElementById('kpiRistiSedang').textContent = bumilData.filter(d => d.risiko === 'Sedang').length;
-            document.getElementById('kpiRistiRendah').textContent = bumilData.filter(d => d.risiko === 'Rendah').length;
-
-            if (chartHplInstance && chartDusunInstance) updateChartsData();
-        }
-
-        // CHARTS SETUP
-        function initCharts() {
-            if (chartHplInstance) {
-                chartHplInstance.destroy();
-                chartHplInstance = null;
-            }
-            if (chartDusunInstance) {
-                chartDusunInstance.destroy();
-                chartDusunInstance = null;
-            }
-
-            const ctxHpl = document.getElementById('chartHPL').getContext('2d');
+            if (chartHplInstance) chartHplInstance.destroy();
             chartHplInstance = new Chart(ctxHpl, {
                 type: 'bar',
-                data: getHplChartData(),
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Jumlah Ibu Hamil HPL',
+                        data: monthCounts,
+                        backgroundColor: '#f472b6',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                }
             });
 
-            const ctxDusun = document.getElementById('chartDusun').getContext('2d');
+            // Group by Dusun
+            const dusunList = Object.keys(DUSUN_COORDS);
+            const dusunCounts = dusunList.map(ds => bumilData.filter(b => b.dusun === ds).length);
+            const dusunColors = ['#f472b6', '#fb7185', '#e879f9', '#c084fc', '#818cf8', '#60a5fa', '#34d399'];
+
+            if (chartDusunInstance) chartDusunInstance.destroy();
             chartDusunInstance = new Chart(ctxDusun, {
                 type: 'doughnut',
-                data: getDusunChartData(),
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9 } } } } }
+                data: {
+                    labels: dusunList,
+                    datasets: [{
+                        data: dusunCounts,
+                        backgroundColor: dusunColors
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } }
+                }
             });
         }
 
-        function getHplChartData() {
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-            const counts = new Array(12).fill(0);
-            bumilData.forEach(item => {
-                if (item.hpl) counts[new Date(item.hpl).getMonth()]++;
+        function renderKantongPersalinan() {
+            const container = document.getElementById('kantongContainer');
+            if (!container) return;
+
+            const yearSelect = document.getElementById('kantongYearSelect');
+            if (yearSelect && yearSelect.options.length === 0) {
+                const currentYear = new Date().getFullYear();
+                for (let y = currentYear - 1; y <= currentYear + 3; y++) {
+                    const opt = document.createElement('option');
+                    opt.value = y;
+                    opt.textContent = `Tahun ${y}`;
+                    if (y === currentYear) opt.selected = true;
+                    yearSelect.appendChild(opt);
+                }
+            }
+
+            const selectedYear = yearSelect ? parseInt(yearSelect.value) : new Date().getFullYear();
+            const searchTerm = (document.getElementById('kantongSearch')?.value || '').toLowerCase();
+            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+            container.innerHTML = '';
+
+            months.forEach((mName, mIdx) => {
+                const filtered = bumilData.filter(item => {
+                    if (!item.hpl) return false;
+                    const d = new Date(item.hpl);
+                    const matchMonth = d.getMonth() === mIdx && d.getFullYear() === selectedYear;
+                    const matchSearch = item.nama.toLowerCase().includes(searchTerm) || (item.suami && item.suami.toLowerCase().includes(searchTerm));
+                    return matchMonth && matchSearch;
+                });
+
+                const pocketCard = document.createElement('div');
+                pocketCard.className = "bg-white rounded-2xl border border-pink-100 p-3 shadow-xs space-y-2 flex flex-col justify-between";
+
+                let bumilItemsHtml = '';
+                if (filtered.length > 0) {
+                    filtered.forEach(b => {
+                        let badgeBg = 'bg-emerald-100 text-emerald-700';
+                        if (b.risiko === 'Tinggi') badgeBg = 'bg-rose-100 text-rose-700 font-bold';
+                        else if (b.risiko === 'Sedang') badgeBg = 'bg-amber-100 text-amber-700';
+
+                        bumilItemsHtml += `
+                            <div class="p-2 bg-pink-50/50 rounded-xl border border-pink-100 text-[11px] space-y-0.5">
+                                <div class="font-bold text-slate-800 truncate">Ny. ${b.nama}</div>
+                                <div class="text-[10px] text-slate-500 truncate">Suami: ${b.suami || '-'}</div>
+                                <div class="flex items-center justify-between pt-1">
+                                    <span class="text-[9px] text-slate-400">Dsn. ${b.dusun}</span>
+                                    <span class="px-1.5 py-0.5 rounded-md text-[9px] ${badgeBg}">${b.risiko}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else {
+                    bumilItemsHtml = `<div class="text-center text-[10px] text-slate-400 py-4">Tidak ada HPL</div>`;
+                }
+
+                pocketCard.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-pink-100 pb-2">
+                        <span class="font-bold text-xs text-pink-700">${mName}</span>
+                        <span class="px-2 py-0.5 bg-pink-100 text-pink-700 font-bold rounded-full text-[10px]">${filtered.length}</span>
+                    </div>
+                    <div class="space-y-1.5 max-h-48 overflow-y-auto custom-scrollbar">
+                        ${bumilItemsHtml}
+                    </div>
+                `;
+                container.appendChild(pocketCard);
             });
-            return { labels: months, datasets: [{ label: 'Jumlah HPL', data: counts, backgroundColor: '#ec4899', borderRadius: 6 }] };
         }
 
-        function getDusunChartData() {
-            const dusuns = Object.keys(DUSUN_COORDS);
-            const counts = dusuns.map(ds => bumilData.filter(b => b.dusun === ds).length);
-            return { labels: dusuns, datasets: [{ data: counts, backgroundColor: ['#f472b6', '#fb7185', '#f43f5e', '#e11d48', '#be185d', '#9f1239', '#881337'] }] };
-        }
-
-        function updateChartsData() {
-            chartHplInstance.data = getHplChartData();
-            chartHplInstance.update();
-            chartDusunInstance.data = getDusunChartData();
-            chartDusunInstance.update();
-        }
-
-        // KANTONG PERSALINAN LAYOUT SWITCHER
         function setKantongLayout(mode) {
             kantongViewMode = mode;
             const btnTile = document.getElementById('btnViewTile');
@@ -831,199 +997,74 @@
             const container = document.getElementById('kantongContainer');
 
             if (mode === 'tile') {
-                btnTile.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 bg-white text-pink-700 shadow-xs";
-                btnList.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 text-slate-500 hover:text-pink-600";
-                container.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-4";
+                if (btnTile) { btnTile.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 bg-white text-pink-700 shadow-xs'; }
+                if (btnList) { btnList.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 text-slate-500 hover:text-pink-600'; }
+                if (container) { container.className = 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-4'; }
             } else {
-                btnList.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 bg-white text-pink-700 shadow-xs";
-                btnTile.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 text-slate-500 hover:text-pink-600";
-                container.className = "space-y-3";
+                if (btnList) { btnList.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 bg-white text-pink-700 shadow-xs'; }
+                if (btnTile) { btnTile.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 text-slate-500 hover:text-pink-600'; }
+                if (container) { container.className = 'grid grid-cols-1 sm:grid-cols-2 gap-3'; }
             }
             renderKantongPersalinan();
         }
 
-        // KANTONG PERSALINAN RENDER
-        function renderKantongPersalinan() {
-            const selectYear = document.getElementById('kantongYearSelect');
-            const searchVal = (document.getElementById('kantongSearch').value || '').toLowerCase();
-            const currentYear = new Date().getFullYear();
-
-            if (selectYear.options.length === 0) {
-                for (let y = currentYear - 1; y <= currentYear + 3; y++) {
-                    const opt = document.createElement('option');
-                    opt.value = y;
-                    opt.textContent = `Tahun ${y}`;
-                    if (y === currentYear) opt.selected = true;
-                    selectYear.appendChild(opt);
-                }
-            }
-
-            const targetYear = parseInt(selectYear.value);
-            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-            const container = document.getElementById('kantongContainer');
-            container.innerHTML = '';
-
-            months.forEach((bulanNama, idx) => {
-                const listBumil = bumilData.filter(b => {
-                    if (!b.hpl) return false;
-                    const d = new Date(b.hpl);
-                    return d.getMonth() === idx && d.getFullYear() === targetYear &&
-                           (b.nama.toLowerCase().includes(searchVal) || b.suami.toLowerCase().includes(searchVal));
-                });
-
-                const card = document.createElement('div');
-
-                if (kantongViewMode === 'tile') {
-                    // COMPACT TILE VIEW
-                    card.className = "bg-white rounded-2xl border border-pink-100 shadow-sm p-3 flex flex-col justify-between h-44 sm:h-52";
-                    let cardsHtml = '';
-                    listBumil.forEach(b => {
-                        let badgeBg = 'bg-emerald-50 text-emerald-700 border-emerald-200';
-                        let dotColor = 'bg-emerald-500';
-                        if (b.risiko === 'Tinggi') { badgeBg = 'bg-rose-50 text-rose-700 border-rose-200'; dotColor = 'bg-rose-500'; }
-                        else if (b.risiko === 'Sedang') { badgeBg = 'bg-amber-50 text-amber-700 border-amber-200'; dotColor = 'bg-amber-500'; }
-
-                        cardsHtml += `
-                            <div class="p-1.5 rounded-lg border ${badgeBg} flex items-center justify-between text-[11px] mb-1 shadow-2xs">
-                                <div class="truncate leading-tight">
-                                    <span class="font-bold block truncate">${b.nama}</span>
-                                    <span class="text-[9px] opacity-80 block truncate">Ds. ${b.dusun}</span>
-                                </div>
-                                <span class="w-2 h-2 rounded-full ${dotColor} flex-shrink-0 ml-1"></span>
-                            </div>
-                        `;
-                    });
-
-                    card.innerHTML = `
-                        <div class="flex flex-col h-full">
-                            <div class="flex items-center justify-between border-b border-pink-50 pb-1.5 mb-1.5">
-                                <span class="font-bold text-[11px] text-pink-700 flex items-center space-x-1">
-                                    <i class="fa-solid fa-folder-open text-pink-400 text-xs"></i>
-                                    <span>${bulanNama}</span>
-                                </span>
-                                <span class="px-1.5 py-0.2 bg-pink-100 text-pink-700 text-[9px] font-bold rounded-full">${listBumil.length}</span>
-                            </div>
-                            <div class="overflow-y-auto flex-grow custom-scrollbar pr-0.5">
-                                ${cardsHtml || '<p class="text-[10px] text-slate-300 italic text-center py-4">Kosong</p>'}
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    // LIST VIEW
-                    card.className = "bg-white rounded-2xl border border-pink-100 shadow-sm p-3 sm:p-4";
-                    let listItemsHtml = '';
-                    if (listBumil.length > 0) {
-                        listBumil.forEach(b => {
-                            let badgeClass = 'bg-emerald-100 text-emerald-800';
-                            if (b.risiko === 'Tinggi') badgeClass = 'bg-rose-100 text-rose-800 font-bold';
-                            else if (b.risiko === 'Sedang') badgeClass = 'bg-amber-100 text-amber-800';
-
-                            listItemsHtml += `
-                                <div class="p-2.5 bg-pink-50/40 rounded-xl border border-pink-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
-                                    <div>
-                                        <div class="flex items-center space-x-2">
-                                            <span class="font-bold text-slate-800">Ny. ${b.nama}</span>
-                                            <span class="text-[10px] text-slate-500">(Suami: ${b.suami})</span>
-                                        </div>
-                                        <div class="text-[10px] text-slate-500 mt-0.5">
-                                            <span>Dsn. ${b.dusun}</span> | <span>HPL: ${b.hpl}</span> | <span>Usia: ${b.usia}th</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-2 self-end sm:self-auto">
-                                        <span class="px-2 py-0.5 rounded-full text-[9px] ${badgeClass}">${b.risiko}</span>
-                                        ${b.wa ? `<a href="https://wa.me/${b.wa}" target="_blank" class="p-1 bg-emerald-500 text-white rounded-md text-[10px]"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
-                                    </div>
-                                </div>
-                            `;
-                        });
-                    }
-
-                    card.innerHTML = `
-                        <div class="space-y-2">
-                            <div class="flex items-center justify-between border-b border-pink-50 pb-2">
-                                <span class="font-bold text-xs text-pink-700 flex items-center space-x-2">
-                                    <i class="fa-solid fa-calendar-check text-pink-400"></i>
-                                    <span>${bulanNama} ${targetYear}</span>
-                                </span>
-                                <span class="px-2.5 py-0.5 bg-pink-100 text-pink-700 text-xs font-bold rounded-full">${listBumil.length} Ibu Hamil</span>
-                            </div>
-                            <div class="space-y-1.5">
-                                ${listItemsHtml || '<p class="text-xs text-slate-400 italic py-2 text-center">Tidak ada estimasi persalinan pada bulan ini.</p>'}
-                            </div>
-                        </div>
-                    `;
-                }
-
-                container.appendChild(card);
-            });
-        }
-
-        // DATA IBU HAMIL TAB
         function renderBumilTable() {
             const tbody = document.getElementById('bumilTableBody');
+            if (!tbody) return;
+
+            const filter = (document.getElementById('bumilSearchInput')?.value || '').toLowerCase();
             tbody.innerHTML = '';
-            const searchVal = (document.getElementById('bumilSearchInput')?.value || '').toLowerCase();
 
-            const filteredData = bumilData.filter(item => {
-                return item.nama.toLowerCase().includes(searchVal) ||
-                       item.suami.toLowerCase().includes(searchVal) ||
-                       item.dusun.toLowerCase().includes(searchVal) ||
-                       (item.alamat && item.alamat.toLowerCase().includes(searchVal));
-            });
+            const filtered = bumilData.filter(b => 
+                b.nama.toLowerCase().includes(filter) ||
+                b.suami.toLowerCase().includes(filter) ||
+                b.dusun.toLowerCase().includes(filter)
+            );
 
-            if (filteredData.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="7" class="p-8 text-center text-slate-400 italic">
-                            Belum ada data ibu hamil. Klik <strong>"Tambah Data Ibu Hamil"</strong> untuk menginput data baru.
-                        </td>
-                    </tr>
-                `;
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-400">Belum ada data ibu hamil terdaftar.</td></tr>`;
                 return;
             }
 
-            filteredData.forEach((item) => {
+            filtered.forEach(b => {
                 let badgeClass = 'bg-emerald-100 text-emerald-800';
-                if (item.risiko === 'Tinggi') badgeClass = 'bg-rose-100 text-rose-800 font-bold';
-                else if (item.risiko === 'Sedang') badgeClass = 'bg-amber-100 text-amber-800';
-
-                const p4kStikerBadge = (item.p4k && item.p4k.stiker === 'Sudah') 
-                    ? '<span class="px-1.5 py-0.5 bg-emerald-100 text-emerald-700 text-[9px] font-bold rounded">Stiker OK</span>' 
-                    : '<span class="px-1.5 py-0.5 bg-rose-100 text-rose-700 text-[9px] font-bold rounded">Belum</span>';
+                if (b.risiko === 'Tinggi') badgeClass = 'bg-rose-100 text-rose-800 font-bold';
+                else if (b.risiko === 'Sedang') badgeClass = 'bg-amber-100 text-amber-800';
 
                 const tr = document.createElement('tr');
-                tr.className = "hover:bg-pink-50/40 transition";
+                tr.className = 'hover:bg-pink-50/40 transition border-b border-pink-50';
                 tr.innerHTML = `
                     <td class="p-3">
-                        <div class="font-bold text-slate-800">${item.nama}</div>
-                        <div class="text-[10px] text-slate-500">Suami: ${item.suami}</div>
+                        <div class="font-bold text-slate-800">Ny. ${b.nama}</div>
+                        <div class="text-[10px] text-slate-400">Suami: ${b.suami || '-'}</div>
                     </td>
                     <td class="p-3">
-                        <div class="font-medium text-slate-700">Dsn. ${item.dusun}</div>
-                        <div class="text-[10px] text-slate-500 truncate max-w-[120px]">${item.alamat || '-'}</div>
+                        <div class="font-semibold text-pink-700">Dsn. ${b.dusun}</div>
+                        <div class="text-[10px] text-slate-500 truncate max-w-[140px]">${b.alamat || '-'}</div>
                     </td>
                     <td class="p-3">
-                        <div class="font-medium">${item.usia} Thn</div>
-                        <div class="text-[10px] text-pink-600 font-bold">HPL: ${item.hpl}</div>
+                        <div>${b.usia} Tahun</div>
+                        <div class="text-[10px] text-pink-600 font-medium">HPL: ${b.hpl}</div>
                     </td>
                     <td class="p-3">
-                        <div class="text-[10px] text-slate-600">${item.p4k?.penolong || '-'}</div>
-                        <div class="mt-0.5">${p4kStikerBadge}</div>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] ${b.p4k?.stiker === 'Sudah' ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-600'}">
+                            ${b.p4k?.stiker === 'Sudah' ? 'Stiker Ya' : 'Belum'}
+                        </span>
                     </td>
                     <td class="p-3">
-                        <span class="px-2 py-0.5 rounded-full text-[9px] ${badgeClass}">${item.risiko}</span>
+                        <span class="px-2.5 py-1 rounded-xl text-[10px] ${badgeClass}">${b.risiko}</span>
                     </td>
                     <td class="p-3">
-                        ${item.wa ? `
-                            <a href="https://wa.me/${item.wa}?text=${encodeURIComponent('Halo Ibu ' + item.nama + ', kami dari Bidan Desa Botolinggo SEHATI ingin menanyakan perkembangan kesehatan ibu.')}" target="_blank" class="p-1.5 bg-emerald-500 text-white rounded-lg text-xs inline-block">
-                                <i class="fa-brands fa-whatsapp"></i>
-                            </a>
-                        ` : '-'}
+                        ${b.wa ? `<a href="https://wa.me/${b.wa}" target="_blank" class="text-emerald-600 hover:text-emerald-700 font-bold text-xs flex items-center space-x-1"><i class="fa-brands fa-whatsapp"></i><span>Chat</span></a>` : '<span class="text-slate-300">-</span>'}
                     </td>
                     <td class="p-3 text-center">
-                        <div class="flex items-center justify-center space-x-1">
-                            <button onclick="openBumilModal('${item.id}')" class="p-1.5 bg-amber-50 text-amber-600 rounded-lg text-xs"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="deleteBumil('${item.id}')" class="p-1.5 bg-rose-50 text-rose-600 rounded-lg text-xs"><i class="fa-solid fa-trash"></i></button>
+                        <div class="flex items-center justify-center space-x-1.5">
+                            <button onclick="openBumilModal('${b.id}')" class="p-1.5 bg-pink-50 text-pink-600 hover:bg-pink-100 rounded-lg text-xs" title="Edit Data">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button onclick="deleteBumilData('${b.id}')" class="p-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-lg text-xs" title="Hapus Data">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
                         </div>
                     </td>
                 `;
@@ -1033,12 +1074,257 @@
 
         function filterBumilTable() { renderBumilTable(); }
 
-        function deleteBumil(id) {
-            bumilData = bumilData.filter(b => b.id !== id);
-            saveLocalData();
-            renderBumilTable();
-            renderKantongPersalinan();
+        function deleteBumilData(id) {
+            if (confirm("Apakah Anda yakin ingin menghapus data ibu hamil ini?")) {
+                bumilData = bumilData.filter(b => b.id !== id);
+                saveLocalData();
+                renderBumilTable();
+                renderKantongPersalinan();
+                renderMapMarkers();
+                syncWithGoogleSheetsAPI();
+            }
+        }
+
+        function updateDefaultCoordsByDusun(updatePicker = true) {
+            const selectedDusun = document.getElementById('bumilDusun').value;
+            if (DUSUN_COORDS[selectedDusun]) {
+                const c = DUSUN_COORDS[selectedDusun];
+                document.getElementById('bumilLat').value = c.lat.toFixed(6);
+                document.getElementById('bumilLng').value = c.lng.toFixed(6);
+                if (updatePicker && pickerMapInstance && pickerMarker) {
+                    pickerMapInstance.setView([c.lat, c.lng], 15);
+                    pickerMarker.setLatLng([c.lat, c.lng]);
+                }
+            }
+        }
+
+        function initPickerMap(lat, lng) {
+            const pickerEl = document.getElementById('pickerMap');
+            if (!pickerEl) return;
+
+            if (!pickerMapInstance) {
+                pickerMapInstance = L.map('pickerMap').setView([lat, lng], 15);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap'
+                }).addTo(pickerMapInstance);
+
+                pickerMarker = L.marker([lat, lng], { draggable: true }).addTo(pickerMapInstance);
+
+                pickerMarker.on('dragend', function (e) {
+                    const pos = pickerMarker.getLatLng();
+                    document.getElementById('bumilLat').value = pos.lat.toFixed(6);
+                    document.getElementById('bumilLng').value = pos.lng.toFixed(6);
+                });
+
+                pickerMapInstance.on('click', function (e) {
+                    pickerMarker.setLatLng(e.latlng);
+                    document.getElementById('bumilLat').value = e.latlng.lat.toFixed(6);
+                    document.getElementById('bumilLng').value = e.latlng.lng.toFixed(6);
+                });
+            } else {
+                pickerMapInstance.setView([lat, lng], 15);
+                pickerMarker.setLatLng([lat, lng]);
+                pickerMapInstance.invalidateSize();
+            }
+        }
+
+        function initCharts() { renderDashboardCharts(); }
+
+        function initLeafletMap() {
+            const mapEl = document.getElementById('map');
+            if (!mapEl) return;
+
+            if (!leafletMap) {
+                const center = DUSUN_COORDS["Krajan"];
+                leafletMap = L.map('map').setView([center.lat, center.lng], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap SEHATI'
+                }).addTo(leafletMap);
+            }
             renderMapMarkers();
+        }
+
+        function resetMapView() {
+            if (leafletMap) {
+                const center = DUSUN_COORDS["Krajan"];
+                leafletMap.setView([center.lat, center.lng], 13);
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById(`tab-${tabId}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-pink-600');
+                btn.classList.add('text-slate-400');
+                const box = btn.querySelector('.icon-box');
+                if (box) box.classList.remove('bg-pink-100');
+            });
+
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if (activeNav) {
+                activeNav.classList.remove('text-slate-400');
+                activeNav.classList.add('text-pink-600');
+                const box = activeNav.querySelector('.icon-box');
+                if (box) box.classList.add('bg-pink-100');
+            }
+
+            if (tabId === 'peta') {
+                setTimeout(() => {
+                    if (leafletMap) leafletMap.invalidateSize();
+                }, 200);
+            }
+        }
+
+        function exportToExcel() {
+            if (bumilData.length === 0) {
+                alert('Tidak ada data ibu hamil untuk diexport!');
+                return;
+            }
+
+            const exportRows = bumilData.map((b, i) => ({
+                "No": i + 1,
+                "ID": b.id,
+                "Nama Ibu Hamil": b.nama,
+                "Nama Suami": b.suami,
+                "Usia": b.usia,
+                "Dusun": b.dusun,
+                "Alamat Lengkap": b.alamat || '-',
+                "Kategori Risiko": b.risiko,
+                "Estimasi Lahir (HPL)": b.hpl,
+                "WhatsApp": b.wa || '-',
+                "P4K Penolong": b.p4k?.penolong || '-',
+                "P4K Tempat": b.p4k?.tempat || '-',
+                "P4K Pendamping": b.p4k?.pendamping || '-',
+                "P4K Transportasi": b.p4k?.transportasi || '-',
+                "P4K Pendonor": b.p4k?.pendonor || '-',
+                "P4K Stiker": b.p4k?.stiker || '-',
+                "Latitude": b.lat,
+                "Longitude": b.lng,
+                "Catatan": b.catatan || '-'
+            }));
+
+            const ws = XLSX.utils.json_to_sheet(exportRows);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Data Bumil");
+            XLSX.writeFile(wb, `SEHATI_Data_Bumil_Desa_Botolinggo_${new Date().toISOString().slice(0, 10)}.xlsx`);
+        }
+
+        function updateUserDisplay() {
+            if (usersData.length > 0) {
+                const u = usersData[0];
+                const displayNama = document.getElementById('displayUserNama');
+                const displayUser = document.getElementById('displayUserUsername');
+                const headerProfileName = document.getElementById('headerProfileName');
+                
+                if (displayNama) displayNama.textContent = u.nama;
+                if (displayUser) displayUser.textContent = u.username;
+                if (headerProfileName) headerProfileName.textContent = u.nama;
+
+                // Render Profile Avatar on Header & Settings
+                const photoUrl = u.photo || '';
+                const initials = getInitials(u.nama);
+
+                const headerImg = document.getElementById('headerProfileAvatar');
+                const headerInit = document.getElementById('headerProfileInitials');
+                const settingsImg = document.getElementById('settingsProfileAvatar');
+                const settingsInit = document.getElementById('settingsProfileInitials');
+
+                if (photoUrl) {
+                    if (headerImg) { headerImg.src = photoUrl; headerImg.classList.remove('hidden'); }
+                    if (headerInit) { headerInit.classList.add('hidden'); }
+                    if (settingsImg) { settingsImg.src = photoUrl; settingsImg.classList.remove('hidden'); }
+                    if (settingsInit) { settingsInit.classList.add('hidden'); }
+                } else {
+                    if (headerImg) { headerImg.src = ''; headerImg.classList.add('hidden'); }
+                    if (headerInit) { headerInit.textContent = initials; headerInit.classList.remove('hidden'); }
+                    if (settingsImg) { settingsImg.src = ''; settingsImg.classList.add('hidden'); }
+                    if (settingsInit) { settingsInit.textContent = initials; settingsInit.classList.remove('hidden'); }
+                }
+            }
+        }
+
+        function getInitials(name) {
+            if (!name) return 'BD';
+            const parts = name.trim().split(' ');
+            if (parts.length >= 2) {
+                return (parts[0][0] + parts[1][0]).toUpperCase();
+            }
+            return name.substring(0, 2).toUpperCase();
+        }
+
+        function previewUserPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    tempPhotoDataUrl = e.target.result;
+                    const previewImg = document.getElementById('modalProfilePreview');
+                    const previewInit = document.getElementById('modalProfileInitials');
+                    if (previewImg) {
+                        previewImg.src = tempPhotoDataUrl;
+                        previewImg.classList.remove('hidden');
+                    }
+                    if (previewInit) {
+                        previewInit.classList.add('hidden');
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // USER MANAGEMENT (MODAL)
+        function openUserModal() {
+            const u = usersData[0] || { id: 'USR-01', nama: 'Bidan Desa', username: 'admin', password: '123456', photo: '' };
+            document.getElementById('userId').value = u.id;
+            document.getElementById('userNama').value = u.nama;
+            document.getElementById('userUsername').value = u.username;
+            document.getElementById('userPassword').value = u.password;
+            
+            tempPhotoDataUrl = u.photo || '';
+            const previewImg = document.getElementById('modalProfilePreview');
+            const previewInit = document.getElementById('modalProfileInitials');
+            const initials = getInitials(u.nama);
+
+            if (tempPhotoDataUrl) {
+                if (previewImg) { previewImg.src = tempPhotoDataUrl; previewImg.classList.remove('hidden'); }
+                if (previewInit) { previewInit.classList.add('hidden'); }
+            } else {
+                if (previewImg) { previewImg.src = ''; previewImg.classList.add('hidden'); }
+                if (previewInit) { previewInit.textContent = initials; previewInit.classList.remove('hidden'); }
+            }
+
+            document.getElementById('modalUser').classList.remove('hidden');
+        }
+
+        function closeUserModal() { 
+            tempPhotoDataUrl = null;
+            document.getElementById('modalUser').classList.add('hidden'); 
+        }
+
+        function saveUserData(e) {
+            e.preventDefault();
+            const id = document.getElementById('userId').value || 'USR-01';
+            const nama = document.getElementById('userNama').value.trim();
+            const username = document.getElementById('userUsername').value.trim();
+            const password = document.getElementById('userPassword').value.trim();
+            const photo = tempPhotoDataUrl !== null ? tempPhotoDataUrl : (usersData[0]?.photo || '');
+
+            usersData = [{ id, nama, username, password, role: "Bidan Desa", photo }];
+
+            saveLocalUsers();
+            
+            if (activeUser) {
+                activeUser = usersData[0];
+                if (document.getElementById('activeUserLabel')) {
+                    document.getElementById('activeUserLabel').textContent = `${activeUser.nama} (${activeUser.role})`;
+                }
+            }
+
+            closeUserModal();
+            // Panggil sync agar perubahan username, nama & password admin langsung tersimpan di Google Sheets
             syncWithGoogleSheetsAPI();
         }
 
@@ -1250,62 +1536,9 @@ _Laporan otomatis disinkronkan via Aplikasi SEHATI._`;
             alert('URL Google Apps Script disimpan!');
         }
 
-        function saveSettings(e) {
-            e.preventDefault();
-            const logoUrl = document.getElementById('setLogoUrl').value;
-            localStorage.setItem('sehati_logo_url', logoUrl);
-            if (document.getElementById('headerAppLogo')) document.getElementById('headerAppLogo').src = logoUrl;
-            alert('Profil diperbarui!');
-        }
-
         function loadSettings() {
             const gasUrl = localStorage.getItem('sehati_gas_url') || '';
-            const logoUrl = localStorage.getItem('sehati_logo_url') || 'https://placehold.co/100x100/fbcfe8/be185d?text=PKM';
             if (document.getElementById('gasApiUrl')) document.getElementById('gasApiUrl').value = gasUrl;
-            if (document.getElementById('setLogoUrl')) document.getElementById('setLogoUrl').value = logoUrl;
-            if (document.getElementById('headerAppLogo')) document.getElementById('headerAppLogo').src = logoUrl;
-        }
-
-        function syncWithGoogleSheetsAPI() {
-            const gasUrl = localStorage.getItem('sehati_gas_url');
-            if (!gasUrl) return;
-
-            fetch(gasUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(bumilData)
-            }).catch(err => console.log('GAS sync error:', err));
-        }
-
-        // EXPORT TO EXCEL
-        function exportToExcel() {
-            const dataToExport = bumilData.map((b, idx) => ({
-                "No": idx + 1,
-                "ID Register": b.id,
-                "Nama Ibu": b.nama,
-                "Nama Suami": b.suami,
-                "Alamat Lengkap": b.alamat || "-",
-                "Usia (Th)": b.usia,
-                "Dusun": b.dusun,
-                "Kategori Risiko": b.risiko,
-                "Penolong Persalinan (P4K)": b.p4k?.penolong || "-",
-                "Tempat Persalinan (P4K)": b.p4k?.tempat || "-",
-                "Pendamping (P4K)": b.p4k?.pendamping || "-",
-                "Transportasi (P4K)": b.p4k?.transportasi || "-",
-                "Pendonor Darah (P4K)": b.p4k?.pendonor || "-",
-                "Stiker P4K": b.p4k?.stiker || "-",
-                "No. WhatsApp": b.wa,
-                "HPL": b.hpl,
-                "Latitude": b.lat,
-                "Longitude": b.lng,
-                "Catatan Medis": b.catatan
-            }));
-
-            const worksheet = XLSX.utils.json_to_sheet(dataToExport);
-            const workbook = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(workbook, worksheet, "Data Ibu Hamil SEHATI");
-            XLSX.writeFile(workbook, `Rekap_SEHATI_Botolinggo_${new Date().toISOString().slice(0,10)}.xlsx`);
         }
     </script>
 </body>
