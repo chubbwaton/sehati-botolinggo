@@ -65,8 +65,8 @@
             <div class="my-auto bg-white rounded-3xl shadow-2xl w-full p-5 border border-white/20">
                 <div class="text-center mb-5">
                     <div class="flex flex-col items-center justify-center mb-3 mt-2">
-                        <div class="flex flex-col items-center justify-center mb-4 mt-8">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-20 h-20 object-contain mx-auto mb-2">
+                        <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-xl font-extrabold shadow-inner">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                     </div>
                     <h1 class="text-xl font-extrabold text-slate-900 tracking-tight">SEHATI</h1>
@@ -125,8 +125,8 @@
                 <div class="px-3.5 h-14 flex items-center justify-between">
                     <!-- Brand -->
                     <div class="flex items-center gap-2">
-                        <div class="flex flex-col items-center justify-center mb-4 mt-6">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-14 h-14 object-contain mx-auto mb-2">
+                        <div class="w-8 h-8 bg-pink-600 rounded-xl flex items-center justify-center text-white font-extrabold text-xs shadow-xs flex-shrink-0">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                         <div class="min-w-0">
                             <h1 class="text-[11px] font-extrabold text-slate-900 tracking-tight leading-tight">SEHATI</h1>
@@ -370,42 +370,44 @@
                 <!-- TAB 4: BULIN (IBU BERSALIN)                -->
                 <!-- ========================================== -->
                 <div id="tab-bulin" class="tab-content hidden space-y-3">
-                    <div class="bg-white rounded-2xl p-3 border border-pink-100 shadow-2xs space-y-2.5">
+                    <div class="bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs space-y-2">
+                        <!-- Top Header row: Title on left, Year Filter on right -->
                         <div class="flex items-start justify-between gap-2">
                             <div>
-                                <h2 class="text-[11px] font-extrabold text-slate-900 leading-tight">Data Ibu Bersalin</h2>
+                                <h2 class="text-[10.5px] font-extrabold text-slate-900 leading-tight">Data Ibu Bersalin</h2>
                                 <p class="text-[8.5px] text-slate-500 mt-0.5">Rekap persalinan & kondisi bayi</p>
                             </div>
-                            <div class="flex flex-col gap-1.5 flex-shrink-0">
-                                <div class="bg-pink-50 px-2 py-1 rounded-xl border border-pink-200">
-                                    <select id="bulinYearFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[9.5px] font-extrabold focus:outline-none cursor-pointer">
-                                    </select>
-                                </div>
-                                <div class="bg-pink-50 px-2 py-1 rounded-xl border border-pink-200">
-                                    <select id="bulinMonthFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[9.5px] font-extrabold focus:outline-none cursor-pointer">
-                                        <option value="all">Semua Bulan</option>
-                                        <option value="0">Januari</option>
-                                        <option value="1">Februari</option>
-                                        <option value="2">Maret</option>
-                                        <option value="3">April</option>
-                                        <option value="4">Mei</option>
-                                        <option value="5">Juni</option>
-                                        <option value="6">Juli</option>
-                                        <option value="7">Agustus</option>
-                                        <option value="8">September</option>
-                                        <option value="9">Oktober</option>
-                                        <option value="10">November</option>
-                                        <option value="11">Desember</option>
-                                    </select>
-                                </div>
+                            <div class="bg-pink-50 px-2 py-1 rounded-xl border border-pink-200 flex-shrink-0">
+                                <select id="bulinYearFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[9.5px] font-extrabold focus:outline-none cursor-pointer">
+                                </select>
                             </div>
                         </div>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 text-slate-400">
-                                <i class="fa-solid fa-magnifying-glass text-[9.5px]"></i>
-                            </span>
-                            <input type="text" id="bulinSearchInput" oninput="renderBulinTab()" placeholder="Cari ibu bersalin..." 
-                                class="w-full pl-8 pr-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[9.5px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
+                        <!-- Second row: Search input on left, Month Filter on right -->
+                        <div class="flex items-center gap-2 pt-1 border-t border-slate-100">
+                            <div class="relative flex-1">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 text-slate-400">
+                                    <i class="fa-solid fa-magnifying-glass text-[9.5px]"></i>
+                                </span>
+                                <input type="text" id="bulinSearchInput" oninput="renderBulinTab()" placeholder="Cari ibu bersalin..." 
+                                    class="w-full pl-8 pr-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[9.5px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
+                            </div>
+                            <div class="bg-pink-50 px-2 py-1 rounded-xl border border-pink-200 flex-shrink-0">
+                                <select id="bulinMonthFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[9.5px] font-extrabold focus:outline-none cursor-pointer">
+                                    <option value="all">Semua Bulan</option>
+                                    <option value="0">Januari</option>
+                                    <option value="1">Februari</option>
+                                    <option value="2">Maret</option>
+                                    <option value="3">April</option>
+                                    <option value="4">Mei</option>
+                                    <option value="5">Juni</option>
+                                    <option value="6">Juli</option>
+                                    <option value="7">Agustus</option>
+                                    <option value="8">September</option>
+                                    <option value="9">Oktober</option>
+                                    <option value="10">November</option>
+                                    <option value="11">Desember</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -451,7 +453,7 @@
 
             <!-- ========================================== -->
             <!-- FIXED BOTTOM NAVIGATION BAR (5 TABS)       -->
-            <!-- Order: Beranda, Bumil, Kantong Persalinan, Bulin, Peta -->
+            <!-- Order: Beranda, Bumil, Kantong, Bulin, Peta -->
             <!-- ========================================== -->
             <nav id="bottomNavBar" class="absolute bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-pink-100 shadow-lg px-1 py-1.5">
                 <div class="flex items-center justify-around">
@@ -696,11 +698,11 @@
                     <div class="grid grid-cols-2 gap-2.5">
                         <div>
                             <label class="block text-xs font-bold text-slate-600 mb-1">Latitude</label>
-                            <input type="number" step="any" id="settingPustuLatInput" placeholder="-7.830602" class="w-full px-3 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <input type="number" step="any" id="settingPustuLatInput" placeholder="-7.83" class="w-full px-3 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-600 mb-1">Longitude</label>
-                            <input type="number" step="any" id="settingPustuLngInput" placeholder="113.977607" class="w-full px-3 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <input type="number" step="any" id="settingPustuLngInput" placeholder="113.97" class="w-full px-3 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
                         </div>
                     </div>
                     <div class="flex justify-end gap-2 pt-2">
@@ -996,11 +998,11 @@
         // ==========================================
         const DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbzrI6ZgcMIrllD5rgP0Ct1qru8NpELM73uonXYPg04Z48Ug9HvyrTwHf4obTXkaHTdC/exec";
 
-        let appVillageName = "Desa Botolinggo";
+        let appVillageName = "";
         let pustuLocation = {
-            name: "PONKESDES Botolinggo",
-            lat: -7.830602,
-            lng: 113.977607
+            name: "",
+            lat: "",
+            lng: ""
         };
 
         let dusunCoords = {
@@ -1019,7 +1021,7 @@
         };
 
         let activeUser = {
-            name: "Bidan Desa",
+            name: "",
             role: "Petugas",
             username: "admin",
             password: "123456",
@@ -1027,7 +1029,7 @@
             avatar: null
         };
 
-        let bumilData = [];
+        let bumilData = []; // Default 0 data
         let kantongViewMode = 'tile';
         let mapSummaryMode = 'tile';
 
@@ -1037,180 +1039,6 @@
         let pickerMap = null;
         let pickerMarker = null;
         let activePickerTargetType = null;
-
-        const sampleBumilList = [
-            {
-                id: "BM-2026-01",
-                status: "hamil",
-                nama: "Siti Nurhaliza",
-                suami: "Ahmad Subagyo",
-                usia: 26,
-                dusun: "Krajan",
-                risiko: "Rendah",
-                hpht: "2025-10-10",
-                hpl: "2026-07-17",
-                wa: "6281234567801",
-                alamat: "RT 01 / RW 01",
-                p4k: { pendamping: "Suami", transportasi: "Ambulans Desa", pendonor: "Gol O (Suami)", stiker: "Sudah" },
-                catatan: "Kondisi sehat normal"
-            },
-            {
-                id: "BM-2026-02",
-                status: "bersalin",
-                nama: "Anisa Rahmawati",
-                suami: "Budi Santoso",
-                usia: 34,
-                dusun: "Sundang",
-                risiko: "Tinggi",
-                hpht: "2025-05-05",
-                hpl: "2026-02-12",
-                wa: "6281234567802",
-                alamat: "RT 02 / RW 01",
-                p4k: { pendamping: "Suami", transportasi: "Ambulans", pendonor: "Gol A", stiker: "Sudah" },
-                bulinInfo: {
-                    tgl: "2026-02-10",
-                    tempat: "RSUD Bondowoso",
-                    sesuaiP4k: "Sesuai",
-                    kondisiIbu: "Sehat, pemulihan baik",
-                    kondisiBayi: "Sehat, BB 3.2 kg, Laki-laki",
-                    catatan: "Persalinan SC terencana karena risti"
-                }
-            },
-            {
-                id: "BM-2026-03",
-                status: "hamil",
-                nama: "Dewi Lestari",
-                suami: "Cahyo Utomo",
-                usia: 22,
-                dusun: "Waduk",
-                risiko: "Sedang",
-                hpht: "2025-11-01",
-                hpl: "2026-08-08",
-                wa: "6281234567803",
-                alamat: "RT 01 / RW 02",
-                p4k: { pendamping: "Ibu Kandung", transportasi: "Motor", pendonor: "Gol B", stiker: "Sudah" },
-                catatan: "Anemia ringan"
-            },
-            {
-                id: "BM-2026-04",
-                status: "bersalin",
-                nama: "Fitri Handayani",
-                suami: "Dedi Kurniawan",
-                usia: 28,
-                dusun: "Bille",
-                risiko: "Tinggi",
-                hpht: "2025-06-15",
-                hpl: "2026-03-22",
-                wa: "6281234567804",
-                alamat: "RT 03 / RW 01",
-                p4k: { pendamping: "Suami", transportasi: "Ambulans", pendonor: "Gol O", stiker: "Sudah" },
-                bulinInfo: {
-                    tgl: "2026-03-20",
-                    tempat: "Puskesmas Botolinggo",
-                    sesuaiP4k: "Sesuai",
-                    kondisiIbu: "Sehat",
-                    kondisiBayi: "Sehat, BB 2.9 kg, Perempuan",
-                    catatan: "Lancar tanpa penyulit"
-                }
-            },
-            {
-                id: "BM-2026-05",
-                status: "hamil",
-                nama: "Rina Kusuma",
-                suami: "Eko Prasetyo",
-                usia: 29,
-                dusun: "Taman",
-                risiko: "Rendah",
-                hpht: "2025-12-20",
-                hpl: "2026-09-27",
-                wa: "6281234567805",
-                alamat: "RT 01 / RW 03",
-                p4k: { pendamping: "Suami", transportasi: "Mobil Warga", pendonor: "Gol AB", stiker: "Sudah" },
-                catatan: "Kehamilan ke-2 normal"
-            },
-            {
-                id: "BM-2026-06",
-                status: "bersalin",
-                nama: "Siti Aminah",
-                suami: "Fajar Sidik",
-                usia: 31,
-                dusun: "Cottok",
-                risiko: "Sedang",
-                hpht: "2025-08-10",
-                hpl: "2026-05-17",
-                wa: "6281234567806",
-                alamat: "RT 04 / RW 02",
-                p4k: { pendamping: "Suami", transportasi: "Mobil", pendonor: "Gol O", stiker: "Sudah" },
-                bulinInfo: {
-                    tgl: "2026-05-15",
-                    tempat: "BPM Bidan Ani",
-                    sesuaiP4k: "Sesuai",
-                    kondisiIbu: "Sehat",
-                    kondisiBayi: "Sehat, BB 3.0 kg, Laki-laki",
-                    catatan: "Normal pervaginam"
-                }
-            },
-            {
-                id: "BM-2026-07",
-                status: "hamil",
-                nama: "Nurul Hidayah",
-                suami: "Gatot kaca",
-                usia: 25,
-                dusun: "Lucu",
-                risiko: "Rendah",
-                hpht: "2026-01-05",
-                hpl: "2026-10-12",
-                wa: "6281234567807",
-                alamat: "RT 02 / RW 01",
-                p4k: { pendamping: "Suami", transportasi: "Motor", pendonor: "Gol B", stiker: "Sudah" },
-                catatan: "Sehat"
-            },
-            {
-                id: "BM-2026-08",
-                status: "hamil",
-                nama: "Lestari Wulandari",
-                suami: "Hadi Susanto",
-                usia: 35,
-                dusun: "Cemper",
-                risiko: "Tinggi",
-                hpht: "2026-02-14",
-                hpl: "2026-11-21",
-                wa: "6281234567808",
-                alamat: "RT 03 / RW 02",
-                p4k: { pendamping: "Suami", transportasi: "Ambulans", pendonor: "Gol A", stiker: "Sudah" },
-                catatan: "Multigravida risti"
-            },
-            {
-                id: "BM-2026-09",
-                status: "hamil",
-                nama: "Maimunah",
-                suami: "Ibrahim",
-                usia: 24,
-                dusun: "Kedawung Timur",
-                risiko: "Rendah",
-                hpht: "2026-03-01",
-                hpl: "2026-12-08",
-                wa: "6281234567809",
-                alamat: "RT 01 / RW 01",
-                p4k: { pendamping: "Suami", transportasi: "Motor", pendonor: "Gol O", stiker: "Belum" },
-                catatan: "Stiker P4K segera dipasang"
-            },
-            {
-                id: "BM-2026-10",
-                status: "hamil",
-                nama: "Zainab",
-                suami: "Joko Widodo",
-                usia: 27,
-                dusun: "Ninggil",
-                risiko: "Sedang",
-                hpht: "2026-03-15",
-                hpl: "2026-12-22",
-                wa: "6281234567810",
-                alamat: "RT 02 / RW 03",
-                p4k: { pendamping: "Suami", transportasi: "Mobil", pendonor: "Gol AB", stiker: "Sudah" },
-                catatan: "Kontrol rutin tiap bulan"
-            }
-        ];
 
         function togglePasswordVisibility(inputId, iconId) {
             const input = document.getElementById(inputId);
@@ -1227,13 +1055,13 @@
 
         function loadLocalVillageSettings() {
             const savedVillage = localStorage.getItem('sehati_village_name');
-            appVillageName = savedVillage !== null ? savedVillage : "Desa Botolinggo";
+            appVillageName = savedVillage !== null ? savedVillage : "";
 
             const savedPustu = localStorage.getItem('sehati_pustu_data');
             if (savedPustu) {
                 try { pustuLocation = JSON.parse(savedPustu); } catch(e){}
             } else {
-                pustuLocation = { name: "PONKESDES Botolinggo", lat: -7.830602, lng: 113.977607 };
+                pustuLocation = { name: "", lat: "", lng: "" };
             }
 
             const savedDusun = localStorage.getItem('sehati_dusun_coords');
@@ -1246,7 +1074,7 @@
                 try { activeUser = JSON.parse(savedUser); } catch(e){}
             } else {
                 activeUser = {
-                    name: "Bidan Desa",
+                    name: "",
                     role: "Petugas",
                     username: "admin",
                     password: "123456",
@@ -1275,11 +1103,11 @@
             if (userPinInput) userPinInput.value = activeUser.securityPin || "9999";
 
             const topBarVillage = document.getElementById('topBarVillageName');
-            if (topBarVillage) topBarVillage.textContent = appVillageName;
+            if (topBarVillage) topBarVillage.textContent = appVillageName || "Belum Atur Desa";
             const loginVillageLabel = document.getElementById('loginVillageLabel');
-            if (loginVillageLabel) loginVillageLabel.textContent = appVillageName;
+            if (loginVillageLabel) loginVillageLabel.textContent = appVillageName || "Sistem SEHATI";
             const bannerVillageSubtitle = document.getElementById('bannerVillageSubtitle');
-            if (bannerVillageSubtitle) bannerVillageSubtitle.textContent = `Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di ${appVillageName}`;
+            if (bannerVillageSubtitle) bannerVillageSubtitle.textContent = `Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di ${appVillageName || 'Desa'}`;
 
             updateUserDisplay();
             renderDusunSettingsCards();
@@ -1339,14 +1167,14 @@
 
         function saveVillageSettings() {
             const villageInput = document.getElementById('settingVillageNameInput');
-            if (villageInput) appVillageName = villageInput.value.trim() || "Desa Botolinggo";
+            if (villageInput) appVillageName = villageInput.value.trim();
 
-            const pustuName = document.getElementById('settingPustuNameInput').value.trim() || "PONKESDES";
+            const pustuName = document.getElementById('settingPustuNameInput').value.trim();
             const pustuLat = document.getElementById('settingPustuLatInput').value !== "" ? parseFloat(document.getElementById('settingPustuLatInput').value) : "";
             const pustuLng = document.getElementById('settingPustuLngInput').value !== "" ? parseFloat(document.getElementById('settingPustuLngInput').value) : "";
             pustuLocation = { name: pustuName, lat: pustuLat, lng: pustuLng };
 
-            activeUser.name = document.getElementById('settingUserNameInput').value.trim() || "Bidan Desa";
+            activeUser.name = document.getElementById('settingUserNameInput').value.trim();
             activeUser.username = document.getElementById('settingUserUsernameInput').value.trim() || "admin";
             activeUser.password = document.getElementById('settingUserPasswordInput').value.trim() || "123456";
             activeUser.securityPin = document.getElementById('settingSecurityPinInput').value.trim() || "9999";
@@ -1381,7 +1209,7 @@
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
             const dlAnchor = document.createElement('a');
             dlAnchor.setAttribute("href", dataStr);
-            dlAnchor.setAttribute("download", `SEHATI_Backup_${appVillageName.replace(/\s+/g, '_')}.json`);
+            dlAnchor.setAttribute("download", `SEHATI_Backup_${appVillageName ? appVillageName.replace(/\s+/g, '_') : 'Desa'}.json`);
             document.body.appendChild(dlAnchor);
             dlAnchor.click();
             dlAnchor.remove();
@@ -1443,10 +1271,10 @@
                 "Kedawung Barat": { lat: -7.872612, lng: 113.983703 },
                 "Ninggil": { lat: -7.860117, lng: 113.992829 }
             };
-            appVillageName = "Desa Botolinggo";
-            pustuLocation = { name: "PONKESDES Botolinggo", lat: -7.830602, lng: 113.977607 };
+            appVillageName = "";
+            pustuLocation = { name: "", lat: "", lng: "" };
             activeUser = {
-                name: "Bidan Desa",
+                name: "",
                 role: "Petugas",
                 username: "admin",
                 password: "123456",
@@ -1627,7 +1455,8 @@
 
         function loadLocalData() {
             const saved = localStorage.getItem('sehati_bumil_data');
-            bumilData = saved ? JSON.parse(saved) : sampleBumilList;
+            // DEFAULT: Start with empty array (0 data) if no saved data
+            bumilData = saved ? JSON.parse(saved) : [];
             updateKPIs();
             initChartYearDropdowns();
             initBulinFilterYearDropdowns();
@@ -1962,7 +1791,7 @@
                                         <p class="text-pink-600 font-semibold">HPL: ${item.hpl}</p>
                                     </div>
                                     <div class="flex items-center justify-end gap-1.5 pt-1">
-                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2 py-0.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[8.5px] rounded-lg flex items-center gap-1 shadow-2xs">
+                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[8.5px] rounded-lg flex items-center gap-1 shadow-2xs">
                                             <i class="fa-brands fa-whatsapp"></i> WhatsApp
                                         </a>
                                         <button onclick="openBulinModalForBumil('${item.id}')" class="px-2 py-0.5 bg-pink-600 text-white font-bold text-[8.5px] rounded-lg">Melahirkan?</button>
@@ -2023,10 +1852,10 @@
                     </td>
                     <td class="p-2 text-center">
                         <div class="flex items-center justify-center gap-1">
-                            <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2 py-0.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[8.5px] rounded-lg flex items-center gap-1 shadow-xs" title="WhatsApp">
-                                <i class="fa-brands fa-whatsapp"></i> WA
+                            <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[8.5px] rounded-lg flex items-center gap-1 shadow-xs" title="WhatsApp">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
                             </a>
-                            <button onclick="openBulinModalForBumil('${item.id}')" class="px-2 py-0.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-[8.5px] rounded-lg" title="Melahirkan">Bulin</button>
+                            <button onclick="openBulinModalForBumil('${item.id}')" class="px-2 py-0.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-[8.5px] rounded-lg">Bulin</button>
                             <button onclick="editBumil('${item.id}')" class="w-5.5 h-5.5 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-[9px]" title="Edit"><i class="fa-solid fa-pen"></i></button>
                             <button onclick="deleteBumil('${item.id}')" class="w-5.5 h-5.5 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-[9px]" title="Hapus"><i class="fa-solid fa-trash"></i></button>
                         </div>
@@ -2483,7 +2312,7 @@
             });
             const link = document.createElement("a");
             link.setAttribute("href", encodeURI(csvContent));
-            link.setAttribute("download", `Rekap_Bumil_Bulin_${appVillageName.replace(/\s+/g, '_')}.csv`);
+            link.setAttribute("download", `Rekap_Bumil_Bulin_${appVillageName ? appVillageName.replace(/\s+/g, '_') : 'Desa'}.csv`);
             document.body.appendChild(link);
             link.click();
             link.remove();
@@ -2493,7 +2322,7 @@
             const activeCount = bumilData.filter(i => i.status !== 'bersalin').length;
             const ristiCount = bumilData.filter(i => i.status !== 'bersalin' && i.risiko === 'Tinggi').length;
             const bulinCount = bumilData.filter(i => i.status === 'bersalin').length;
-            let msg = `*REKAP SEHATI*%0A📍 ${appVillageName}%0A• Bumil Aktif: *${activeCount}*%0A• Risti: *${ristiCount}*%0A• Bulin (Bersalin): *${bulinCount}*`;
+            let msg = `*REKAP SEHATI*%0A📍 ${appVillageName || 'Desa'}%0A• Bumil Aktif: *${activeCount}*%0A• Risti: *${ristiCount}*%0A• Bulin (Bersalin): *${bulinCount}*`;
             window.open(`https://wa.me/?text=${msg}`, '_blank');
         }
 
