@@ -65,8 +65,8 @@
             <div class="my-auto bg-white rounded-3xl shadow-2xl w-full p-6 border border-white/25">
                 <div class="text-center mb-6">
                     <div class="flex flex-col items-center justify-center mb-3 mt-2">
-                        <div class="flex flex-col items-center justify-center mb-4 mt-8">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-20 h-20 object-contain mx-auto mb-2">
+                        <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-2xl font-extrabold shadow-inner">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                     </div>
                     <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">SEHATI</h1>
@@ -110,7 +110,7 @@
 
                 <div class="mt-6 pt-4 border-t border-slate-100 text-center">
                     <p class="text-[10px] text-slate-500 font-medium">Pemantauan Risiko Tinggi & HPL Terpadu</p>
-                    <p class="text-[10px] text-pink-600 font-bold mt-0.5">Sistem Keamanan Terpadu SEHATI</p>
+                    <p id="loginFooterVillage" class="text-[10px] text-pink-600 font-bold mt-0.5">Sistem Keamanan Terpadu SEHATI</p>
                 </div>
             </div>
         </div>
@@ -125,8 +125,8 @@
                 <div class="px-4 h-16 flex items-center justify-between">
                     <!-- Brand -->
                     <div class="flex items-center gap-2.5">
-                       <div class="flex flex-col items-center justify-center mb-4 mt-6">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-14 h-14 object-contain mx-auto mb-2">
+                        <div class="w-9 h-9 bg-pink-600 rounded-xl flex items-center justify-center text-white font-extrabold text-sm shadow-xs flex-shrink-0">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                         <div class="min-w-0">
                             <h1 class="text-xs font-extrabold text-slate-900 tracking-tight leading-tight">SEHATI</h1>
@@ -370,14 +370,13 @@
                 <!-- TAB 4: BULIN (IBU BERSALIN)                -->
                 <!-- ========================================== -->
                 <div id="tab-bulin" class="tab-content hidden space-y-3.5">
-                    <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-3">
-                        <!-- Top Header row with inline minimalistic filters -->
-                        <div class="flex items-center justify-between gap-2">
+                    <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5">
+                        <div class="flex items-start justify-between gap-2">
                             <div>
                                 <h2 class="text-[11px] font-extrabold text-slate-900 leading-tight">Data Ibu Bersalin</h2>
                                 <p class="text-[9.5px] text-slate-500 mt-0.5">Rekap persalinan & kondisi bayi</p>
                             </div>
-                            <div class="flex items-center gap-1.5 flex-shrink-0">
+                            <div class="flex flex-col gap-1.5 flex-shrink-0">
                                 <div class="bg-pink-50 px-2.5 py-1 rounded-xl border border-pink-200">
                                     <select id="bulinYearFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[10px] font-extrabold focus:outline-none cursor-pointer">
                                     </select>
@@ -401,7 +400,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Search input row -->
                         <div class="pt-1 border-t border-slate-100">
                             <div class="relative w-full">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
@@ -1108,6 +1106,8 @@
             if (topBarVillage) topBarVillage.textContent = appVillageName || "Belum Atur Desa";
             const loginVillageLabel = document.getElementById('loginVillageLabel');
             if (loginVillageLabel) loginVillageLabel.textContent = appVillageName || "Belum Atur Desa";
+            const loginFooterVillage = document.getElementById('loginFooterVillage');
+            if (loginFooterVillage) loginFooterVillage.textContent = appVillageName ? `Wilayah Kerja ${appVillageName}` : "Sistem Keamanan Terpadu SEHATI";
             const bannerVillageSubtitle = document.getElementById('bannerVillageSubtitle');
             if (bannerVillageSubtitle) bannerVillageSubtitle.textContent = `Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di ${appVillageName || 'Desa'}`;
 
