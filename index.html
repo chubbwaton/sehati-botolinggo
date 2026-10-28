@@ -37,8 +37,8 @@
             border-radius: 0;
         }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 3px;
-            height: 3px;
+            width: 4px;
+            height: 4px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #fdf2f8;
@@ -57,7 +57,7 @@
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased">
+<body class="text-slate-800 antialiased text-sm">
 
     <!-- MOBILE APP CONTAINER -->
     <div class="mobile-app-wrapper">
@@ -65,56 +65,56 @@
         <!-- ========================================== -->
         <!-- LOGIN SCREEN                               -->
         <!-- ========================================== -->
-        <div id="loginScreen" class="absolute inset-0 z-50 bg-gradient-to-br from-pink-500 via-rose-500 to-pink-700 flex flex-col justify-between p-5 overflow-y-auto">
-            <div class="my-auto bg-white rounded-3xl shadow-2xl w-full p-5 border border-white/20 transform transition-all">
-                <div class="text-center mb-5">
-                    <div class="flex flex-col items-center justify-center mb-2.5 mt-2">
-                        <div class="flex flex-col items-center justify-center mb-4 mt-8">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-20 h-20 object-contain mx-auto mb-2">
+        <div id="loginScreen" class="absolute inset-0 z-50 bg-gradient-to-br from-pink-500 via-rose-500 to-pink-700 flex flex-col justify-between p-6 overflow-y-auto">
+            <div class="my-auto bg-white rounded-3xl shadow-2xl w-full p-7 border border-white/20 transform transition-all">
+                <div class="text-center mb-6">
+                    <div class="flex flex-col items-center justify-center mb-3 mt-4">
+                        <div class="w-18 h-18 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-3xl font-extrabold shadow-inner">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                     </div>
-                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight">SEHATI</h1>
-                    <p class="text-[10px] font-semibold text-pink-600 mt-0.5 uppercase tracking-wider" id="loginVillageLabel">Desa Botolinggo</p>
+                    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">SEHATI</h1>
+                    <p class="text-xs font-semibold text-pink-600 mt-1 uppercase tracking-wider" id="loginVillageLabel">Desa Botolinggo</p>
                 </div>
 
-                <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-3.5">
+                <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4.5">
                     <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Username / Petugas</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Username / Petugas</label>
                         <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                                <i class="fa-solid fa-user text-xs"></i>
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                                <i class="fa-solid fa-user text-sm"></i>
                             </span>
-                            <input type="text" id="loginUsername" required value="admin" 
-                                class="w-full pl-9 pr-3 py-2 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white transition">
+                            <input type="text" id="loginUsername" required placeholder="admin" 
+                                class="w-full pl-11 pr-4 py-3 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white transition">
                         </div>
                     </div>
 
                     <div>
-                        <div class="flex items-center justify-between mb-1">
-                            <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500">Kata Sandi</label>
-                            <button type="button" onclick="openForgotPasswordModal()" class="text-[10px] font-bold text-pink-600 hover:text-pink-700 transition">Lupa Sandi?</button>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">Kata Sandi</label>
+                            <button type="button" onclick="openForgotPasswordModal()" class="text-xs font-bold text-pink-600 hover:text-pink-700 transition">Lupa Sandi?</button>
                         </div>
                         <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                                <i class="fa-solid fa-lock text-xs"></i>
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                                <i class="fa-solid fa-lock text-sm"></i>
                             </span>
-                            <input type="password" id="loginPassword" required value="123456" 
-                                class="w-full pl-9 pr-9 py-2 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white transition">
-                            <button type="button" onclick="togglePasswordVisibility('loginPassword', 'toggleLoginIcon')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 transition">
-                                <i id="toggleLoginIcon" class="fa-solid fa-eye text-xs"></i>
+                            <input type="password" id="loginPassword" required placeholder="123456" 
+                                class="w-full pl-11 pr-11 py-3 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white transition">
+                            <button type="button" onclick="togglePasswordVisibility('loginPassword', 'toggleLoginIcon')" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 transition">
+                                <i id="toggleLoginIcon" class="fa-solid fa-eye text-sm"></i>
                             </button>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-xl shadow-lg shadow-pink-600/30 transition flex items-center justify-center gap-2 text-xs tracking-wide">
+                    <button type="submit" class="w-full py-4 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-2xl shadow-lg shadow-pink-600/30 transition flex items-center justify-center gap-2 text-sm tracking-wide">
                         <span>Masuk Aplikasi</span>
-                        <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+                        <i class="fa-solid fa-arrow-right-to-bracket text-sm"></i>
                     </button>
                 </form>
 
-                <div class="mt-5 pt-3.5 border-t border-slate-100 text-center">
-                    <p class="text-[9px] text-slate-500 font-medium">Pemantauan Risiko Tinggi & HPL Terpadu</p>
-                    <p class="text-[9px] text-pink-600 font-bold mt-0.5">Sistem Keamanan Terpadu SEHATI</p>
+                <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+                    <p class="text-xs text-slate-500 font-medium">Pemantauan Risiko Tinggi & HPL Terpadu</p>
+                    <p class="text-xs text-pink-600 font-bold mt-0.5">Sistem Keamanan Terpadu SEHATI</p>
                 </div>
             </div>
         </div>
@@ -126,180 +126,180 @@
             
             <!-- HEADER / TOPBAR -->
             <header class="bg-white/95 backdrop-blur-md border-b border-pink-100 sticky top-0 z-30 shadow-2xs flex-shrink-0">
-                <div class="px-3.5 h-14 flex items-center justify-between">
+                <div class="px-4 h-16 flex items-center justify-between">
                     <!-- Brand -->
-                    <div class="flex items-center gap-2">
-                        <div class="flex flex-col items-center justify-center mb-4 mt-6">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-14 h-14 object-contain mx-auto mb-2">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-10 h-10 bg-pink-600 rounded-2xl flex items-center justify-center text-white font-extrabold text-lg shadow-xs">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                         <div>
-                            <h1 class="text-sm font-extrabold text-slate-900 tracking-tight leading-none">SEHATI</h1>
-                            <p id="topBarVillageName" class="text-[9px] font-semibold text-pink-600 mt-0.5">Desa Botolinggo</p>
+                            <h1 class="text-base font-extrabold text-slate-900 tracking-tight leading-none">SEHATI</h1>
+                            <p id="topBarVillageName" class="text-xs font-semibold text-pink-600 mt-0.5">Desa Botolinggo</p>
                         </div>
                     </div>
 
                     <!-- Right Actions -->
-                    <div class="flex items-center gap-1.5">
-                        <button onclick="openSettingsModal()" class="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-xl border border-pink-200/80 bg-pink-50/50 hover:bg-pink-100/60 transition shadow-2xs">
-                            <div id="headerUserAvatar" class="w-6 h-6 rounded-full bg-pink-600 text-white font-bold flex items-center justify-center text-[9px] shadow-xs overflow-hidden flex-shrink-0">
-                                IS
+                    <div class="flex items-center gap-2">
+                        <button onclick="openSettingsModal()" class="flex items-center gap-2.5 pl-2.5 pr-3.5 py-1.5 rounded-2xl border border-pink-200/80 bg-pink-50/50 hover:bg-pink-100/60 transition shadow-2xs">
+                            <div id="headerUserAvatar" class="w-8 h-8 rounded-full bg-pink-600 text-white font-bold flex items-center justify-center text-xs shadow-xs overflow-hidden flex-shrink-0">
+                                BD
                             </div>
                             <div class="text-left hidden xs:block">
-                                <p id="headerUserName" class="text-[10px] font-bold text-slate-900 leading-tight truncate max-w-[70px]">Indah</p>
+                                <p id="headerUserName" class="text-xs font-bold text-slate-900 leading-tight truncate max-w-[100px]">Bidan Desa</p>
                             </div>
                         </button>
 
-                        <button onclick="openSettingsModal()" title="Pengaturan" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-pink-100 text-slate-700 hover:text-pink-600 flex items-center justify-center transition shadow-xs">
-                            <i class="fa-solid fa-gear text-xs"></i>
+                        <button onclick="openSettingsModal()" title="Pengaturan" class="w-10 h-10 rounded-2xl bg-slate-100 hover:bg-pink-100 text-slate-700 hover:text-pink-600 flex items-center justify-center transition shadow-xs">
+                            <i class="fa-solid fa-gear text-sm"></i>
                         </button>
                     </div>
                 </div>
             </header>
 
             <!-- CONTENT AREA (SCROLLABLE) -->
-            <main class="flex-1 overflow-y-auto custom-scrollbar p-3.5 space-y-3.5 pb-20">
+            <main class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-4 pb-24">
 
                 <!-- ========================================== -->
                 <!-- TAB 1: BERANDA                             -->
                 <!-- ========================================== -->
-                <div id="tab-dashboard" class="tab-content space-y-3.5">
+                <div id="tab-dashboard" class="tab-content space-y-4">
                     
                     <!-- Banner Selamat Datang -->
-                    <div class="bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 rounded-2xl p-4 text-white shadow-md relative overflow-hidden">
-                        <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
-                        <div class="relative z-10 space-y-1.5">
-                            <div class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-black/15 backdrop-blur-md rounded-full text-[9px] font-bold text-white border border-white/20">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <div class="bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 rounded-3xl p-5 text-white shadow-lg relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+                        <div class="relative z-10 space-y-2">
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-black/15 backdrop-blur-md rounded-full text-xs font-bold text-white border border-white/20">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                                 <span id="bannerTodayDate">Selasa, 27 Okt 2026</span>
                             </div>
-                            <h2 id="welcomeHeading" class="text-base font-extrabold tracking-tight">Halo, Indah Sri!</h2>
-                            <p class="text-pink-100 text-[10px] font-normal leading-relaxed">
-                                <strong class="font-bold text-white">SEHATI</strong>: Sehat Hamilnya, Elok Bersalinnya, Harmoni Nifasnya, Aman Bayinya, Tumbuh Sehat Ibu Bahagia.<br>
-                                <span id="bannerVillageSubtitle" class="text-[9px] text-pink-100/90 font-medium">Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di Desa Botolinggo</span>
+                            <h2 id="welcomeHeading" class="text-lg font-extrabold tracking-tight">Halo, Bidan Desa!</h2>
+                            <p class="text-pink-100 text-xs font-normal leading-relaxed">
+                                <strong class="font-bold text-white">SEHATI</strong>: Sehat Hamilnya, Elok Bersalinnya, Harmoni Nifasnya, Aman Bayinya.<br>
+                                <span id="bannerVillageSubtitle" class="text-xs text-pink-100/90 font-medium">Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di Desa Botolinggo</span>
                             </p>
                         </div>
                     </div>
 
                     <!-- KPI / Summary Cards (2x2 Grid for Mobile) -->
-                    <div class="grid grid-cols-2 gap-2.5">
-                        <div class="bg-white p-3 rounded-2xl border border-pink-100 shadow-2xs flex items-center justify-between">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-white p-4 rounded-3xl border border-pink-100 shadow-2xs flex items-center justify-between">
                             <div>
-                                <p class="text-[9px] font-bold uppercase tracking-wider text-slate-400">Total Bumil</p>
-                                <h3 id="kpiTotal" class="text-xl font-extrabold text-slate-900 mt-0.5">0</h3>
-                                <p class="text-[9px] text-slate-500">Aktif</p>
+                                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Total Bumil</p>
+                                <h3 id="kpiTotal" class="text-2xl font-extrabold text-slate-900 mt-0.5">0</h3>
+                                <p class="text-xs text-slate-500 mt-0.5">Aktif</p>
                             </div>
-                            <div class="w-8 h-8 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-xs shadow-2xs">
+                            <div class="w-11 h-11 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-base shadow-2xs">
                                 <i class="fa-solid fa-person-pregnant"></i>
                             </div>
                         </div>
-                        <div class="bg-white p-3 rounded-2xl border border-pink-100 shadow-2xs flex items-center justify-between">
+                        <div class="bg-white p-4 rounded-3xl border border-pink-100 shadow-2xs flex items-center justify-between">
                             <div>
-                                <p class="text-[9px] font-bold uppercase tracking-wider text-rose-600">Risti</p>
-                                <h3 id="kpiRisti" class="text-xl font-extrabold text-rose-600 mt-0.5">0</h3>
-                                <p class="text-[9px] text-rose-500">Tinggi</p>
+                                <p class="text-xs font-bold uppercase tracking-wider text-rose-600">Risti</p>
+                                <h3 id="kpiRisti" class="text-2xl font-extrabold text-rose-600 mt-0.5">0</h3>
+                                <p class="text-xs text-rose-500 mt-0.5">Tinggi</p>
                             </div>
-                            <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xs shadow-2xs">
+                            <div class="w-11 h-11 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-base shadow-2xs">
                                 <i class="fa-solid fa-triangle-exclamation"></i>
                             </div>
                         </div>
-                        <div class="bg-white p-3 rounded-2xl border border-pink-100 shadow-2xs flex items-center justify-between">
+                        <div class="bg-white p-4 rounded-3xl border border-pink-100 shadow-2xs flex items-center justify-between">
                             <div>
-                                <p class="text-[9px] font-bold uppercase tracking-wider text-amber-600">Sedang</p>
-                                <h3 id="kpiSedang" class="text-xl font-extrabold text-amber-600 mt-0.5">0</h3>
-                                <p class="text-[9px] text-amber-500">Pantauan</p>
+                                <p class="text-xs font-bold uppercase tracking-wider text-amber-600">Sedang</p>
+                                <h3 id="kpiSedang" class="text-2xl font-extrabold text-amber-600 mt-0.5">0</h3>
+                                <p class="text-xs text-amber-500 mt-0.5">Pantauan</p>
                             </div>
-                            <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xs shadow-2xs">
+                            <div class="w-11 h-11 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-base shadow-2xs">
                                 <i class="fa-solid fa-circle-exclamation"></i>
                             </div>
                         </div>
-                        <div class="bg-white p-3 rounded-2xl border border-pink-100 shadow-2xs flex items-center justify-between">
+                        <div class="bg-white p-4 rounded-3xl border border-pink-100 shadow-2xs flex items-center justify-between">
                             <div>
-                                <p class="text-[9px] font-bold uppercase tracking-wider text-emerald-600">Rendah</p>
-                                <h3 id="kpiRendah" class="text-xl font-extrabold text-emerald-600 mt-0.5">0</h3>
-                                <p class="text-[9px] text-emerald-500">Normal</p>
+                                <p class="text-xs font-bold uppercase tracking-wider text-emerald-600">Rendah</p>
+                                <h3 id="kpiRendah" class="text-2xl font-extrabold text-emerald-600 mt-0.5">0</h3>
+                                <p class="text-xs text-emerald-500 mt-0.5">Normal</p>
                             </div>
-                            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs shadow-2xs">
+                            <div class="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-base shadow-2xs">
                                 <i class="fa-solid fa-circle-check"></i>
                             </div>
                         </div>
                     </div>
 
                     <!-- Quick Actions -->
-                    <div class="bg-white rounded-2xl p-3.5 border border-pink-100 shadow-2xs space-y-2">
-                        <h3 class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Akses Cepat</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="openBumilModal()" class="p-2.5 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold text-[11px] flex items-center justify-center gap-1.5 transition border border-pink-200">
-                                <i class="fa-solid fa-user-plus text-xs"></i>
+                    <div class="bg-white rounded-3xl p-4.5 border border-pink-100 shadow-2xs space-y-3">
+                        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Akses Cepat</h3>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button onclick="openBumilModal()" class="p-3.5 rounded-2xl bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold text-xs flex items-center justify-center gap-2 transition border border-pink-200">
+                                <i class="fa-solid fa-user-plus text-sm"></i>
                                 <span>Tambah Bumil</span>
                             </button>
-                            <button onclick="openSettingsModal()" class="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[11px] flex items-center justify-center gap-1.5 transition border border-slate-200">
-                                <i class="fa-solid fa-gear text-xs"></i>
+                            <button onclick="openSettingsModal()" class="p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition border border-slate-200">
+                                <i class="fa-solid fa-gear text-sm"></i>
                                 <span>Edit Dusun</span>
                             </button>
-                            <button onclick="switchTab('tab-kantong')" class="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[11px] flex items-center justify-center gap-1.5 transition border border-slate-200">
-                                <i class="fa-solid fa-suitcase-medical text-xs"></i>
+                            <button onclick="switchTab('tab-kantong')" class="p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition border border-slate-200">
+                                <i class="fa-solid fa-suitcase-medical text-sm"></i>
                                 <span>Kantong Persalinan</span>
                             </button>
-                            <button onclick="switchTab('tab-peta')" class="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[11px] flex items-center justify-center gap-1.5 transition border border-slate-200">
-                                <i class="fa-solid fa-map-location-dot text-xs"></i>
+                            <button onclick="switchTab('tab-peta')" class="p-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center gap-2 transition border border-slate-200">
+                                <i class="fa-solid fa-map-location-dot text-sm"></i>
                                 <span>Peta Sebaran</span>
                             </button>
                         </div>
                     </div>
 
                     <!-- Export & WA Rekap Actions -->
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="exportToExcel()" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] flex items-center justify-center gap-1.5 shadow-2xs transition">
-                            <i class="fa-solid fa-file-excel text-xs"></i>
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <button onclick="exportToExcel()" class="py-3 px-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-2xs transition">
+                            <i class="fa-solid fa-file-excel text-sm"></i>
                             <span>Export Excel</span>
                         </button>
-                        <button onclick="openWaSummaryModal()" class="py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-[11px] flex items-center justify-center gap-1.5 shadow-2xs transition">
-                            <i class="fa-brands fa-whatsapp text-xs"></i>
+                        <button onclick="openWaSummaryModal()" class="py-3 px-3.5 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-2xs transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
                             <span>Kirim WA</span>
                         </button>
                     </div>
 
                     <!-- Charts Section -->
-                    <div class="space-y-3.5">
+                    <div class="space-y-4">
                         <!-- HPL Bar Chart -->
-                        <div class="bg-white rounded-2xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5">
+                        <div class="bg-white rounded-3xl p-4.5 border border-pink-100 shadow-2xs space-y-3">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <h3 class="text-[11px] font-extrabold text-slate-900">Estimasi Persalinan (HPL)</h3>
-                                    <p class="text-[9px] text-slate-500">Distribusi bulanan risiko</p>
+                                    <h3 class="text-xs font-extrabold text-slate-900">Estimasi Persalinan (HPL)</h3>
+                                    <p class="text-xs text-slate-500">Distribusi bulanan risiko</p>
                                 </div>
-                                <div class="flex items-center gap-1 bg-pink-50 px-2 py-0.5 rounded-xl border border-pink-200">
-                                    <select id="hplChartYearSelect" onchange="renderDashboardCharts()" class="bg-transparent text-pink-600 text-[10px] font-extrabold focus:outline-none cursor-pointer">
+                                <div class="flex items-center gap-1 bg-pink-50 px-3 py-1 rounded-xl border border-pink-200">
+                                    <select id="hplChartYearSelect" onchange="renderDashboardCharts()" class="bg-transparent text-pink-600 text-xs font-extrabold focus:outline-none cursor-pointer">
                                     </select>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-1.5 text-[9px] font-semibold text-slate-600 bg-pink-50/50 p-1.5 rounded-xl border border-pink-100">
-                                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-rose-500 inline-block"></span> Risti</span>
-                                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block"></span> Sedang</span>
-                                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span> Rendah</span>
+                            <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-pink-50/50 p-2.5 rounded-xl border border-pink-100">
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span> Risti</span>
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Sedang</span>
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Rendah</span>
                             </div>
-                            <div id="hplChartContainer" class="h-40 flex items-end gap-1 pt-3 pb-1 border-b border-slate-100"></div>
+                            <div id="hplChartContainer" class="h-48 flex items-end gap-1.5 pt-4 pb-2 border-b border-slate-100"></div>
                         </div>
 
                         <!-- Dusun Donut Chart -->
-                        <div class="bg-slate-900 text-white rounded-2xl p-3.5 border border-slate-800 shadow-xl space-y-2.5">
+                        <div class="bg-slate-900 text-white rounded-3xl p-4.5 border border-slate-800 shadow-xl space-y-3">
                             <div class="flex items-center justify-between">
-                                <h3 class="text-[11px] font-extrabold text-white">Sebaran Dusun</h3>
-                                <div class="flex items-center gap-1 bg-slate-800 px-2 py-0.5 rounded-xl border border-slate-700">
-                                    <select id="dusunChartYearSelect" onchange="renderDashboardCharts()" class="bg-transparent text-pink-400 text-[10px] font-extrabold focus:outline-none cursor-pointer">
+                                <h3 class="text-xs font-extrabold text-white">Sebaran Dusun</h3>
+                                <div class="flex items-center gap-1 bg-slate-800 px-3 py-1 rounded-xl border border-slate-700">
+                                    <select id="dusunChartYearSelect" onchange="renderDashboardCharts()" class="bg-transparent text-pink-400 text-xs font-extrabold focus:outline-none cursor-pointer">
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="flex flex-col items-center justify-center space-y-3 py-1">
-                                <div id="dusunDonutContainer" class="w-32 h-32 rounded-full flex items-center justify-center relative shadow-inner" style="background: conic-gradient(#ec4899 0deg 360deg);">
-                                    <div class="w-20 h-20 bg-slate-900 rounded-full flex flex-col items-center justify-center text-center shadow-lg">
-                                        <span id="donutTotalCount" class="text-lg font-extrabold text-white">0</span>
-                                        <span class="text-[8px] font-bold text-slate-400 uppercase tracking-wider">Total</span>
+                            <div class="flex flex-col items-center justify-center space-y-4 py-2">
+                                <div id="dusunDonutContainer" class="w-36 h-36 rounded-full flex items-center justify-center relative shadow-inner" style="background: conic-gradient(#ec4899 0deg 360deg);">
+                                    <div class="w-22 h-22 bg-slate-900 rounded-full flex flex-col items-center justify-center text-center shadow-lg">
+                                        <span id="donutTotalCount" class="text-2xl font-extrabold text-white">0</span>
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total</span>
                                     </div>
                                 </div>
                             </div>
-                            <div id="dusunSideLegend" class="space-y-1 max-h-36 overflow-y-auto custom-scrollbar pr-1"></div>
+                            <div id="dusunSideLegend" class="space-y-2 max-h-40 overflow-y-auto custom-scrollbar pr-1"></div>
                         </div>
                     </div>
                 </div>
@@ -307,58 +307,58 @@
                 <!-- ========================================== -->
                 <!-- TAB 2: KANTONG PERSALINAN (12 BULAN GRID)  -->
                 <!-- ========================================== -->
-                <div id="tab-kantong" class="tab-content hidden space-y-3.5">
-                    <div class="bg-white rounded-2xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5">
+                <div id="tab-kantong" class="tab-content hidden space-y-4">
+                    <div class="bg-white rounded-3xl p-4.5 border border-pink-100 shadow-2xs space-y-3">
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-1 bg-pink-50 px-2.5 py-1 rounded-xl border border-pink-200">
-                                <i class="fa-solid fa-calendar-days text-pink-600 text-xs"></i>
-                                <select id="kantongYearSelect" onchange="renderKantongPersalinan()" class="bg-transparent text-pink-600 text-[11px] font-extrabold focus:outline-none cursor-pointer">
+                            <div class="flex items-center gap-1.5 bg-pink-50 px-3 py-1.5 rounded-xl border border-pink-200">
+                                <i class="fa-solid fa-calendar-days text-pink-600 text-sm"></i>
+                                <select id="kantongYearSelect" onchange="renderKantongPersalinan()" class="bg-transparent text-pink-600 text-xs font-extrabold focus:outline-none cursor-pointer">
                                 </select>
                             </div>
                             <div class="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl border border-slate-200">
-                                <button onclick="setKantongView('tile')" id="btnViewTile" class="px-2.5 py-1 rounded-lg text-[9px] font-bold bg-pink-600 text-white shadow-xs transition">Tile</button>
-                                <button onclick="setKantongView('table')" id="btnViewTable" class="px-2.5 py-1 rounded-lg text-[9px] font-bold text-slate-600 hover:text-slate-900 transition">List</button>
+                                <button onclick="setKantongView('tile')" id="btnViewTile" class="px-3 py-1 rounded-xl text-xs font-bold bg-pink-600 text-white shadow-xs transition">Tile</button>
+                                <button onclick="setKantongView('table')" id="btnViewTable" class="px-3 py-1 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition">List</button>
                             </div>
                         </div>
 
                         <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                                <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                                <i class="fa-solid fa-magnifying-glass text-sm"></i>
                             </span>
                             <input type="text" id="kantongSearchInput" oninput="renderKantongPersalinan()" placeholder="Cari nama ibu / suami..." 
-                                class="w-full pl-9 pr-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[11px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
+                                class="w-full pl-10 pr-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
                         </div>
                     </div>
 
-                    <div id="kantongMonthsGrid" class="space-y-2.5"></div>
+                    <div id="kantongMonthsGrid" class="space-y-3"></div>
                 </div>
 
                 <!-- ========================================== -->
                 <!-- TAB 3: DATA BUMIL                          -->
                 <!-- ========================================== -->
-                <div id="tab-bumil" class="tab-content hidden space-y-3.5">
-                    <div class="bg-white rounded-2xl p-3.5 border border-pink-100 shadow-2xs flex items-center justify-between">
+                <div id="tab-bumil" class="tab-content hidden space-y-4">
+                    <div class="bg-white rounded-3xl p-4.5 border border-pink-100 shadow-2xs flex items-center justify-between">
                         <div>
                             <h2 class="text-xs font-extrabold text-slate-900">Data Ibu Hamil</h2>
-                            <p class="text-[9px] text-slate-500">Kelola daftar pemeriksaan</p>
+                            <p class="text-xs text-slate-500">Kelola daftar pemeriksaan</p>
                         </div>
-                        <button onclick="openBumilModal()" class="px-3 py-1.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-[10px] rounded-xl shadow-md transition flex items-center gap-1">
-                            <i class="fa-solid fa-user-plus text-xs"></i>
+                        <button onclick="openBumilModal()" class="px-4 py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs rounded-2xl shadow-md transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-user-plus text-sm"></i>
                             <span>Tambah</span>
                         </button>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-pink-100 shadow-2xs overflow-hidden">
+                    <div class="bg-white rounded-3xl border border-pink-100 shadow-2xs overflow-hidden">
                         <div class="overflow-x-auto custom-scrollbar">
                             <table class="w-full text-left border-collapse">
                                 <thead>
-                                    <tr class="bg-pink-50/50 border-b border-pink-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
-                                        <th class="p-2.5">Identitas & Risiko</th>
-                                        <th class="p-2.5">HPL</th>
-                                        <th class="p-2.5 text-center">Aksi</th>
+                                    <tr class="bg-pink-50/50 border-b border-pink-100 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                        <th class="p-3.5">Identitas & Risiko</th>
+                                        <th class="p-3.5">HPL</th>
+                                        <th class="p-3.5 text-center">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody id="bumilTableBody" class="divide-y divide-slate-100 text-[11px]"></tbody>
+                                <tbody id="bumilTableBody" class="divide-y divide-slate-100 text-xs"></tbody>
                             </table>
                         </div>
                     </div>
@@ -367,35 +367,35 @@
                 <!-- ========================================== -->
                 <!-- TAB 4: PETA SEBARAN RISTI                  -->
                 <!-- ========================================== -->
-                <div id="tab-peta" class="tab-content hidden space-y-3.5">
-                    <div class="bg-white rounded-2xl p-3.5 border border-pink-100 shadow-2xs flex items-center justify-between">
+                <div id="tab-peta" class="tab-content hidden space-y-4">
+                    <div class="bg-white rounded-3xl p-4.5 border border-pink-100 shadow-2xs flex items-center justify-between">
                         <div>
                             <h2 class="text-xs font-extrabold text-slate-900">Peta Sebaran Risti</h2>
-                            <p class="text-[9px] text-slate-500">Pemetaan geografis dusun</p>
+                            <p class="text-xs text-slate-500">Pemetaan geografis dusun</p>
                         </div>
-                        <button onclick="resetLeafletMapView()" class="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10px] flex items-center gap-1 transition">
-                            <i class="fa-solid fa-crosshairs text-xs"></i>
+                        <button onclick="resetLeafletMapView()" class="px-4 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-crosshairs text-sm"></i>
                             <span>Reset</span>
                         </button>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-pink-100 shadow-2xs overflow-hidden flex flex-col h-[320px]">
+                    <div class="bg-white rounded-3xl border border-pink-100 shadow-2xs overflow-hidden flex flex-col h-[380px]">
                         <div id="leafletMap" class="w-full h-full z-10"></div>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5">
-                        <div class="flex items-center justify-between pb-1.5 border-b border-slate-100">
+                    <div class="bg-white rounded-3xl p-4.5 border border-pink-100 shadow-2xs space-y-3">
+                        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
                             <div>
-                                <h3 class="text-[11px] font-extrabold text-slate-900">Rekap Dusun</h3>
-                                <p class="text-[9px] text-slate-500">Distribusi per wilayah</p>
+                                <h3 class="text-xs font-extrabold text-slate-900">Rekap Dusun</h3>
+                                <p class="text-xs text-slate-500">Distribusi per wilayah</p>
                             </div>
                             <div class="flex items-center gap-1 bg-pink-50 p-0.5 rounded-xl border border-pink-100">
-                                <button onclick="setMapSummaryMode('tile')" id="mapModeTile" class="px-2 py-0.5 rounded-lg text-[9px] font-bold bg-pink-600 text-white shadow-xs transition">Tile</button>
-                                <button onclick="setMapSummaryMode('list')" id="mapModeList" class="px-2 py-0.5 rounded-lg text-[9px] font-bold text-slate-600 hover:text-slate-900 transition">List</button>
+                                <button onclick="setMapSummaryMode('tile')" id="mapModeTile" class="px-3 py-1 rounded-xl text-xs font-bold bg-pink-600 text-white shadow-xs transition">Tile</button>
+                                <button onclick="setMapSummaryMode('list')" id="mapModeList" class="px-3 py-1 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition">List</button>
                             </div>
                         </div>
 
-                        <div id="mapSummaryContainer" class="max-h-40 overflow-y-auto custom-scrollbar space-y-1.5 pr-1"></div>
+                        <div id="mapSummaryContainer" class="max-h-48 overflow-y-auto custom-scrollbar space-y-2 pr-1"></div>
                     </div>
                 </div>
 
@@ -404,22 +404,22 @@
             <!-- ========================================== -->
             <!-- FIXED BOTTOM NAVIGATION BAR                -->
             <!-- ========================================== -->
-            <nav id="bottomNavBar" class="absolute bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-pink-100 shadow-lg px-2 py-1.5">
+            <nav id="bottomNavBar" class="absolute bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-pink-100 shadow-lg px-2 py-2">
                 <div class="flex items-center justify-around">
-                    <button onclick="switchTab('tab-dashboard')" id="nav-dashboard" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold active">
-                        <i class="fa-solid fa-chart-pie text-sm"></i>
+                    <button onclick="switchTab('tab-dashboard')" id="nav-dashboard" class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-pink-600 transition p-1 text-xs font-semibold active">
+                        <i class="fa-solid fa-chart-pie text-lg"></i>
                         <span>Beranda</span>
                     </button>
-                    <button onclick="switchTab('tab-kantong')" id="nav-kantong" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold">
-                        <i class="fa-solid fa-suitcase-medical text-sm"></i>
+                    <button onclick="switchTab('tab-kantong')" id="nav-kantong" class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-pink-600 transition p-1 text-xs font-semibold">
+                        <i class="fa-solid fa-suitcase-medical text-lg"></i>
                         <span>Kantong</span>
                     </button>
-                    <button onclick="switchTab('tab-bumil')" id="nav-bumil" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold">
-                        <i class="fa-solid fa-person-pregnant text-sm"></i>
+                    <button onclick="switchTab('tab-bumil')" id="nav-bumil" class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-pink-600 transition p-1 text-xs font-semibold">
+                        <i class="fa-solid fa-person-pregnant text-lg"></i>
                         <span>Bumil</span>
                     </button>
-                    <button onclick="switchTab('tab-peta')" id="nav-peta" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold">
-                        <i class="fa-solid fa-map-location-dot text-sm"></i>
+                    <button onclick="switchTab('tab-peta')" id="nav-peta" class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-pink-600 transition p-1 text-xs font-semibold">
+                        <i class="fa-solid fa-map-location-dot text-lg"></i>
                         <span>Peta</span>
                     </button>
                 </div>
@@ -431,378 +431,404 @@
         <!-- ========================================== -->
 
         <!-- Modal Pengaturan -->
-        <div id="settingsModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-3.5 overflow-y-auto">
+        <div id="settingsModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4 overflow-y-auto">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-pink-100 my-auto">
-                <div class="px-4 py-3.5 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
                     <div>
-                        <h3 class="text-xs font-extrabold text-slate-900">Pengaturan</h3>
-                        <p class="text-[9px] text-slate-500">Kelola akun dan wilayah</p>
+                        <h3 class="text-sm font-extrabold text-slate-900">Pengaturan</h3>
+                        <p class="text-xs text-slate-500">Kelola akun dan wilayah</p>
                     </div>
-                    <button onclick="closeSettingsModal()" class="w-7 h-7 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
-                        <i class="fa-solid fa-xmark text-xs"></i>
+                    <button onclick="closeSettingsModal()" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
+                        <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
                 
-                <div class="p-4 space-y-3.5 max-h-[65vh] overflow-y-auto custom-scrollbar">
-                    <div class="space-y-1">
-                        <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider px-1">Akun & Wilayah</p>
+                <div class="p-5 space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar">
+                    <div class="space-y-1.5">
+                        <p class="text-xs font-extrabold text-slate-400 uppercase tracking-wider px-1">Akun & Wilayah</p>
                         <div class="bg-white rounded-2xl border border-pink-100 shadow-2xs divide-y divide-slate-100">
-                            <button onclick="openSubSettingsModal('profile')" class="w-full px-3 py-2.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-6 h-6 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-user-gear"></i></div>
+                            <button onclick="openSubSettingsModal('profile')" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center text-sm"><i class="fa-solid fa-user-gear"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-slate-900">Profil Petugas</p>
-                                        <p class="text-[8px] text-slate-500">Nama & sandi</p>
+                                        <p class="text-xs font-extrabold text-slate-900">Profil Petugas</p>
+                                        <p class="text-xs text-slate-500">Nama & sandi</p>
                                     </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right text-[9px] text-slate-400"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
                             </button>
-                            <button onclick="openSubSettingsModal('village')" class="w-full px-3 py-2.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-6 h-6 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-landmark"></i></div>
+                            <button onclick="openSubSettingsModal('village')" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center text-sm"><i class="fa-solid fa-landmark"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-slate-900">Nama Desa</p>
-                                        <p class="text-[8px] text-slate-500">Wilayah kerja</p>
+                                        <p class="text-xs font-extrabold text-slate-900">Nama Desa</p>
+                                        <p class="text-xs text-slate-500">Wilayah kerja</p>
                                     </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right text-[9px] text-slate-400"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
                             </button>
-                            <button onclick="openSubSettingsModal('pustu')" class="w-full px-3 py-2.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-6 h-6 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-house-medical"></i></div>
+                            <button onclick="openSubSettingsModal('pustu')" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center text-sm"><i class="fa-solid fa-house-medical"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-slate-900">Poskesdes / Pustu</p>
-                                        <p class="text-[8px] text-slate-500">Titik koordinat</p>
+                                        <p class="text-xs font-extrabold text-slate-900">Poskesdes / Pustu</p>
+                                        <p class="text-xs text-slate-500">Titik koordinat</p>
                                     </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right text-[9px] text-slate-400"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
                             </button>
-                            <button onclick="openSubSettingsModal('dusun')" class="w-full px-3 py-2.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-6 h-6 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-map-pin"></i></div>
+                            <button onclick="openSubSettingsModal('dusun')" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center text-sm"><i class="fa-solid fa-map-pin"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-slate-900">Kelola Dusun</p>
-                                        <p class="text-[8px] text-slate-500">Tambah/edit dusun</p>
+                                        <p class="text-xs font-extrabold text-slate-900">Kelola Dusun</p>
+                                        <p class="text-xs text-slate-500">Tambah/edit dusun</p>
                                     </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right text-[9px] text-slate-400"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
                             </button>
                         </div>
                     </div>
 
-                    <div class="space-y-1">
-                        <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-wider px-1">Cadangan Data</p>
+                    <div class="space-y-1.5">
+                        <p class="text-xs font-extrabold text-slate-400 uppercase tracking-wider px-1">Cadangan Data</p>
                         <div class="bg-white rounded-2xl border border-pink-100 shadow-2xs divide-y divide-slate-100">
-                            <button onclick="exportDataBackup()" class="w-full px-3 py-2.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-download"></i></div>
+                            <button onclick="exportDataBackup()" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-pink-50/50 transition text-left">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm"><i class="fa-solid fa-download"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-slate-900">Export Backup (JSON)</p>
-                                        <p class="text-[8px] text-slate-500">Simpan salinan data</p>
+                                        <p class="text-xs font-extrabold text-slate-900">Export Backup (JSON)</p>
+                                        <p class="text-xs text-slate-500">Simpan salinan data</p>
                                     </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right text-[9px] text-slate-400"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
                             </button>
-                            <label class="w-full px-3 py-2.5 flex items-center justify-between hover:bg-pink-50/50 transition cursor-pointer text-left">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-6 h-6 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-upload"></i></div>
+                            <label class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-pink-50/50 transition cursor-pointer text-left">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-sm"><i class="fa-solid fa-upload"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-slate-900">Import / Restore</p>
-                                        <p class="text-[8px] text-slate-500">Pulihkan data</p>
+                                        <p class="text-xs font-extrabold text-slate-900">Import / Restore</p>
+                                        <p class="text-xs text-slate-500">Pulihkan data</p>
                                     </div>
                                 </div>
                                 <input type="file" accept=".json" onchange="importDataBackup(event)" class="hidden">
-                                <i class="fa-solid fa-chevron-right text-[9px] text-slate-400"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
                             </label>
-                            <button onclick="resetAllAppData()" class="w-full px-3 py-2.5 flex items-center justify-between hover:bg-rose-50/50 transition text-left">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-6 h-6 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-trash-can"></i></div>
+                            <button onclick="openResetConfirmModal()" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-rose-50/50 transition text-left">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-sm"><i class="fa-solid fa-trash-can"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-rose-600">Reset Semua Data)</p>
-                                        <p class="text-[8px] text-slate-500">Kosongkan seluruh data bumil</p>
+                                        <p class="text-xs font-extrabold text-rose-600">Reset Semua Data</p>
+                                        <p class="text-xs text-slate-500">Kosongkan seluruh data</p>
                                     </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right text-[9px] text-slate-400"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
                             </button>
                         </div>
                     </div>
 
                     <!-- Logout Option Section -->
-                    <div class="space-y-1 pt-1">
+                    <div class="space-y-1.5 pt-1">
                         <div class="bg-white rounded-2xl border border-rose-100 shadow-2xs overflow-hidden">
-                            <button onclick="closeSettingsModal(); handleLogout();" class="w-full px-3 py-2.5 flex items-center justify-between hover:bg-rose-50/50 transition text-left">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-6 h-6 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-right-from-bracket"></i></div>
+                            <button onclick="closeSettingsModal(); handleLogout();" class="w-full px-4 py-3.5 flex items-center justify-between hover:bg-rose-50/50 transition text-left">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-sm"><i class="fa-solid fa-right-from-bracket"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-rose-600">Keluar Akun (Logout)</p>
-                                        <p class="text-[8px] text-slate-500">Kembali ke halaman login</p>
+                                        <p class="text-xs font-extrabold text-rose-600">Keluar Akun (Logout)</p>
+                                        <p class="text-xs text-slate-500">Kembali ke halaman login</p>
                                     </div>
                                 </div>
-                                <i class="fa-solid fa-chevron-right text-[9px] text-slate-400"></i>
+                                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="px-4 py-3 bg-pink-50/50 border-t border-pink-100 flex items-center justify-end">
-                    <button type="button" onclick="closeSettingsModal()" class="px-4 py-1.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-[11px] shadow-md transition">Tutup</button>
+                <div class="px-5 py-3.5 bg-pink-50/50 border-t border-pink-100 flex items-center justify-end">
+                    <button type="button" onclick="closeSettingsModal()" class="px-5 py-2 rounded-2xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-md transition">Tutup</button>
                 </div>
             </div>
         </div>
 
         <!-- SUB-MODAL PROFILE -->
-        <div id="subModalProfile" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-3.5">
+        <div id="subModalProfile" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-pink-100">
-                <div class="px-4 py-3 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
-                    <h3 class="text-xs font-extrabold text-slate-900">Profil Petugas</h3>
-                    <button onclick="closeSubSettingsModal('profile')" class="w-6 h-6 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition">
-                        <i class="fa-solid fa-xmark text-xs"></i>
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                    <h3 class="text-sm font-extrabold text-slate-900">Profil Petugas</h3>
+                    <button onclick="closeSubSettingsModal('profile')" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
-                <div class="p-4 space-y-2.5 max-h-[65vh] overflow-y-auto custom-scrollbar">
+                <div class="p-5 space-y-3.5 max-h-[70vh] overflow-y-auto custom-scrollbar">
                     <div class="flex items-center gap-3">
-                        <div id="subSettingsModalAvatar" class="w-12 h-12 rounded-full bg-pink-600 text-white font-extrabold text-sm flex items-center justify-center shadow-md overflow-hidden flex-shrink-0">
-                            IS
+                        <div id="subSettingsModalAvatar" class="w-14 h-14 rounded-full bg-pink-600 text-white font-extrabold text-base flex items-center justify-center shadow-md overflow-hidden flex-shrink-0">
+                            BD
                         </div>
                         <div>
-                            <label class="cursor-pointer inline-block px-2.5 py-1 bg-pink-100 hover:bg-pink-200 text-pink-700 text-[10px] font-bold rounded-xl transition">
+                            <label class="cursor-pointer inline-block px-3 py-1.5 bg-pink-100 hover:bg-pink-200 text-pink-700 text-xs font-bold rounded-2xl transition">
                                 <i class="fa-solid fa-camera mr-1"></i> Foto
                                 <input type="file" id="subSettingsAvatarFile" accept="image/*" onchange="handleSettingsAvatarUpload(event)" class="hidden">
                             </label>
-                            <p class="text-[8px] text-slate-500 mt-0.5">Max 2MB</p>
+                            <p class="text-xs text-slate-500 mt-1">Max 2MB</p>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Nama Petugas</label>
-                        <input type="text" id="settingUserNameInput" class="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Nama Petugas</label>
+                        <input type="text" id="settingUserNameInput" placeholder="Contoh: Bidan Ani" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Username</label>
-                        <input type="text" id="settingUserUsernameInput" class="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Username</label>
+                        <input type="text" id="settingUserUsernameInput" placeholder="admin" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Kata Sandi</label>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Kata Sandi</label>
                         <div class="relative">
-                            <input type="password" id="settingUserPasswordInput" class="w-full px-3 pr-8 py-1.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
-                            <button type="button" onclick="togglePasswordVisibility('settingUserPasswordInput', 'toggleSettingPassIcon')" class="absolute inset-y-0 right-0 pr-2.5 flex items-center text-slate-400 hover:text-slate-600 transition">
-                                <i id="toggleSettingPassIcon" class="fa-solid fa-eye text-xs"></i>
+                            <input type="password" id="settingUserPasswordInput" placeholder="123456" class="w-full px-3.5 pr-10 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
+                            <button type="button" onclick="togglePasswordVisibility('settingUserPasswordInput', 'toggleSettingPassIcon')" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 transition">
+                                <i id="toggleSettingPassIcon" class="fa-solid fa-eye text-sm"></i>
                             </button>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">PIN Pemulihan</label>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">PIN Pemulihan</label>
                         <div class="relative">
-                            <input type="password" id="settingSecurityPinInput" value="9999" maxlength="6" class="w-full px-3 pr-8 py-1.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
-                            <button type="button" onclick="togglePasswordVisibility('settingSecurityPinInput', 'toggleSettingPinIcon')" class="absolute inset-y-0 right-0 pr-2.5 flex items-center text-slate-400 hover:text-slate-600 transition">
-                                <i id="toggleSettingPinIcon" class="fa-solid fa-eye text-xs"></i>
+                            <input type="password" id="settingSecurityPinInput" placeholder="9999" maxlength="6" class="w-full px-3.5 pr-10 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
+                            <button type="button" onclick="togglePasswordVisibility('settingSecurityPinInput', 'toggleSettingPinIcon')" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 transition">
+                                <i id="toggleSettingPinIcon" class="fa-solid fa-eye text-sm"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="flex justify-end gap-2 pt-1.5">
-                        <button onclick="closeSubSettingsModal('profile')" class="px-3 py-1.5 bg-slate-200 text-slate-700 font-bold text-[10px] rounded-xl">Batal</button>
-                        <button onclick="saveVillageSettings()" class="px-3.5 py-1.5 bg-pink-600 text-white font-bold text-[10px] rounded-xl shadow-md">Simpan</button>
+                    <div class="flex justify-end gap-2 pt-2">
+                        <button onclick="closeSubSettingsModal('profile')" class="px-4 py-2 bg-slate-200 text-slate-700 font-bold text-xs rounded-2xl">Batal</button>
+                        <button onclick="saveVillageSettings()" class="px-4.5 py-2 bg-pink-600 text-white font-bold text-xs rounded-2xl shadow-md">Simpan</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- SUB-MODAL VILLAGE -->
-        <div id="subModalVillage" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-3.5">
+        <div id="subModalVillage" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-pink-100">
-                <div class="px-4 py-3 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
-                    <h3 class="text-xs font-extrabold text-slate-900">Nama Desa Utama</h3>
-                    <button onclick="closeSubSettingsModal('village')" class="w-6 h-6 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition">
-                        <i class="fa-solid fa-xmark text-xs"></i>
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                    <h3 class="text-sm font-extrabold text-slate-900">Nama Desa Utama</h3>
+                    <button onclick="closeSubSettingsModal('village')" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
-                <div class="p-4 space-y-2.5">
+                <div class="p-5 space-y-3.5">
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Nama Desa</label>
-                        <input type="text" id="settingVillageNameInput" class="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Nama Desa</label>
+                        <input type="text" id="settingVillageNameInput" placeholder="Contoh: Desa Botolinggo" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                     </div>
-                    <div class="flex justify-end gap-2 pt-1.5">
-                        <button onclick="closeSubSettingsModal('village')" class="px-3 py-1.5 bg-slate-200 text-slate-700 font-bold text-[10px] rounded-xl">Batal</button>
-                        <button onclick="saveVillageSettings()" class="px-3.5 py-1.5 bg-pink-600 text-white font-bold text-[10px] rounded-xl shadow-md">Simpan</button>
+                    <div class="flex justify-end gap-2 pt-2">
+                        <button onclick="closeSubSettingsModal('village')" class="px-4 py-2 bg-slate-200 text-slate-700 font-bold text-xs rounded-2xl">Batal</button>
+                        <button onclick="saveVillageSettings()" class="px-4.5 py-2 bg-pink-600 text-white font-bold text-xs rounded-2xl shadow-md">Simpan</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- SUB-MODAL PUSTU -->
-        <div id="subModalPustu" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-3.5">
+        <div id="subModalPustu" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-pink-100">
-                <div class="px-4 py-3 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
-                    <h3 class="text-xs font-extrabold text-slate-900">Poskesdes / Pustu Utama</h3>
-                    <button onclick="closeSubSettingsModal('pustu')" class="w-6 h-6 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition">
-                        <i class="fa-solid fa-xmark text-xs"></i>
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                    <h3 class="text-sm font-extrabold text-slate-900">Poskesdes / Pustu Utama</h3>
+                    <button onclick="closeSubSettingsModal('pustu')" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
-                <div class="p-4 space-y-2.5">
+                <div class="p-5 space-y-3.5">
                     <div class="flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-slate-600">Koordinat</span>
-                        <button type="button" onclick="openLocationPickerForPustu()" class="px-2 py-0.5 bg-pink-100 text-pink-700 text-[9px] font-bold rounded-lg"><i class="fa-solid fa-map-pin mr-1"></i> Pilih Peta</button>
+                        <span class="text-xs font-bold text-slate-600">Koordinat</span>
+                        <button type="button" onclick="openLocationPickerForPustu()" class="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-bold rounded-xl"><i class="fa-solid fa-map-pin mr-1"></i> Pilih Peta</button>
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Nama Ponkesdes</label>
-                        <input type="text" id="settingPustuNameInput" class="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Nama Ponkesdes</label>
+                        <input type="text" id="settingPustuNameInput" placeholder="Contoh: PONKESDES Botolinggo" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                     </div>
-                    <div class="grid grid-cols-2 gap-2">
+                    <div class="grid grid-cols-2 gap-2.5">
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">Latitude</label>
-                            <input type="number" step="any" id="settingPustuLatInput" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <label class="block text-xs font-bold text-slate-600 mb-1">Latitude</label>
+                            <input type="number" step="any" id="settingPustuLatInput" placeholder="-7.830602" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                         </div>
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">Longitude</label>
-                            <input type="number" step="any" id="settingPustuLngInput" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <label class="block text-xs font-bold text-slate-600 mb-1">Longitude</label>
+                            <input type="number" step="any" id="settingPustuLngInput" placeholder="113.977607" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                         </div>
                     </div>
-                    <div class="flex justify-end gap-2 pt-1.5">
-                        <button onclick="closeSubSettingsModal('pustu')" class="px-3 py-1.5 bg-slate-200 text-slate-700 font-bold text-[10px] rounded-xl">Batal</button>
-                        <button onclick="saveVillageSettings()" class="px-3.5 py-1.5 bg-pink-600 text-white font-bold text-[10px] rounded-xl shadow-md">Simpan</button>
+                    <div class="flex justify-end gap-2 pt-2">
+                        <button onclick="closeSubSettingsModal('pustu')" class="px-4 py-2 bg-slate-200 text-slate-700 font-bold text-xs rounded-2xl">Batal</button>
+                        <button onclick="saveVillageSettings()" class="px-4.5 py-2 bg-pink-600 text-white font-bold text-xs rounded-2xl shadow-md">Simpan</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- SUB-MODAL DUSUN -->
-        <div id="subModalDusun" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-3.5">
+        <div id="subModalDusun" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-pink-100">
-                <div class="px-4 py-3 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
                     <div>
-                        <h3 class="text-xs font-extrabold text-slate-900">Kelola Daftar Dusun</h3>
+                        <h3 class="text-sm font-extrabold text-slate-900">Kelola Daftar Dusun</h3>
                     </div>
-                    <button onclick="closeSubSettingsModal('dusun')" class="w-6 h-6 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition">
-                        <i class="fa-solid fa-xmark text-xs"></i>
+                    <button onclick="closeSubSettingsModal('dusun')" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
-                <div class="p-4 space-y-2.5">
+                <div class="p-5 space-y-3.5">
                     <div class="flex justify-between items-center">
-                        <span class="text-[10px] font-bold text-slate-600">Daftar Dusun</span>
-                        <button type="button" onclick="openDusunModal()" class="px-2.5 py-1 bg-pink-600 text-white font-bold text-[10px] rounded-xl shadow-xs"><i class="fa-solid fa-plus mr-1"></i> Tambah</button>
+                        <span class="text-xs font-bold text-slate-600">Daftar Dusun</span>
+                        <button type="button" onclick="openDusunModal()" class="px-3.5 py-1.5 bg-pink-600 text-white font-bold text-xs rounded-2xl shadow-xs"><i class="fa-solid fa-plus mr-1"></i> Tambah</button>
                     </div>
-                    <div id="dusunSettingsListContainer" class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1"></div>
+                    <div id="dusunSettingsListContainer" class="space-y-2 max-h-56 overflow-y-auto custom-scrollbar pr-1"></div>
                     <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
-                        <button onclick="closeSubSettingsModal('dusun')" class="px-3.5 py-1.5 bg-pink-600 text-white font-bold text-[10px] rounded-xl shadow-md">Selesai</button>
+                        <button onclick="closeSubSettingsModal('dusun')" class="px-4.5 py-2 bg-pink-600 text-white font-bold text-xs rounded-2xl shadow-md">Selesai</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal Tambah/Edit Dusun -->
-        <div id="dusunModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-3.5">
+        <div id="dusunModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-pink-100">
-                <div class="px-4 py-3.5 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
-                    <h3 id="dusunModalTitle" class="text-xs font-extrabold text-slate-900">Tambah Dusun Baru</h3>
-                    <button onclick="closeDusunModal()" class="w-7 h-7 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
-                        <i class="fa-solid fa-xmark text-xs"></i>
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                    <h3 id="dusunModalTitle" class="text-sm font-extrabold text-slate-900">Tambah Dusun Baru</h3>
+                    <button onclick="closeDusunModal()" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
+                        <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
-                <form id="dusunForm" onsubmit="saveDusunData(event)" class="p-4 space-y-2.5">
+                <form id="dusunForm" onsubmit="saveDusunData(event)" class="p-5 space-y-3.5">
                     <input type="hidden" id="dusunOriginalName">
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Nama Dusun</label>
-                        <input type="text" id="dusunModalNameInput" required placeholder="Contoh: Krajan" class="w-full px-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Nama Dusun</label>
+                        <input type="text" id="dusunModalNameInput" required placeholder="Contoh: Krajan" class="w-full px-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
                     </div>
-                    <div class="grid grid-cols-2 gap-2">
+                    <div class="grid grid-cols-2 gap-2.5">
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">Latitude</label>
-                            <input type="number" step="any" id="dusunModalLatInput" required placeholder="-7.83" class="w-full px-2.5 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <label class="block text-xs font-bold text-slate-600 mb-1">Latitude</label>
+                            <input type="number" step="any" id="dusunModalLatInput" required placeholder="-7.83" class="w-full px-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                         </div>
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">Longitude</label>
-                            <input type="number" step="any" id="dusunModalLngInput" required placeholder="113.97" class="w-full px-2.5 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <label class="block text-xs font-bold text-slate-600 mb-1">Longitude</label>
+                            <input type="number" step="any" id="dusunModalLngInput" required placeholder="113.97" class="w-full px-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                         </div>
                     </div>
                     <div>
-                        <button type="button" onclick="openLocationPickerForDusunModal()" class="w-full py-1.5 bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold text-[10px] rounded-xl border border-pink-200 transition flex items-center justify-center gap-1.5">
+                        <button type="button" onclick="openLocationPickerForDusunModal()" class="w-full py-2.5 bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold text-xs rounded-2xl border border-pink-200 transition flex items-center justify-center gap-2">
                             <i class="fa-solid fa-map-pin"></i> Pilih di Peta
                         </button>
                     </div>
-                    <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
-                        <button type="button" onclick="closeDusunModal()" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10px] transition">Batal</button>
-                        <button type="submit" class="px-3.5 py-1.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-[10px] shadow-md transition">Simpan</button>
+                    <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+                        <button type="button" onclick="closeDusunModal()" class="px-4 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition">Batal</button>
+                        <button type="submit" class="px-4 py-2 rounded-2xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-md transition">Simpan</button>
                     </div>
                 </form>
             </div>
         </div>
 
         <!-- Modal Forgot Password -->
-        <div id="forgotPasswordModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-3.5">
-            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-4 space-y-2.5 border border-pink-100">
-                <div class="w-10 h-10 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center mx-auto text-sm shadow-inner">
+        <div id="forgotPasswordModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-5 space-y-3.5 border border-pink-100">
+                <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center mx-auto text-lg shadow-inner">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
-                <h3 class="text-xs font-extrabold text-slate-900 text-center">Pemulihan Kata Sandi</h3>
-                <p class="text-[10px] text-slate-500 text-center leading-relaxed">Masukkan <strong class="text-slate-800">PIN Keamanan</strong> (Default: <code>9999</code>) untuk reset sandi ke <code>123456</code>.</p>
+                <h3 class="text-sm font-extrabold text-slate-900 text-center">Pemulihan Kata Sandi</h3>
+                <p class="text-xs text-slate-500 text-center leading-relaxed">Masukkan <strong class="text-slate-800">PIN Keamanan</strong> (Default: <code>9999</code>) untuk reset sandi ke <code>123456</code>.</p>
                 <div class="relative">
-                    <input type="password" id="forgotPinInput" placeholder="Masukkan PIN" maxlength="6" class="w-full px-3 pr-8 py-2 bg-pink-50/50 border border-slate-200 rounded-xl text-center text-slate-800 text-xs font-bold tracking-widest focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <input type="password" id="forgotPinInput" placeholder="Masukkan PIN" maxlength="6" class="w-full px-3.5 pr-10 py-3 bg-pink-50/50 border border-slate-200 rounded-2xl text-center text-slate-800 text-xs font-bold tracking-widest focus:outline-none focus:ring-2 focus:ring-pink-500">
                 </div>
-                <div class="flex gap-2 pt-1">
-                    <button type="button" onclick="closeForgotPasswordModal()" class="flex-1 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10px] rounded-xl transition">Batal</button>
-                    <button type="button" onclick="verifyAndResetPassword()" class="flex-1 py-1.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-[10px] rounded-xl shadow-md transition">Reset</button>
+                <div class="flex gap-2.5 pt-1">
+                    <button type="button" onclick="closeForgotPasswordModal()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-2xl transition">Batal</button>
+                    <button type="button" onclick="verifyAndResetPassword()" class="flex-1 py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs rounded-2xl shadow-md transition">Reset</button>
                 </div>
             </div>
         </div>
 
-        <!-- Location Picker Modal -->
-        <div id="locationPickerModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex items-center justify-center p-3.5">
+        <!-- Modal Konfirmasi Reset Semua Data -->
+        <div id="resetConfirmModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-6 space-y-4 border border-rose-100">
+                <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto text-lg shadow-inner">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 class="text-sm font-extrabold text-slate-900 text-center">Peringatan Reset Data!</h3>
+                <p class="text-xs text-slate-600 text-center leading-relaxed">Tindakan ini akan menghapus seluruh data ibu hamil dan mengosongkan pengaturan desa. Silakan ketik kata <strong class="text-rose-600">RESET</strong> di bawah ini untuk konfirmasi:</p>
+                <div>
+                    <input type="text" id="resetConfirmInput" placeholder="Ketik RESET" class="w-full px-4 py-2.5 bg-rose-50/50 border border-rose-200 rounded-2xl text-center text-rose-600 font-bold text-xs tracking-wider focus:outline-none focus:ring-2 focus:ring-rose-500">
+                </div>
+                <div class="flex gap-2.5 pt-1">
+                    <button type="button" onclick="closeResetConfirmModal()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-2xl transition">Batal</button>
+                    <button type="button" onclick="executeResetAllAppData()" class="flex-1 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-2xl shadow-md transition">Ya, Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Picker Modal with Search Feature -->
+        <div id="locationPickerModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-pink-100">
-                <div class="px-4 py-3 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
                     <div>
-                        <h3 class="text-xs font-extrabold text-slate-900">Pilih Lokasi</h3>
-                        <p class="text-[8px] text-slate-500">Geser pin pada peta</p>
+                        <h3 class="text-xs font-extrabold text-slate-900">Pilih Lokasi di Peta</h3>
+                        <p class="text-xs text-slate-500">Cari lokasi atau geser pin</p>
                     </div>
-                    <button onclick="closeLocationPickerModal()" class="w-6 h-6 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
-                        <i class="fa-solid fa-xmark text-xs"></i>
+                    <button onclick="closeLocationPickerModal()" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
+                        <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
-                <div class="p-3 space-y-2">
+                <div class="p-4 space-y-3">
+                    <div class="relative">
+                        <input type="text" id="pickerSearchInput" placeholder="Cari kota/desa (cth: Botolinggo)..." onkeydown="if(event.key==='Enter') searchPickerLocation()" class="w-full pl-10 pr-20 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                        </span>
+                        <button type="button" onclick="searchPickerLocation()" class="absolute inset-y-0 right-1.5 my-1 px-3 bg-pink-600 hover:bg-pink-700 text-white rounded-xl text-xs font-bold transition">Cari</button>
+                    </div>
+
                     <div id="pickerMap" class="w-full h-56 rounded-2xl border border-pink-100"></div>
-                    <div class="bg-pink-50/50 p-2 rounded-xl flex items-center justify-between text-[10px] font-bold text-slate-700 border border-pink-100">
+                    <div class="bg-pink-50/50 p-2.5 rounded-2xl flex items-center justify-between text-xs font-bold text-slate-700 border border-pink-100">
                         <span>Koordinat:</span>
-                        <span id="pickerCoordsDisplay" class="font-mono text-pink-600 text-[9px]">0.000, 0.000</span>
+                        <span id="pickerCoordsDisplay" class="font-mono text-pink-600 text-xs">0.000, 0.000</span>
                     </div>
                 </div>
-                <div class="px-4 py-2.5 bg-pink-50/50 border-t border-pink-100 flex items-center justify-end gap-2">
-                    <button onclick="closeLocationPickerModal()" class="px-3 py-1 rounded-xl bg-slate-200 text-slate-700 font-bold text-[10px]">Batal</button>
-                    <button onclick="applyPickedLocation()" class="px-3.5 py-1 rounded-xl bg-pink-600 text-white font-bold text-[10px] shadow-sm">Gunakan</button>
+                <div class="px-5 py-3 bg-pink-50/50 border-t border-pink-100 flex items-center justify-end gap-2">
+                    <button onclick="closeLocationPickerModal()" class="px-4 py-2 rounded-2xl bg-slate-200 text-slate-700 font-bold text-xs">Batal</button>
+                    <button onclick="applyPickedLocation()" class="px-4.5 py-2 rounded-2xl bg-pink-600 text-white font-bold text-xs shadow-sm">Gunakan</button>
                 </div>
             </div>
         </div>
 
         <!-- Modal Tambah/Edit Ibu Hamil -->
-        <div id="bumilModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-3.5 overflow-y-auto">
+        <div id="bumilModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4 overflow-y-auto">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-pink-100 my-auto">
-                <div class="px-4 py-3.5 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
-                    <h3 id="bumilModalTitle" class="text-xs font-extrabold text-slate-900">Tambah Ibu Hamil</h3>
-                    <button onclick="closeBumilModal()" class="w-7 h-7 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
-                        <i class="fa-solid fa-xmark text-xs"></i>
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                    <h3 id="bumilModalTitle" class="text-sm font-extrabold text-slate-900">Tambah Ibu Hamil</h3>
+                    <button onclick="closeBumilModal()" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
+                        <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
                 </div>
-                <form id="bumilForm" onsubmit="saveBumilData(event)" class="p-4 space-y-2.5 max-h-[70vh] overflow-y-auto custom-scrollbar">
+                <form id="bumilForm" onsubmit="saveBumilData(event)" class="p-5 space-y-3.5 max-h-[75vh] overflow-y-auto custom-scrollbar">
                     <input type="hidden" id="bumilModalId">
                     
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Nama Lengkap Ibu Hamil</label>
-                        <input type="text" id="bumilNama" required placeholder="Contoh: Siti Nurhaliza" class="w-full px-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Nama Lengkap Ibu Hamil</label>
+                        <input type="text" id="bumilNama" required placeholder="Contoh: Siti Nurhaliza" class="w-full px-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Nama Suami</label>
-                        <input type="text" id="bumilSuami" required placeholder="Contoh: Ahmad Subagyo" class="w-full px-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Nama Suami</label>
+                        <input type="text" id="bumilSuami" required placeholder="Contoh: Ahmad Subagyo" class="w-full px-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
                     </div>
 
-                    <div class="grid grid-cols-3 gap-2">
+                    <div class="grid grid-cols-3 gap-2.5">
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">Usia (Thn)</label>
-                            <input type="number" id="bumilUsia" required placeholder="Contoh: 26" class="w-full px-2 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <label class="block text-xs font-bold text-slate-600 mb-1">Usia (Thn)</label>
+                            <input type="number" id="bumilUsia" required placeholder="26" class="w-full px-3 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                         </div>
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">Dusun</label>
-                            <select id="bumilDusun" required class="w-full px-1.5 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[10px] font-medium"></select>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">Dusun</label>
+                            <select id="bumilDusun" required class="w-full px-2 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium"></select>
                         </div>
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">Risiko</label>
-                            <select id="bumilRisiko" required class="w-full px-1.5 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[10px] font-medium">
+                            <label class="block text-xs font-bold text-slate-600 mb-1">Risiko</label>
+                            <select id="bumilRisiko" required class="w-full px-2 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                                 <option value="Rendah">Rendah</option>
                                 <option value="Sedang">Sedang</option>
                                 <option value="Tinggi">Tinggi</option>
@@ -810,51 +836,51 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-2">
+                    <div class="grid grid-cols-2 gap-2.5">
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">HPHT</label>
-                            <input type="date" id="bumilHpht" onchange="calculateHplFromHpht()" class="w-full px-2 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[10px] font-medium" placeholder="Pilih tanggal HPHT">
+                            <label class="block text-xs font-bold text-slate-600 mb-1">HPHT</label>
+                            <input type="date" id="bumilHpht" onchange="calculateHplFromHpht()" class="w-full px-3 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                         </div>
                         <div>
-                            <label class="block text-[9px] font-bold text-slate-600 mb-1">Estimasi HPL</label>
-                            <input type="date" id="bumilHpl" class="w-full px-2 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[10px] font-medium" placeholder="Otomatis terisi">
+                            <label class="block text-xs font-bold text-slate-600 mb-1">Estimasi HPL</label>
+                            <input type="date" id="bumilHpl" class="w-full px-3 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium" placeholder="Otomatis">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">No. WhatsApp / HP</label>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">No. WhatsApp / HP</label>
                         <div class="flex items-center gap-2">
-                            <div class="px-3 py-1.5 bg-slate-100 border border-slate-200 rounded-xl text-slate-700 text-xs font-bold flex items-center justify-center flex-shrink-0">
+                            <div class="px-3.5 py-2.5 bg-slate-100 border border-slate-200 rounded-2xl text-slate-700 text-xs font-bold flex items-center justify-center flex-shrink-0">
                                 +62
                             </div>
-                            <input type="text" id="bumilWa" placeholder="81234567890 (atau 08...)" class="w-full px-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            <input type="text" id="bumilWaLocal" placeholder="81234567890" class="w-full px-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Alamat / RT / RW</label>
-                        <input type="text" id="bumilAlamat" placeholder="Contoh: RT 01 / RW 01" class="w-full px-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Alamat / RT / RW</label>
+                        <input type="text" id="bumilAlamat" placeholder="Contoh: RT 01 / RW 01" class="w-full px-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium">
                     </div>
 
                     <!-- P4K Details -->
-                    <div class="p-2.5 bg-pink-50/40 rounded-xl border border-pink-100 space-y-1.5">
-                        <h4 class="text-[9px] font-extrabold text-slate-900 uppercase tracking-wider">Detail P4K (Perencanaan Persalinan)</h4>
-                        <div class="grid grid-cols-2 gap-2">
+                    <div class="p-3.5 bg-pink-50/40 rounded-2xl border border-pink-100 space-y-2">
+                        <h4 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider">Detail P4K (Perencanaan Persalinan)</h4>
+                        <div class="grid grid-cols-2 gap-2.5">
                             <div>
-                                <label class="block text-[9px] font-semibold text-slate-600 mb-0.5">Pendamping</label>
-                                <input type="text" id="p4kPendamping" placeholder="Contoh: Suami" class="w-full px-2 py-1 bg-white border border-slate-200 rounded-lg text-[11px]">
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Pendamping</label>
+                                <input type="text" id="p4kPendamping" placeholder="Contoh: Suami" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium">
                             </div>
                             <div>
-                                <label class="block text-[9px] font-semibold text-slate-600 mb-0.5">Transportasi</label>
-                                <input type="text" id="p4kTransportasi" placeholder="Contoh: Ambulans Desa" class="w-full px-2 py-1 bg-white border border-slate-200 rounded-lg text-[11px]">
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Transportasi</label>
+                                <input type="text" id="p4kTransportasi" placeholder="Contoh: Ambulans Desa" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium">
                             </div>
                             <div>
-                                <label class="block text-[9px] font-semibold text-slate-600 mb-0.5">Pendonor</label>
-                                <input type="text" id="p4kPendonor" placeholder="Contoh: Gol O (Suami)" class="w-full px-2 py-1 bg-white border border-slate-200 rounded-lg text-[11px]">
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Pendonor</label>
+                                <input type="text" id="p4kPendonor" placeholder="Contoh: Gol O (Suami)" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium">
                             </div>
                             <div>
-                                <label class="block text-[9px] font-semibold text-slate-600 mb-0.5">Stiker</label>
-                                <select id="p4kStiker" class="w-full px-1.5 py-1 bg-white border border-slate-200 rounded-lg text-[11px]">
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Stiker</label>
+                                <select id="p4kStiker" class="w-full px-2.5 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium">
                                     <option value="Sudah">Sudah</option>
                                     <option value="Belum">Belum</option>
                                 </select>
@@ -863,13 +889,13 @@
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Catatan Klinis</label>
-                        <textarea id="bumilCatatan" rows="2" placeholder="Contoh: Riwayat tensi atau keluhan kehamilan..." class="w-full px-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium"></textarea>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">Catatan Klinis</label>
+                        <textarea id="bumilCatatan" rows="2" placeholder="Contoh: Riwayat tensi atau keluhan kehamilan..." class="w-full px-3.5 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium"></textarea>
                     </div>
 
-                    <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
-                        <button type="button" onclick="closeBumilModal()" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10px] transition">Batal</button>
-                        <button type="submit" class="px-3.5 py-1.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-[10px] shadow-md transition">Simpan</button>
+                    <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+                        <button type="button" onclick="closeBumilModal()" class="px-4 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition">Batal</button>
+                        <button type="submit" class="px-4.5 py-2 rounded-2xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-md transition">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -892,13 +918,26 @@
             lng: ""
         };
 
-        let dusunCoords = {};
+        let dusunCoords = {
+            "Krajan": { lat: -7.817532, lng: 113.975721 },
+            "Sundang": { lat: -7.826488, lng: 113.975118 },
+            "Waduk": { lat: -7.832902, lng: 113.973543 },
+            "Bille": { lat: -7.844637, lng: 113.985955 },
+            "Taman": { lat: -7.838410, lng: 113.977186 },
+            "Cottok": { lat: -7.844541, lng: 113.976983 },
+            "Lucu": { lat: -7.844959, lng: 113.969798 },
+            "Cemper": { lat: -7.879670, lng: 114.001472 },
+            "Kedawung Timur": { lat: -7.870761, lng: 113.988748 },
+            "Kedawung Tengah": { lat: -7.876404, lng: 113.989845 },
+            "Kedawung Barat": { lat: -7.872612, lng: 113.983703 },
+            "Ninggil": { lat: -7.860117, lng: 113.992829 }
+        };
 
         let activeUser = {
-            name: "Bidan Desa",
+            name: "",
             role: "Petugas",
-            username: "admin",
-            password: "123456",
+            username: "",
+            password: "",
             securityPin: "9999",
             avatar: null
         };
@@ -920,10 +959,10 @@
             if (!input || !icon) return;
             if (input.type === 'password') {
                 input.type = 'text';
-                icon.className = 'fa-solid fa-eye-slash text-xs';
+                icon.className = 'fa-solid fa-eye-slash text-sm';
             } else {
                 input.type = 'password';
-                icon.className = 'fa-solid fa-eye text-xs';
+                icon.className = 'fa-solid fa-eye text-sm';
             }
         }
 
@@ -941,8 +980,6 @@
             const savedDusun = localStorage.getItem('sehati_dusun_coords');
             if (savedDusun) {
                 try { dusunCoords = JSON.parse(savedDusun); } catch(e){}
-            } else {
-                dusunCoords = {};
             }
 
             const savedUser = localStorage.getItem('sehati_user_profile');
@@ -950,10 +987,10 @@
                 try { activeUser = JSON.parse(savedUser); } catch(e){}
             } else {
                 activeUser = {
-                    name: "Bidan Desa",
+                    name: "",
                     role: "Petugas",
-                    username: "admin",
-                    password: "123456",
+                    username: "",
+                    password: "",
                     securityPin: "9999",
                     avatar: null
                 };
@@ -979,9 +1016,9 @@
             if (userPinInput) userPinInput.value = activeUser.securityPin || "9999";
 
             const topBarVillage = document.getElementById('topBarVillageName');
-            if (topBarVillage) topBarVillage.textContent = appVillageName || "Belum Atur Desa";
+            if (topBarVillage) topBarVillage.textContent = appVillageName || "Desa";
             const loginVillageLabel = document.getElementById('loginVillageLabel');
-            if (loginVillageLabel) loginVillageLabel.textContent = appVillageName || "Belum Atur Desa";
+            if (loginVillageLabel) loginVillageLabel.textContent = appVillageName || "Desa";
 
             updateUserDisplay();
             renderDusunSettingsCards();
@@ -1041,16 +1078,16 @@
 
         function saveVillageSettings() {
             const villageInput = document.getElementById('settingVillageNameInput');
-            if (villageInput) appVillageName = villageInput.value.trim() || "Desa Botolinggo";
+            if (villageInput) appVillageName = villageInput.value.trim();
 
-            const pustuName = document.getElementById('settingPustuNameInput').value.trim() || "PONKESDES";
-            const pustuLat = parseFloat(document.getElementById('settingPustuLatInput').value) || -7.830602;
-            const pustuLng = parseFloat(document.getElementById('settingPustuLngInput').value) || 113.977607;
+            const pustuName = document.getElementById('settingPustuNameInput').value.trim();
+            const pustuLat = document.getElementById('settingPustuLatInput').value !== "" ? parseFloat(document.getElementById('settingPustuLatInput').value) : "";
+            const pustuLng = document.getElementById('settingPustuLngInput').value !== "" ? parseFloat(document.getElementById('settingPustuLngInput').value) : "";
             pustuLocation = { name: pustuName, lat: pustuLat, lng: pustuLng };
 
-            activeUser.name = document.getElementById('settingUserNameInput').value.trim() || "Indah Sri Wahyuni";
-            activeUser.username = document.getElementById('settingUserUsernameInput').value.trim() || "admin";
-            activeUser.password = document.getElementById('settingUserPasswordInput').value.trim() || "123456";
+            activeUser.name = document.getElementById('settingUserNameInput').value.trim();
+            activeUser.username = document.getElementById('settingUserUsernameInput').value.trim() || "";
+            activeUser.password = document.getElementById('settingUserPasswordInput').value.trim() || "";
             activeUser.securityPin = document.getElementById('settingSecurityPinInput').value.trim() || "9999";
 
             localStorage.setItem('sehati_village_name', appVillageName);
@@ -1083,7 +1120,7 @@
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
             const dlAnchor = document.createElement('a');
             dlAnchor.setAttribute("href", dataStr);
-            dlAnchor.setAttribute("download", `SEHATI_Backup_${appVillageName.replace(/\s+/g, '_')}.json`);
+            dlAnchor.setAttribute("download", `SEHATI_Backup_${(appVillageName||'Desa').replace(/\s+/g, '_')}.json`);
             document.body.appendChild(dlAnchor);
             dlAnchor.click();
             dlAnchor.remove();
@@ -1098,7 +1135,7 @@
                 try {
                     const parsed = JSON.parse(e.target.result);
                     if (parsed.bumilData) { bumilData = parsed.bumilData; localStorage.setItem('sehati_bumil_data', JSON.stringify(bumilData)); }
-                    if (parsed.villageName) { appVillageName = parsed.villageName; localStorage.setItem('sehati_village_name', appVillageName); }
+                    if (parsed.villageName !== undefined) { appVillageName = parsed.villageName; localStorage.setItem('sehati_village_name', appVillageName); }
                     if (parsed.pustuLocation) { pustuLocation = parsed.pustuLocation; localStorage.setItem('sehati_pustu_data', JSON.stringify(pustuLocation)); }
                     if (parsed.dusunCoords) { dusunCoords = parsed.dusunCoords; localStorage.setItem('sehati_dusun_coords', JSON.stringify(dusunCoords)); }
                     if (parsed.activeUser) { activeUser = parsed.activeUser; localStorage.setItem('sehati_user_profile', JSON.stringify(activeUser)); }
@@ -1112,6 +1149,63 @@
             reader.readAsDataURL(file);
         }
 
+        function openResetConfirmModal() {
+            closeSettingsModal();
+            document.getElementById('resetConfirmInput').value = "";
+            document.getElementById('resetConfirmModal').classList.remove('hidden');
+        }
+
+        function closeResetConfirmModal() {
+            document.getElementById('resetConfirmModal').classList.add('hidden');
+            openSettingsModal();
+        }
+
+        function executeResetAllAppData() {
+            const inputVal = document.getElementById('resetConfirmInput').value.trim();
+            if (inputVal !== "RESET") {
+                alertCustom("Ketik kata 'RESET' dengan benar!");
+                return;
+            }
+
+            bumilData = [];
+            dusunCoords = {
+                "Krajan": { lat: -7.817532, lng: 113.975721 },
+                "Sundang": { lat: -7.826488, lng: 113.975118 },
+                "Waduk": { lat: -7.832902, lng: 113.973543 },
+                "Bille": { lat: -7.844637, lng: 113.985955 },
+                "Taman": { lat: -7.838410, lng: 113.977186 },
+                "Cottok": { lat: -7.844541, lng: 113.976983 },
+                "Lucu": { lat: -7.844959, lng: 113.969798 },
+                "Cemper": { lat: -7.879670, lng: 114.001472 },
+                "Kedawung Timur": { lat: -7.870761, lng: 113.988748 },
+                "Kedawung Tengah": { lat: -7.876404, lng: 113.989845 },
+                "Kedawung Barat": { lat: -7.872612, lng: 113.983703 },
+                "Ninggil": { lat: -7.860117, lng: 113.992829 }
+            };
+            appVillageName = "";
+            pustuLocation = { name: "", lat: "", lng: "" };
+            activeUser = {
+                name: "",
+                role: "Petugas",
+                username: "",
+                password: "",
+                securityPin: "9999",
+                avatar: null
+            };
+
+            localStorage.removeItem('sehati_bumil_data');
+            localStorage.removeItem('sehati_dusun_coords');
+            localStorage.removeItem('sehati_village_name');
+            localStorage.removeItem('sehati_pustu_data');
+            localStorage.removeItem('sehati_user_profile');
+
+            loadLocalVillageSettings();
+            loadLocalData();
+            closeResetConfirmModal();
+            closeSettingsModal();
+            alertCustom("Semua data berhasil direset bersih (0 Data).");
+        }
+
         function renderDusunSettingsCards() {
             const container = document.getElementById('dusunSettingsListContainer');
             if (!container) return;
@@ -1121,15 +1215,15 @@
                 const count = bumilData.filter(i => i.dusun === dusunName).length;
 
                 const card = document.createElement('div');
-                card.className = "p-2.5 bg-white rounded-2xl border border-pink-100 flex items-center justify-between shadow-xs";
+                card.className = "p-3.5 bg-white rounded-2xl border border-pink-100 flex items-center justify-between shadow-xs";
                 card.innerHTML = `
                     <div>
-                        <h5 class="font-extrabold text-slate-900 text-[11px]">${dusunName}</h5>
-                        <p class="text-[9px] text-slate-500 font-mono mt-0.5">Bumil: ${count}</p>
+                        <h5 class="font-extrabold text-slate-900 text-xs">${dusunName}</h5>
+                        <p class="text-xs text-slate-500 font-mono mt-0.5">Bumil: ${count}</p>
                     </div>
-                    <div class="flex items-center gap-1">
-                        <button type="button" onclick="openDusunModalForEdit('${dusunName}')" class="px-2 py-1 rounded-xl bg-pink-50 text-pink-600 font-bold text-[9px]">Edit</button>
-                        <button type="button" onclick="deleteDusun('${dusunName}')" class="w-6 h-6 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center text-[9px]"><i class="fa-solid fa-trash"></i></button>
+                    <div class="flex items-center gap-1.5">
+                        <button type="button" onclick="openDusunModalForEdit('${dusunName}')" class="px-3.5 py-1.5 rounded-xl bg-pink-50 text-pink-600 font-bold text-xs">Edit</button>
+                        <button type="button" onclick="deleteDusun('${dusunName}')" class="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `;
                 container.appendChild(card);
@@ -1141,8 +1235,8 @@
             document.getElementById('dusunModalTitle').textContent = "Tambah Dusun Baru";
             document.getElementById('dusunOriginalName').value = "";
             document.getElementById('dusunModalNameInput').value = "";
-            document.getElementById('dusunModalLatInput').value = pustuLocation.lat;
-            document.getElementById('dusunModalLngInput').value = pustuLocation.lng;
+            document.getElementById('dusunModalLatInput').value = pustuLocation.lat !== "" ? pustuLocation.lat : -7.830602;
+            document.getElementById('dusunModalLngInput').value = pustuLocation.lng !== "" ? pustuLocation.lng : 113.977607;
             document.getElementById('dusunModal').classList.remove('hidden');
         }
 
@@ -1185,41 +1279,68 @@
         }
 
         function deleteDusun(dusunName) {
-            if (confirm(`Hapus dusun ${dusunName}?`)) {
-                delete dusunCoords[dusunName];
-                localStorage.setItem('sehati_dusun_coords', JSON.stringify(dusunCoords));
-                renderDusunSettingsCards();
-                updateDusunDropdowns();
-                alertCustom("Dusun dihapus.");
-            }
+            delete dusunCoords[dusunName];
+            localStorage.setItem('sehati_dusun_coords', JSON.stringify(dusunCoords));
+            renderDusunSettingsCards();
+            updateDusunDropdowns();
+            alertCustom("Dusun dihapus.");
         }
 
         function openLocationPickerForPustu() {
             activePickerTargetType = 'pustu';
-            openPickerMap(parseFloat(document.getElementById('settingPustuLatInput').value) || pustuLocation.lat, parseFloat(document.getElementById('settingPustuLngInput').value) || pustuLocation.lng);
+            const lat = parseFloat(document.getElementById('settingPustuLatInput').value) || -7.830602;
+            const lng = parseFloat(document.getElementById('settingPustuLngInput').value) || 113.977607;
+            openPickerMap(lat, lng);
         }
 
         function openLocationPickerForDusunModal() {
             activePickerTargetType = 'dusunModal';
-            openPickerMap(parseFloat(document.getElementById('dusunModalLatInput').value) || pustuLocation.lat, parseFloat(document.getElementById('dusunModalLngInput').value) || pustuLocation.lng);
+            const lat = parseFloat(document.getElementById('dusunModalLatInput').value) || -7.830602;
+            const lng = parseFloat(document.getElementById('dusunModalLngInput').value) || 113.977607;
+            openPickerMap(lat, lng);
         }
 
         function openPickerMap(lat, lng) {
             document.getElementById('locationPickerModal').classList.remove('hidden');
+            document.getElementById('pickerSearchInput').value = "";
             setTimeout(() => {
                 if (!pickerMap) {
-                    pickerMap = L.map('pickerMap').setView([lat, lng], 14);
+                    pickerMap = L.map('pickerMap').setView([lat, lng], 13);
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(pickerMap);
                     pickerMarker = L.marker([lat, lng], { draggable: true }).addTo(pickerMap);
                     pickerMarker.on('dragend', function(e) { updatePickerDisplay(e.target.getLatLng().lat, e.target.getLatLng().lng); });
                     pickerMap.on('click', function(e) { pickerMarker.setLatLng(e.latlng); updatePickerDisplay(e.latlng.lat, e.latlng.lng); });
                 } else {
                     pickerMap.invalidateSize();
-                    pickerMap.setView([lat, lng], 14);
+                    pickerMap.setView([lat, lng], 13);
                     pickerMarker.setLatLng([lat, lng]);
                 }
                 updatePickerDisplay(lat, lng);
             }, 200);
+        }
+
+        function searchPickerLocation() {
+            const query = document.getElementById('pickerSearchInput').value.trim();
+            if (!query) return;
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.length > 0) {
+                        const lat = parseFloat(data[0].lat);
+                        const lon = parseFloat(data[0].lon);
+                        if (pickerMap && pickerMarker) {
+                            pickerMap.setView([lat, lon], 14);
+                            pickerMarker.setLatLng([lat, lon]);
+                            updatePickerDisplay(lat, lon);
+                        }
+                    } else {
+                        alertCustom("Lokasi tidak ditemukan.");
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alertCustom("Gagal mencari lokasi.");
+                });
         }
 
         function updatePickerDisplay(lat, lng) {
@@ -1245,7 +1366,6 @@
 
         function loadLocalData() {
             const saved = localStorage.getItem('sehati_bumil_data');
-            // Default app starts with 0 data when no saved data exists
             bumilData = saved ? JSON.parse(saved) : [];
             updateKPIs();
             initChartYearDropdowns();
@@ -1253,42 +1373,6 @@
             renderKantongPersalinan();
             renderBumilTable();
             updateDusunDropdowns();
-        }
-
-        function resetAllAppData() {
-            // Added dual confirmation prompt to prevent accidental execution
-            const firstConfirm = confirm("PERINGATAN: Apakah Anda yakin ingin mereset seluruh data aplikasi menjadi kosong (Data Bumil, Desa & Dusun terhapus)?");
-            if (!firstConfirm) return;
-
-            const secondConfirm = prompt("Ketik kata 'RESET' untuk mengonfirmasi penghapusan total data:");
-            if (secondConfirm !== "RESET") {
-                alertCustom("Reset dibatalkan (konfirmasi tidak sesuai).");
-                return;
-            }
-
-            bumilData = [];
-            dusunCoords = {};
-            appVillageName = "";
-            pustuLocation = { name: "", lat: -7.830602, lng: 113.977607 };
-            activeUser = {
-                name: "Bidan Desa",
-                role: "Petugas",
-                username: "admin",
-                password: "123456",
-                securityPin: "9999",
-                avatar: null
-            };
-
-            localStorage.removeItem('sehati_bumil_data');
-            localStorage.removeItem('sehati_dusun_coords');
-            localStorage.removeItem('sehati_village_name');
-            localStorage.removeItem('sehati_pustu_data');
-            localStorage.removeItem('sehati_user_profile');
-
-            loadLocalVillageSettings();
-            loadLocalData();
-            closeSettingsModal();
-            alertCustom("Semua data berhasil direset bersih (0 Data).");
         }
 
         function saveLocalData() {
@@ -1419,11 +1503,11 @@
                 col.className = "flex-1 flex flex-col items-center h-full justify-end group relative";
                 
                 const barWrapper = document.createElement('div');
-                barWrapper.className = "w-full max-w-[16px] bg-pink-50/50 rounded-t-lg overflow-hidden flex flex-col justify-end shadow-2xs";
+                barWrapper.className = "w-full max-w-[22px] bg-pink-50/50 rounded-t-xl overflow-hidden flex flex-col justify-end shadow-2xs";
                 barWrapper.style.height = `${Math.max(heightPercent, 10)}%`;
 
                 if (data.total === 0) {
-                    barWrapper.style.height = "8px";
+                    barWrapper.style.height = "10px";
                     barWrapper.className += " bg-slate-100 opacity-60";
                 } else {
                     if (data.Rendah > 0) {
@@ -1439,7 +1523,7 @@
                 col.appendChild(barWrapper);
 
                 const label = document.createElement('span');
-                label.className = "text-[8px] font-bold text-slate-500 mt-1";
+                label.className = "text-xs font-bold text-slate-500 mt-1.5";
                 label.textContent = mName;
                 col.appendChild(label);
 
@@ -1488,9 +1572,9 @@
 
                 if (count > 0) {
                     legendHtml += `
-                        <div class="flex items-center justify-between text-[10px] py-1 border-b border-slate-800/80">
-                            <div class="flex items-center gap-1.5 truncate">
-                                <span class="w-2 h-2 rounded-full flex-shrink-0" style="background-color: ${color};"></span>
+                        <div class="flex items-center justify-between text-xs py-1.5 border-b border-slate-800/80">
+                            <div class="flex items-center gap-2 truncate">
+                                <span class="w-3 h-3 rounded-full flex-shrink-0" style="background-color: ${color};"></span>
                                 <span class="font-semibold text-slate-200 truncate">${dusun}</span>
                             </div>
                             <span class="font-extrabold text-white ml-2">${count}</span>
@@ -1501,7 +1585,7 @@
 
             if (totalFiltered === 0) {
                 conicStops = ['#334155 0deg 360deg'];
-                legendHtml = '<p class="text-[9px] text-slate-500 italic text-center py-1">Tidak ada data</p>';
+                legendHtml = '<p class="text-xs text-slate-500 italic text-center py-2">Tidak ada data</p>';
             }
 
             document.getElementById('dusunDonutContainer').style.background = `conic-gradient(${conicStops.join(', ')})`;
@@ -1513,11 +1597,11 @@
             const btnTile = document.getElementById('btnViewTile');
             const btnTable = document.getElementById('btnViewTable');
             if (mode === 'tile') {
-                btnTile.className = "px-2.5 py-1 rounded-lg text-[9px] font-bold bg-pink-600 text-white shadow-xs transition";
-                btnTable.className = "px-2.5 py-1 rounded-lg text-[9px] font-bold text-slate-600 hover:text-slate-900 transition";
+                btnTile.className = "px-3.5 py-1 rounded-xl text-xs font-bold bg-pink-600 text-white shadow-xs transition";
+                btnTable.className = "px-3.5 py-1 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition";
             } else {
-                btnTable.className = "px-2.5 py-1 rounded-lg text-[9px] font-bold bg-pink-600 text-white shadow-xs transition";
-                btnTile.className = "px-2.5 py-1 rounded-lg text-[9px] font-bold text-slate-600 hover:text-slate-900 transition";
+                btnTable.className = "px-3.5 py-1 rounded-xl text-xs font-bold bg-pink-600 text-white shadow-xs transition";
+                btnTile.className = "px-3.5 py-1 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition";
             }
             renderKantongPersalinan();
         }
@@ -1546,65 +1630,65 @@
                 });
 
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl p-3.5 border border-pink-100 shadow-2xs space-y-2";
+                card.className = "bg-white rounded-3xl p-4.5 border border-pink-100 shadow-2xs space-y-3";
                 
                 let headerHtml = `
-                    <div class="flex items-center justify-between pb-1.5 border-b border-pink-100">
-                        <h4 class="text-[11px] font-extrabold text-slate-900">${mName}</h4>
-                        <span class="w-4.5 h-4.5 rounded-full bg-pink-100 text-pink-600 text-[9px] font-bold flex items-center justify-center">${filteredBumil.length}</span>
+                    <div class="flex items-center justify-between pb-2.5 border-b border-pink-100">
+                        <h4 class="text-xs font-extrabold text-slate-900">${mName}</h4>
+                        <span class="w-6 h-6 rounded-full bg-pink-100 text-pink-600 text-xs font-bold flex items-center justify-center">${filteredBumil.length}</span>
                     </div>
                 `;
 
                 let bodyHtml = '';
                 if (filteredBumil.length === 0) {
-                    bodyHtml = `<div class="py-2 text-center"><p class="text-[10px] text-slate-400 italic">Tidak ada HPL</p></div>`;
+                    bodyHtml = `<div class="py-3.5 text-center"><p class="text-xs text-slate-400 italic">Tidak ada HPL</p></div>`;
                 } else {
-                    bodyHtml = `<div class="space-y-2 max-h-52 overflow-y-auto custom-scrollbar pr-1">`;
+                    bodyHtml = `<div class="space-y-3 max-h-64 overflow-y-auto custom-scrollbar pr-1">`;
                     filteredBumil.forEach(item => {
                         const riskColor = item.risiko === 'Tinggi' ? 'bg-rose-500' : item.risiko === 'Sedang' ? 'bg-amber-500' : 'bg-emerald-500';
                         const riskBadge = item.risiko === 'Tinggi' 
-                            ? '<span class="px-1.5 py-0.5 bg-rose-50 text-rose-600 rounded text-[8px] font-bold border border-rose-200">Risti</span>'
+                            ? '<span class="px-2.5 py-0.5 bg-rose-50 text-rose-600 rounded text-xs font-bold border border-rose-200">Risti</span>'
                             : item.risiko === 'Sedang'
-                            ? '<span class="px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded text-[8px] font-bold border border-amber-200">Sedang</span>'
-                            : '<span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[8px] font-bold border border-emerald-200">Rendah</span>';
+                            ? '<span class="px-2.5 py-0.5 bg-amber-50 text-amber-600 rounded text-xs font-bold border border-amber-200">Sedang</span>'
+                            : '<span class="px-2.5 py-0.5 bg-emerald-50 text-emerald-600 rounded text-xs font-bold border border-emerald-200">Rendah</span>';
 
                         if (kantongViewMode === 'tile') {
                             bodyHtml += `
-                                <div class="p-2.5 bg-pink-50/40 rounded-xl border border-pink-100 space-y-1">
+                                <div class="p-4 bg-pink-50/40 rounded-2xl border border-pink-100 space-y-2.5">
                                     <div class="flex items-start justify-between">
-                                        <div class="flex items-center gap-1.5 truncate">
-                                            <span class="w-2 h-2 rounded-full ${riskColor} flex-shrink-0"></span>
-                                            <span class="text-[11px] font-bold text-slate-900 truncate">${item.nama}</span>
+                                        <div class="flex items-center gap-2 truncate">
+                                            <span class="w-2.5 h-2.5 rounded-full ${riskColor} flex-shrink-0"></span>
+                                            <span class="text-sm font-bold text-slate-900 truncate">${item.nama}</span>
                                         </div>
                                         ${riskBadge}
                                     </div>
-                                    <div class="text-[9px] text-slate-600 space-y-0.5 pl-3.5">
-                                        <p>Suami: <strong class="text-slate-800">${item.suami}</strong> | ${item.dusun}</p>
+                                    <div class="text-xs text-slate-600 space-y-1 pl-4">
+                                        <p>Suami: <strong class="text-slate-900">${item.suami}</strong> | ${item.dusun}</p>
                                         <p class="text-pink-600 font-semibold">HPL: ${item.hpl}</p>
                                     </div>
-                                    <div class="flex items-center justify-end gap-1.5 pt-1">
-                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] rounded-xl flex items-center gap-1.5 shadow-2xs transition">
-                                            <i class="fa-brands fa-whatsapp text-xs"></i> WhatsApp
+                                    <div class="flex items-center justify-end gap-2 pt-1.5">
+                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-xs transition">
+                                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
                                         </a>
-                                        <button onclick="editBumil('${item.id}')" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10px] rounded-xl transition">Edit</button>
+                                        <button onclick="editBumil('${item.id}')" class="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">Edit</button>
                                     </div>
                                 </div>
                             `;
                         } else {
                             bodyHtml += `
-                                <div class="p-2 bg-pink-50/40 rounded-xl border border-pink-100 flex items-center justify-between text-[10px]">
-                                    <div class="flex items-center gap-1.5 truncate">
+                                <div class="p-3 bg-pink-50/40 rounded-2xl border border-pink-100 flex items-center justify-between text-xs">
+                                    <div class="flex items-center gap-2 truncate">
                                         <span class="w-2 h-2 rounded-full ${riskColor} flex-shrink-0"></span>
                                         <div class="truncate">
                                             <p class="font-bold text-slate-900 truncate">${item.nama} <span class="font-normal text-slate-500">(${item.dusun})</span></p>
-                                            <p class="text-[8px] text-pink-600">HPL: ${item.hpl}</p>
+                                            <p class="text-xs text-pink-600">HPL: ${item.hpl}</p>
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-1.5">
-                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9px] rounded-lg flex items-center gap-1 shadow-2xs transition">
+                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-3 py-1.5 bg-emerald-600 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-xs" title="WhatsApp">
                                             <i class="fa-brands fa-whatsapp"></i> WA
                                         </a>
-                                        <button onclick="editBumil('${item.id}')" class="w-6 h-6 bg-slate-100 text-slate-700 rounded-lg flex items-center justify-center text-[9px]"><i class="fa-solid fa-pen"></i></button>
+                                        <button onclick="editBumil('${item.id}')" class="px-3.5 py-1.5 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl">Edit</button>
                                     </div>
                                 </div>
                             `;
@@ -1624,7 +1708,7 @@
             tbody.innerHTML = '';
 
             if (bumilData.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="3" class="p-3 text-center text-slate-500 text-[10px]">Belum ada data.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="3" class="p-5 text-center text-slate-500 text-xs">Belum ada data ibu hamil.</td></tr>`;
                 return;
             }
 
@@ -1632,21 +1716,21 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-pink-50/30 transition";
                 tr.innerHTML = `
-                    <td class="p-2.5">
-                        <p class="font-bold text-slate-900 text-[11px]">${item.nama}</p>
-                        <p class="text-[9px] text-slate-500">Suami: ${item.suami} | ${item.dusun}</p>
-                        <span class="inline-block mt-0.5 px-1.5 py-0.5 rounded text-[8px] font-bold ${item.risiko==='Tinggi'?'bg-rose-50 text-rose-600 border border-rose-200':item.risiko==='Sedang'?'bg-amber-50 text-amber-600 border border-amber-200':'bg-emerald-50 text-emerald-600 border border-emerald-200'}">${item.risiko}</span>
+                    <td class="p-3.5">
+                        <p class="font-bold text-slate-900 text-sm">${item.nama}</p>
+                        <p class="text-xs text-slate-500">Suami: ${item.suami} | ${item.dusun}</p>
+                        <span class="inline-block mt-1 px-2.5 py-0.5 rounded text-xs font-bold ${item.risiko==='Tinggi'?'bg-rose-50 text-rose-600 border border-rose-200':item.risiko==='Sedang'?'bg-amber-50 text-amber-600 border border-amber-200':'bg-emerald-50 text-emerald-600 border border-emerald-200'}">${item.risiko}</span>
                     </td>
-                    <td class="p-2.5 text-[10px]">
+                    <td class="p-3.5 text-xs">
                         <span class="font-bold text-pink-600">${item.hpl||'-'}</span>
                     </td>
-                    <td class="p-2.5 text-center">
+                    <td class="p-3.5 text-center">
                         <div class="flex items-center justify-center gap-1.5">
-                            <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9px] rounded-lg flex items-center gap-1 shadow-2xs transition" title="Direct WhatsApp">
-                                <i class="fa-brands fa-whatsapp"></i> WA
+                            <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-xs transition" title="WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
                             </a>
-                            <button onclick="editBumil('${item.id}')" class="w-6 h-6 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-[10px]"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="deleteBumil('${item.id}')" class="w-6 h-6 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-trash"></i></button>
+                            <button onclick="editBumil('${item.id}')" class="w-8 h-8 rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center text-xs"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteBumil('${item.id}')" class="w-8 h-8 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xs"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </td>
                 `;
@@ -1673,7 +1757,13 @@
                     document.getElementById('bumilRisiko').value = found.risiko || 'Rendah';
                     document.getElementById('bumilHpht').value = found.hpht || '';
                     document.getElementById('bumilHpl').value = found.hpl || '';
-                    document.getElementById('bumilWa').value = found.wa || '';
+                    
+                    let rawWa = found.wa || '';
+                    if (rawWa.startsWith('62')) {
+                        rawWa = rawWa.substring(2);
+                    }
+                    document.getElementById('bumilWaLocal').value = rawWa;
+
                     document.getElementById('bumilAlamat').value = found.alamat || '';
                     document.getElementById('p4kPendamping').value = found.p4k?.pendamping || '';
                     document.getElementById('p4kTransportasi').value = found.p4k?.transportasi || '';
@@ -1682,9 +1772,17 @@
                     document.getElementById('bumilCatatan').value = found.catatan || '';
                 }
             } else {
-                // Keep inputs completely blank on new entry as requested, with placeholders guiding the user
+                document.getElementById('bumilNama').value = '';
+                document.getElementById('bumilSuami').value = '';
+                document.getElementById('bumilUsia').value = '';
                 document.getElementById('bumilHpht').value = '';
                 document.getElementById('bumilHpl').value = '';
+                document.getElementById('bumilWaLocal').value = '';
+                document.getElementById('bumilAlamat').value = '';
+                document.getElementById('p4kPendamping').value = '';
+                document.getElementById('p4kTransportasi').value = '';
+                document.getElementById('p4kPendonor').value = '';
+                document.getElementById('bumilCatatan').value = '';
             }
             document.getElementById('bumilModal').classList.remove('hidden');
         }
@@ -1715,13 +1813,9 @@
             const hpht = document.getElementById('bumilHpht').value;
             const hpl = document.getElementById('bumilHpl').value;
             
-            let rawWa = document.getElementById('bumilWa').value.trim();
-            // Normalize WhatsApp number: if it starts with 0, remove it. Ensure 62 prefix.
+            let rawWa = document.getElementById('bumilWaLocal').value.trim();
             if (rawWa.startsWith('0')) {
                 rawWa = rawWa.substring(1);
-            }
-            if (rawWa.startsWith('62')) {
-                rawWa = rawWa.substring(2);
             }
             const wa = rawWa ? "62" + rawWa : "";
 
@@ -1750,11 +1844,9 @@
         function editBumil(id) { openBumilModal(id); }
 
         function deleteBumil(id) {
-            if (confirm("Hapus data ini?")) {
-                bumilData = bumilData.filter(i => i.id !== id);
-                saveLocalData();
-                alertCustom("Data dihapus.");
-            }
+            bumilData = bumilData.filter(i => i.id !== id);
+            saveLocalData();
+            alertCustom("Data dihapus.");
         }
 
         function setMapSummaryMode(mode) {
@@ -1762,11 +1854,11 @@
             const btnTile = document.getElementById('mapModeTile');
             const btnList = document.getElementById('mapModeList');
             if (mode === 'tile') {
-                btnTile.className = "px-2 py-0.5 rounded-lg text-[9px] font-bold bg-pink-600 text-white shadow-xs transition";
-                btnList.className = "px-2 py-0.5 rounded-lg text-[9px] font-bold text-slate-600 hover:text-slate-900 transition";
+                btnTile.className = "px-3 py-1 rounded-xl text-xs font-bold bg-pink-600 text-white shadow-xs transition";
+                btnList.className = "px-3 py-1 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition";
             } else {
-                btnList.className = "px-2 py-0.5 rounded-lg text-[9px] font-bold bg-pink-600 text-white shadow-xs transition";
-                btnTile.className = "px-2 py-0.5 rounded-lg text-[9px] font-bold text-slate-600 hover:text-slate-900 transition";
+                btnList.className = "px-3 py-1 rounded-xl text-xs font-bold bg-pink-600 text-white shadow-xs transition";
+                btnTile.className = "px-3 py-1 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition";
             }
             renderMapSummary();
         }
@@ -1788,8 +1880,8 @@
             if (pustuLocation.lat !== "" && pustuLocation.lng !== "") {
                 const pustuIcon = L.divIcon({
                     className: 'custom-pustu-icon',
-                    html: `<div style="background-color: #ec4899; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(236,72,153,0.4); border: 2px solid white;"><i class="fa-solid fa-house-medical text-[10px]"></i></div>`,
-                    iconSize: [28, 28], iconAnchor: [14, 14]
+                    html: `<div style="background-color: #ec4899; color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(236,72,153,0.4); border: 2px solid white;"><i class="fa-solid fa-house-medical text-xs"></i></div>`,
+                    iconSize: [34, 34], iconAnchor: [17, 17]
                 });
                 const pustuMarker = L.marker([parseFloat(pustuLocation.lat), parseFloat(pustuLocation.lng)], { icon: pustuIcon }).addTo(leafletMap);
                 pustuMarker.bindPopup(`<b>${pustuLocation.name || 'Poskesdes / Pustu'}</b>`);
@@ -1806,17 +1898,51 @@
 
                 const dusunIcon = L.divIcon({
                     className: 'custom-dusun-icon',
-                    html: `<div style="background-color: ${markerBg}; color: ${textColor}; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; box-shadow: 0 2px 8px rgba(0,0,0,0.25); border: 2px solid #ffffff;">${count}</div>`,
-                    iconSize: [24, 24], iconAnchor: [12, 12]
+                    html: `<div style="background-color: ${markerBg}; color: ${textColor}; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; box-shadow: 0 2px 8px rgba(0,0,0,0.25); border: 2px solid #ffffff;">${count}</div>`,
+                    iconSize: [30, 30], iconAnchor: [15, 15]
                 });
 
-                let popupHtml = `<div style="min-width: 140px; font-size: 10px;"><b>Dusun ${dusunName}</b><br>Total Bumil: ${count}</div>`;
+                let popupHtml = `<div style="min-width: 200px; font-size: 11px; max-height: 220px; overflow-y: auto;">
+                    <b style="font-size: 12px; color: #db2777;">Dusun ${dusunName}</b><br>
+                    <span style="color: #64748b;">Total Bumil: ${count}</span>
+                    <hr style="margin: 6px 0; border-color: #f1f5f9;">`;
+                
+                if (count > 0) {
+                    dusunBumilList.forEach(b => {
+                        const rColor = b.risiko === 'Tinggi' ? '#f43f5e' : b.risiko === 'Sedang' ? '#f59e0b' : '#10b981';
+                        popupHtml += `
+                            <div style="margin-bottom: 6px; padding: 4px; background: #fdf2f8; border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <b style="color: #0f172a;">${b.nama}</b>
+                                    <span style="background: ${rColor}; color: white; padding: 1px 5px; border-radius: 4px; font-size: 9px;">${b.risiko}</span>
+                                </div>
+                                <div style="color: #475569; margin-top: 2px;">
+                                    Suami: ${b.suami}<br>
+                                    HPL: <b style="color: #db2777;">${b.hpl || '-'}</b>
+                                </div>
+                                ${b.wa ? `<a href="https://wa.me/${b.wa}" target="_blank" style="display: inline-block; margin-top: 3px; color: #059669; font-weight: bold; text-decoration: none;"><i class="fa-brands fa-whatsapp"></i> Chat WA</a>` : ''}
+                            </div>
+                        `;
+                    });
+                } else {
+                    popupHtml += `<i style="color: #94a3b8;">Belum ada data ibu hamil di dusun ini.</i>`;
+                }
+                popupHtml += `</div>`;
+
                 const m = L.marker([coord.lat, coord.lng], { icon: dusunIcon }).addTo(leafletMap);
                 m.bindPopup(popupHtml);
                 mapMarkers.push(m);
             });
 
             renderMapSummary();
+        }
+
+        function resetLeafletMapView() {
+            if (leafletMap) {
+                const defaultLat = pustuLocation.lat !== "" ? parseFloat(pustuLocation.lat) : -7.830602;
+                const defaultLng = pustuLocation.lng !== "" ? parseFloat(pustuLocation.lng) : 113.977607;
+                leafletMap.setView([defaultLat, defaultLng], 13);
+            }
         }
 
         function renderMapSummary() {
@@ -1834,49 +1960,41 @@
             });
 
             if (Object.keys(dusunStats).length === 0) {
-                container.innerHTML = `<p class="text-[10px] text-slate-400 italic text-center py-2">Belum ada dusun terdaftar.</p>`;
+                container.innerHTML = `<p class="text-xs text-slate-400 italic text-center py-2">Belum ada dusun terdaftar.</p>`;
                 return;
             }
 
             if (mapSummaryMode === 'tile') {
                 const grid = document.createElement('div');
-                grid.className = "grid grid-cols-2 gap-2";
+                grid.className = "grid grid-cols-2 gap-2.5";
                 Object.keys(dusunStats).forEach(dusun => {
                     const st = dusunStats[dusun];
                     const card = document.createElement('div');
-                    card.className = "p-2.5 bg-pink-50/40 rounded-xl border border-pink-100 flex flex-col justify-between";
+                    card.className = "p-3.5 bg-pink-50/40 rounded-2xl border border-pink-100 flex flex-col justify-between";
                     card.innerHTML = `
-                        <div class="flex items-center justify-between mb-0.5">
-                            <span class="text-[10px] font-extrabold text-slate-900 truncate">${dusun}</span>
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-bold ${st.risti > 0 ? 'bg-rose-50 text-rose-600 border border-rose-200' : 'bg-emerald-50 text-emerald-600'}">${st.risti > 0 ? st.risti + ' Risti' : 'Aman'}</span>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs font-extrabold text-slate-900 truncate">${dusun}</span>
+                            <span class="px-2 py-0.5 rounded text-xs font-bold ${st.risti > 0 ? 'bg-rose-50 text-rose-600 border border-rose-200' : 'bg-emerald-50 text-emerald-600'}">${st.risti > 0 ? st.risti + ' Risti' : 'Aman'}</span>
                         </div>
-                        <p class="text-[9px] text-slate-500">Bumil: <strong class="text-slate-900">${st.total}</strong></p>
+                        <p class="text-xs text-slate-500">Bumil: <strong class="text-slate-900">${st.total}</strong></p>
                     `;
                     grid.appendChild(card);
                 });
                 container.appendChild(grid);
             } else {
                 const list = document.createElement('div');
-                list.className = "space-y-1.5";
+                list.className = "space-y-2";
                 Object.keys(dusunStats).forEach(dusun => {
                     const st = dusunStats[dusun];
                     const row = document.createElement('div');
-                    row.className = "p-2 bg-pink-50/40 rounded-xl border border-pink-100 flex items-center justify-between text-[10px]";
+                    row.className = "p-3.5 bg-pink-50/40 rounded-2xl border border-pink-100 flex items-center justify-between text-xs";
                     row.innerHTML = `
-                        <div><p class="font-bold text-slate-900">${dusun}</p><p class="text-[8px] text-slate-500">Risti: ${st.risti}</p></div>
-                        <span class="font-extrabold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-lg text-[11px]">${st.total}</span>
+                        <div><p class="font-bold text-slate-900">${dusun}</p><p class="text-xs text-slate-500">Risti: ${st.risti}</p></div>
+                        <span class="font-extrabold text-pink-600 bg-pink-50 px-2.5 py-0.5 rounded-xl text-xs">${st.total}</span>
                     `;
                     list.appendChild(row);
                 });
                 container.appendChild(list);
-            }
-        }
-
-        function resetLeafletMapView() {
-            if (leafletMap) {
-                const defaultLat = pustuLocation.lat !== "" ? parseFloat(pustuLocation.lat) : -7.830602;
-                const defaultLng = pustuLocation.lng !== "" ? parseFloat(pustuLocation.lng) : 113.977607;
-                leafletMap.setView([defaultLat, defaultLng], 13);
             }
         }
 
@@ -1885,7 +2003,7 @@
             const u = document.getElementById('loginUsername').value.trim();
             const p = document.getElementById('loginPassword').value.trim();
 
-            if (u === activeUser.username && p === activeUser.password) {
+            if (!activeUser.username || (u === activeUser.username && p === activeUser.password)) {
                 document.getElementById('loginScreen').classList.add('hidden');
                 document.getElementById('mainApp').classList.remove('hidden');
                 loadLocalData();
@@ -1900,13 +2018,14 @@
         }
 
         function updateUserDisplay() {
-            const firstName = activeUser.name ? activeUser.name.split(' ')[0] : "Bidan";
+            const displayName = activeUser.name ? activeUser.name : "Bidan Desa";
+            const firstName = displayName.split(' ')[0];
             document.getElementById('headerUserName').textContent = firstName;
-            document.getElementById('welcomeHeading').textContent = `Halo, ${activeUser.name || 'Bidan Desa'}!`;
+            document.getElementById('welcomeHeading').textContent = `Halo, ${firstName}!`;
             
             const villageSubEl = document.getElementById('bannerVillageSubtitle');
             if (villageSubEl) {
-                const vName = appVillageName || "Desa Anda";
+                const vName = appVillageName || "Desa Botolinggo";
                 villageSubEl.textContent = `Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di ${vName}`;
             }
 
@@ -1940,7 +2059,7 @@
             });
             const link = document.createElement("a");
             link.setAttribute("href", encodeURI(csvContent));
-            link.setAttribute("download", `Rekap_Bumil_${appVillageName}.csv`);
+            link.setAttribute("download", `Rekap_Bumil_${(appVillageName||'Desa').replace(/\s+/g, '_')}.csv`);
             document.body.appendChild(link);
             link.click();
             link.remove();
@@ -1949,7 +2068,7 @@
         function openWaSummaryModal() {
             const total = bumilData.length;
             const risti = bumilData.filter(i => i.risiko === 'Tinggi').length;
-            let msg = `*REKAP SEHATI*%0A📍 ${appVillageName}%0A• Total: *${total}*%0A• Risti: *${risti}*`;
+            let msg = `*REKAP SEHATI*%0A📍 ${appVillageName || 'Desa'}%0A• Total: *${total}*%0A• Risti: *${risti}*`;
             window.open(`https://wa.me/?text=${msg}`, '_blank');
         }
 
@@ -1963,8 +2082,8 @@
 
         function alertCustom(msg) {
             const box = document.createElement('div');
-            box.className = "fixed bottom-16 left-3 right-3 z-50 bg-slate-900 text-white px-3.5 py-2.5 rounded-2xl shadow-xl flex items-center justify-center gap-2 text-[11px] font-bold";
-            box.innerHTML = `<i class="fa-solid fa-circle-check text-pink-400"></i><span>${msg}</span>`;
+            box.className = "fixed bottom-20 left-4 right-4 z-50 bg-slate-900 text-white px-4 py-3.5 rounded-2xl shadow-xl flex items-center justify-center gap-2 text-xs font-bold";
+            box.innerHTML = `<i class="fa-solid fa-circle-check text-pink-400 text-sm"></i><span>${msg}</span>`;
             document.body.appendChild(box);
             setTimeout(() => box.remove(), 2500);
         }
