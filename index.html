@@ -518,7 +518,7 @@
                                 <div class="flex items-center gap-2">
                                     <div class="w-6 h-6 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center text-[10px]"><i class="fa-solid fa-trash-can"></i></div>
                                     <div>
-                                        <p class="text-[11px] font-extrabold text-rose-600">Reset Semua Data (0 Data)</p>
+                                        <p class="text-[11px] font-extrabold text-rose-600">Reset Semua Data)</p>
                                         <p class="text-[8px] text-slate-500">Kosongkan seluruh data bumil</p>
                                     </div>
                                 </div>
@@ -1257,7 +1257,7 @@
 
         function resetAllAppData() {
             // Added dual confirmation prompt to prevent accidental execution
-            const firstConfirm = confirm("PERINGATAN: Apakah Anda yakin ingin mereset seluruh data aplikasi menjadi kosong (0 Data, Desa & Dusun terhapus)?");
+            const firstConfirm = confirm("PERINGATAN: Apakah Anda yakin ingin mereset seluruh data aplikasi menjadi kosong (Data Bumil, Desa & Dusun terhapus)?");
             if (!firstConfirm) return;
 
             const secondConfirm = prompt("Ketik kata 'RESET' untuk mengonfirmasi penghapusan total data:");
