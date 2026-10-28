@@ -53,7 +53,7 @@
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased text-[11px]">
+<body class="text-slate-800 antialiased text-xs">
 
     <!-- MOBILE APP CONTAINER -->
     <div class="mobile-app-wrapper">
@@ -61,56 +61,56 @@
         <!-- ========================================== -->
         <!-- LOGIN SCREEN                               -->
         <!-- ========================================== -->
-        <div id="loginScreen" class="absolute inset-0 z-50 bg-gradient-to-br from-pink-500 via-rose-500 to-pink-700 flex flex-col justify-between p-4 overflow-y-auto">
-            <div class="my-auto bg-white rounded-3xl shadow-2xl w-full p-5 border border-white/20">
-                <div class="text-center mb-5">
+        <div id="loginScreen" class="absolute inset-0 z-50 bg-gradient-to-br from-pink-500 via-rose-500 to-pink-700 flex flex-col justify-between p-5 overflow-y-auto">
+            <div class="my-auto bg-white rounded-3xl shadow-2xl w-full p-6 border border-white/25">
+                <div class="text-center mb-6">
                     <div class="flex flex-col items-center justify-center mb-3 mt-2">
-                        <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-xl font-extrabold shadow-inner">
+                        <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-2xl font-extrabold shadow-inner">
                             <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                     </div>
-                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight">SEHATI</h1>
-                    <p class="text-[10px] font-semibold text-pink-600 mt-0.5 uppercase tracking-wider" id="loginVillageLabel">Desa Botolinggo</p>
+                    <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">SEHATI</h1>
+                    <p class="text-[11px] font-semibold text-pink-600 mt-0.5 uppercase tracking-wider" id="loginVillageLabel">Belum Atur Desa</p>
                 </div>
 
-                <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-3.5">
+                <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
                     <div>
-                        <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1">Username / Petugas</label>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Username / Petugas</label>
                         <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                                <i class="fa-solid fa-user text-[11px]"></i>
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                                <i class="fa-solid fa-user text-xs"></i>
                             </span>
                             <input type="text" id="loginUsername" required value="admin" placeholder="admin" 
-                                class="w-full pl-9 pr-3 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-[11px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white transition">
+                                class="w-full pl-10 pr-3.5 py-3 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white transition">
                         </div>
                     </div>
 
                     <div>
-                        <div class="flex items-center justify-between mb-1">
-                            <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-500">Kata Sandi</label>
-                            <button type="button" onclick="openForgotPasswordModal()" class="text-[10px] font-bold text-pink-600 hover:text-pink-700 transition">Lupa Sandi?</button>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">Kata Sandi</label>
+                            <button type="button" onclick="openForgotPasswordModal()" class="text-[11px] font-bold text-pink-600 hover:text-pink-700 transition">Lupa Sandi?</button>
                         </div>
                         <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                                <i class="fa-solid fa-lock text-[11px]"></i>
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                                <i class="fa-solid fa-lock text-xs"></i>
                             </span>
                             <input type="password" id="loginPassword" required value="123456" placeholder="123456" 
-                                class="w-full pl-9 pr-10 py-2.5 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-[11px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white transition">
-                            <button type="button" onclick="togglePasswordVisibility('loginPassword', 'toggleLoginIcon')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 transition">
-                                <i id="toggleLoginIcon" class="fa-solid fa-eye text-[11px]"></i>
+                                class="w-full pl-10 pr-11 py-3 bg-pink-50/50 border border-slate-200 rounded-2xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 focus:bg-white transition">
+                            <button type="button" onclick="togglePasswordVisibility('loginPassword', 'toggleLoginIcon')" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 transition">
+                                <i id="toggleLoginIcon" class="fa-solid fa-eye text-xs"></i>
                             </button>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-3 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-2xl shadow-lg shadow-pink-600/30 transition flex items-center justify-center gap-2 text-[11px] tracking-wide">
+                    <button type="submit" class="w-full py-3.5 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-2xl shadow-lg shadow-pink-600/30 transition flex items-center justify-center gap-2 text-xs tracking-wide">
                         <span>Masuk Aplikasi</span>
-                        <i class="fa-solid fa-arrow-right-to-bracket text-[11px]"></i>
+                        <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
                     </button>
                 </form>
 
-                <div class="mt-4 pt-3 border-t border-slate-100 text-center">
-                    <p class="text-[9.5px] text-slate-500 font-medium">Pemantauan Risiko Tinggi & HPL Terpadu</p>
-                    <p class="text-[9.5px] text-pink-600 font-bold mt-0.5">Sistem Keamanan Terpadu SEHATI</p>
+                <div class="mt-6 pt-4 border-t border-slate-100 text-center">
+                    <p class="text-[10px] text-slate-500 font-medium">Pemantauan Risiko Tinggi & HPL Terpadu</p>
+                    <p class="text-[10px] text-pink-600 font-bold mt-0.5">Sistem Keamanan Terpadu SEHATI</p>
                 </div>
             </div>
         </div>
@@ -122,180 +122,180 @@
             
             <!-- HEADER / TOPBAR -->
             <header class="bg-white/95 backdrop-blur-md border-b border-pink-100 sticky top-0 z-30 shadow-2xs flex-shrink-0 pt-safe">
-                <div class="px-3.5 h-14 flex items-center justify-between">
+                <div class="px-4 h-16 flex items-center justify-between">
                     <!-- Brand -->
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 bg-pink-600 rounded-xl flex items-center justify-center text-white font-extrabold text-xs shadow-xs flex-shrink-0">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 bg-pink-600 rounded-xl flex items-center justify-center text-white font-extrabold text-sm shadow-xs flex-shrink-0">
                             <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                         <div class="min-w-0">
-                            <h1 class="text-[11px] font-extrabold text-slate-900 tracking-tight leading-tight">SEHATI</h1>
-                            <p id="topBarVillageName" class="text-[9.5px] font-semibold text-pink-600 truncate max-w-[150px]">Desa Botolinggo</p>
+                            <h1 class="text-xs font-extrabold text-slate-900 tracking-tight leading-tight">SEHATI</h1>
+                            <p id="topBarVillageName" class="text-[10px] font-semibold text-pink-600 truncate max-w-[160px]">Belum Atur Desa</p>
                         </div>
                     </div>
 
                     <!-- Right Actions -->
-                    <div class="flex items-center gap-1.5">
-                        <button onclick="openSettingsModal()" class="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-xl border border-pink-200/80 bg-pink-50/50 hover:bg-pink-100/60 transition shadow-2xs">
-                            <div id="headerUserAvatar" class="w-6 h-6 rounded-full bg-pink-600 text-white font-bold flex items-center justify-center text-[9.5px] shadow-xs overflow-hidden flex-shrink-0">
+                    <div class="flex items-center gap-2">
+                        <button onclick="openSettingsModal()" class="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-2xl border border-pink-200/80 bg-pink-50/50 hover:bg-pink-100/60 transition shadow-2xs">
+                            <div id="headerUserAvatar" class="w-7 h-7 rounded-full bg-pink-600 text-white font-bold flex items-center justify-center text-[10px] shadow-xs overflow-hidden flex-shrink-0">
                                 BD
                             </div>
                             <div class="text-left hidden xs:block">
-                                <p id="headerUserName" class="text-[10px] font-bold text-slate-900 leading-tight truncate max-w-[75px]">Bidan</p>
+                                <p id="headerUserName" class="text-[11px] font-bold text-slate-900 leading-tight truncate max-w-[85px]">Bidan</p>
                             </div>
                         </button>
 
-                        <button onclick="openSettingsModal()" title="Pengaturan" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-pink-100 text-slate-700 hover:text-pink-600 flex items-center justify-center transition shadow-xs flex-shrink-0">
-                            <i class="fa-solid fa-gear text-[11px]"></i>
+                        <button onclick="openSettingsModal()" title="Pengaturan" class="w-9 h-9 rounded-2xl bg-slate-100 hover:bg-pink-100 text-slate-700 hover:text-pink-600 flex items-center justify-center transition shadow-xs flex-shrink-0">
+                            <i class="fa-solid fa-gear text-xs"></i>
                         </button>
                     </div>
                 </div>
             </header>
 
             <!-- CONTENT AREA (SCROLLABLE) -->
-            <main class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-3 pb-24 text-[10px]">
+            <main class="flex-1 overflow-y-auto custom-scrollbar p-3.5 space-y-3.5 pb-24 text-[11px]">
 
                 <!-- ========================================== -->
                 <!-- TAB 1: BERANDA                             -->
                 <!-- ========================================== -->
-                <div id="tab-dashboard" class="tab-content space-y-3">
+                <div id="tab-dashboard" class="tab-content space-y-3.5">
                     
                     <!-- Banner Selamat Datang -->
-                    <div class="bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 rounded-2xl p-3 text-white shadow-lg relative overflow-hidden">
-                        <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
-                        <div class="relative z-10 space-y-1">
-                            <div class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-black/15 backdrop-blur-md rounded-full text-[8.5px] font-bold text-white border border-white/20">
+                    <div class="bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600 rounded-3xl p-4 text-white shadow-lg relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+                        <div class="relative z-10 space-y-1.5">
+                            <div class="inline-flex items-center gap-1.5 px-3 py-0.5 bg-black/15 backdrop-blur-md rounded-full text-[9.5px] font-bold text-white border border-white/20">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                                 <span id="bannerTodayDate">Selasa, 27 Okt 2026</span>
                             </div>
-                            <h2 id="welcomeHeading" class="text-[11.5px] font-extrabold tracking-tight">Halo, Bidan Desa!</h2>
-                            <p class="text-pink-100 text-[9px] font-normal leading-relaxed">
+                            <h2 id="welcomeHeading" class="text-xs font-extrabold tracking-tight">Halo, Bidan Desa!</h2>
+                            <p class="text-pink-100 text-[10px] font-normal leading-relaxed">
                                 <strong class="font-bold text-white">SEHATI</strong>: Sehat Hamilnya, Elok Bersalinnya, Harmoni Nifasnya, Aman Bayinya.<br>
-                                <span id="bannerVillageSubtitle" class="text-[8.5px] text-pink-100/90 font-medium">Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di Desa Botolinggo</span>
+                                <span id="bannerVillageSubtitle" class="text-[9.5px] text-pink-100/90 font-medium">Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di Desa Botolinggo</span>
                             </p>
                         </div>
                     </div>
 
                     <!-- KPI / Summary Cards (2x2 Grid) -->
-                    <div class="grid grid-cols-2 gap-2">
-                        <div class="bg-white p-2.5 rounded-xl border border-pink-100 shadow-2xs flex items-center justify-between">
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <div class="bg-white p-3 rounded-2xl border border-pink-100 shadow-2xs flex items-center justify-between">
                             <div>
-                                <p class="text-[8.5px] font-bold uppercase tracking-wider text-slate-400">Total Bumil</p>
-                                <h3 id="kpiTotal" class="text-base font-extrabold text-slate-900 mt-0.5">0</h3>
-                                <p class="text-[8.5px] text-slate-500 mt-0.5">Aktif</p>
+                                <p class="text-[9.5px] font-bold uppercase tracking-wider text-slate-400">Total Bumil</p>
+                                <h3 id="kpiTotal" class="text-xl font-extrabold text-slate-900 mt-0.5">0</h3>
+                                <p class="text-[9.5px] text-slate-500 mt-0.5">Aktif</p>
                             </div>
-                            <div class="w-7 h-7 rounded-lg bg-pink-50 text-pink-600 flex items-center justify-center text-[11px] shadow-2xs">
+                            <div class="w-9 h-9 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-xs shadow-2xs">
                                 <i class="fa-solid fa-person-pregnant"></i>
                             </div>
                         </div>
-                        <div class="bg-white p-2.5 rounded-xl border border-pink-100 shadow-2xs flex items-center justify-between">
+                        <div class="bg-white p-3 rounded-2xl border border-pink-100 shadow-2xs flex items-center justify-between">
                             <div>
-                                <p class="text-[8.5px] font-bold uppercase tracking-wider text-rose-600">Risti</p>
-                                <h3 id="kpiRisti" class="text-base font-extrabold text-rose-600 mt-0.5">0</h3>
-                                <p class="text-[8.5px] text-rose-500 mt-0.5">Tinggi</p>
+                                <p class="text-[9.5px] font-bold uppercase tracking-wider text-rose-600">Risti</p>
+                                <h3 id="kpiRisti" class="text-xl font-extrabold text-rose-600 mt-0.5">0</h3>
+                                <p class="text-[9.5px] text-rose-500 mt-0.5">Tinggi</p>
                             </div>
-                            <div class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-[11px] shadow-2xs">
+                            <div class="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xs shadow-2xs">
                                 <i class="fa-solid fa-triangle-exclamation"></i>
                             </div>
                         </div>
-                        <div class="bg-white p-2.5 rounded-xl border border-pink-100 shadow-2xs flex items-center justify-between">
+                        <div class="bg-white p-3 rounded-2xl border border-pink-100 shadow-2xs flex items-center justify-between">
                             <div>
-                                <p class="text-[8.5px] font-bold uppercase tracking-wider text-amber-600">Sedang</p>
-                                <h3 id="kpiSedang" class="text-base font-extrabold text-amber-600 mt-0.5">0</h3>
-                                <p class="text-[8.5px] text-amber-500 mt-0.5">Pantauan</p>
+                                <p class="text-[9.5px] font-bold uppercase tracking-wider text-amber-600">Sedang</p>
+                                <h3 id="kpiSedang" class="text-xl font-extrabold text-amber-600 mt-0.5">0</h3>
+                                <p class="text-[9.5px] text-amber-500 mt-0.5">Pantauan</p>
                             </div>
-                            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-[11px] shadow-2xs">
+                            <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xs shadow-2xs">
                                 <i class="fa-solid fa-circle-exclamation"></i>
                             </div>
                         </div>
-                        <div class="bg-white p-2.5 rounded-xl border border-pink-100 shadow-2xs flex items-center justify-between">
+                        <div class="bg-white p-3 rounded-2xl border border-pink-100 shadow-2xs flex items-center justify-between">
                             <div>
-                                <p class="text-[8.5px] font-bold uppercase tracking-wider text-emerald-600">Rendah</p>
-                                <h3 id="kpiRendah" class="text-base font-extrabold text-emerald-600 mt-0.5">0</h3>
-                                <p class="text-[8.5px] text-emerald-500 mt-0.5">Normal</p>
+                                <p class="text-[9.5px] font-bold uppercase tracking-wider text-emerald-600">Rendah</p>
+                                <h3 id="kpiRendah" class="text-xl font-extrabold text-emerald-600 mt-0.5">0</h3>
+                                <p class="text-[9.5px] text-emerald-500 mt-0.5">Normal</p>
                             </div>
-                            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-[11px] shadow-2xs">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs shadow-2xs">
                                 <i class="fa-solid fa-circle-check"></i>
                             </div>
                         </div>
                     </div>
 
                     <!-- Quick Actions -->
-                    <div class="bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs space-y-2">
-                        <h3 class="text-[9px] font-extrabold uppercase tracking-wider text-slate-400">Akses Cepat</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="openBumilModal()" class="p-2 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold text-[9.5px] flex items-center justify-center gap-1.5 transition border border-pink-200">
-                                <i class="fa-solid fa-user-plus text-[10px]"></i>
+                    <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5">
+                        <h3 class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Akses Cepat</h3>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button onclick="openBumilModal()" class="p-2.5 rounded-2xl bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold text-[10.5px] flex items-center justify-center gap-1.5 transition border border-pink-200">
+                                <i class="fa-solid fa-user-plus text-xs"></i>
                                 <span>Tambah Bumil</span>
                             </button>
-                            <button onclick="openSettingsModal()" class="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[9.5px] flex items-center justify-center gap-1.5 transition border border-slate-200">
-                                <i class="fa-solid fa-gear text-[10px]"></i>
+                            <button onclick="openSettingsModal()" class="p-2.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[10.5px] flex items-center justify-center gap-1.5 transition border border-slate-200">
+                                <i class="fa-solid fa-gear text-xs"></i>
                                 <span>Edit Dusun</span>
                             </button>
-                            <button onclick="switchTab('tab-kantong')" class="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[9.5px] flex items-center justify-center gap-1.5 transition border border-slate-200">
-                                <i class="fa-solid fa-suitcase-medical text-[10px]"></i>
+                            <button onclick="switchTab('tab-kantong')" class="p-2.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[10.5px] flex items-center justify-center gap-1.5 transition border border-slate-200">
+                                <i class="fa-solid fa-suitcase-medical text-xs"></i>
                                 <span>Kantong Persalinan</span>
                             </button>
-                            <button onclick="switchTab('tab-bulin')" class="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[9.5px] flex items-center justify-center gap-1.5 transition border border-slate-200">
-                                <i class="fa-solid fa-baby text-[10px]"></i>
-                                <span>Ibu Bersalin</span>
+                            <button onclick="switchTab('tab-peta')" class="p-2.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-[10.5px] flex items-center justify-center gap-1.5 transition border border-slate-200">
+                                <i class="fa-solid fa-map-location-dot text-xs"></i>
+                                <span>Peta Risti</span>
                             </button>
                         </div>
                     </div>
 
                     <!-- Export & WA Rekap Actions -->
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="exportToExcel()" class="py-2 px-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9.5px] flex items-center justify-center gap-1.5 shadow-2xs transition">
-                            <i class="fa-solid fa-file-excel text-[10px]"></i>
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <button onclick="exportToExcel()" class="py-2.5 px-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10.5px] flex items-center justify-center gap-1.5 shadow-2xs transition">
+                            <i class="fa-solid fa-file-excel text-xs"></i>
                             <span>Export Excel</span>
                         </button>
-                        <button onclick="openWaSummaryModal()" class="py-2 px-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-[9.5px] flex items-center justify-center gap-1.5 shadow-2xs transition">
-                            <i class="fa-brands fa-whatsapp text-[10px]"></i>
+                        <button onclick="openWaSummaryModal()" class="py-2.5 px-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-[10.5px] flex items-center justify-center gap-1.5 shadow-2xs transition">
+                            <i class="fa-brands fa-whatsapp text-xs"></i>
                             <span>Kirim WA</span>
                         </button>
                     </div>
 
                     <!-- Charts Section -->
-                    <div class="space-y-3">
+                    <div class="space-y-3.5">
                         <!-- HPL Bar Chart -->
-                        <div class="bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs space-y-2">
+                        <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <h3 class="text-[10px] font-extrabold text-slate-900">Estimasi Persalinan (HPL)</h3>
-                                    <p class="text-[8.5px] text-slate-500">Distribusi bulanan risiko</p>
+                                    <h3 class="text-[11px] font-extrabold text-slate-900">Estimasi Persalinan (HPL)</h3>
+                                    <p class="text-[9.5px] text-slate-500">Distribusi bulanan risiko</p>
                                 </div>
-                                <div class="flex items-center gap-1 bg-pink-50 px-2 py-0.5 rounded-lg border border-pink-200">
-                                    <select id="hplChartYearSelect" onchange="renderDashboardCharts()" class="bg-transparent text-pink-600 text-[9.5px] font-extrabold focus:outline-none cursor-pointer">
+                                <div class="flex items-center gap-1 bg-pink-50 px-2 py-1 rounded-xl border border-pink-200">
+                                    <select id="hplChartYearSelect" onchange="renderDashboardCharts()" class="bg-transparent text-pink-600 text-[10.5px] font-extrabold focus:outline-none cursor-pointer">
                                     </select>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-2 text-[8.5px] font-semibold text-slate-600 bg-pink-50/50 p-1.5 rounded-xl border border-pink-100">
+                            <div class="flex items-center gap-2 text-[9.5px] font-semibold text-slate-600 bg-pink-50/50 p-1.5 rounded-xl border border-pink-100">
                                 <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500 inline-block"></span> Risti</span>
                                 <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> Sedang</span>
                                 <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Rendah</span>
                             </div>
-                            <div id="hplChartContainer" class="h-36 flex items-end gap-1 pt-3 pb-1 border-b border-slate-100"></div>
+                            <div id="hplChartContainer" class="h-40 flex items-end gap-1.5 pt-3 pb-1.5 border-b border-slate-100"></div>
                         </div>
 
                         <!-- Dusun Donut Chart -->
-                        <div class="bg-slate-900 text-white rounded-2xl p-2.5 border border-slate-800 shadow-xl space-y-2">
+                        <div class="bg-slate-900 text-white rounded-3xl p-3.5 border border-slate-800 shadow-xl space-y-2.5">
                             <div class="flex items-center justify-between">
-                                <h3 class="text-[10px] font-extrabold text-white">Sebaran Dusun</h3>
-                                <div class="flex items-center gap-1 bg-slate-800 px-2 py-0.5 rounded-lg border border-slate-700">
-                                    <select id="dusunChartYearSelect" onchange="renderDashboardCharts()" class="bg-transparent text-pink-400 text-[9.5px] font-extrabold focus:outline-none cursor-pointer">
+                                <h3 class="text-[11px] font-extrabold text-white">Sebaran Dusun</h3>
+                                <div class="flex items-center gap-1 bg-slate-800 px-2 py-1 rounded-xl border border-slate-700">
+                                    <select id="dusunChartYearSelect" onchange="renderDashboardCharts()" class="bg-transparent text-pink-400 text-[10.5px] font-extrabold focus:outline-none cursor-pointer">
                                     </select>
                                 </div>
                             </div>
 
                             <div class="flex flex-col items-center justify-center space-y-2 py-1">
-                                <div id="dusunDonutContainer" class="w-24 h-24 rounded-full flex items-center justify-center relative shadow-inner" style="background: conic-gradient(#ec4899 0deg 360deg);">
-                                    <div class="w-16 h-16 bg-slate-900 rounded-full flex flex-col items-center justify-center text-center shadow-lg">
-                                        <span id="donutTotalCount" class="text-sm font-extrabold text-white">0</span>
-                                        <span class="text-[7.5px] font-bold text-slate-400 uppercase tracking-wider">Total</span>
+                                <div id="dusunDonutContainer" class="w-32 h-32 rounded-full flex items-center justify-center relative shadow-inner" style="background: conic-gradient(#ec4899 0deg 360deg);">
+                                    <div class="w-20 h-20 bg-slate-900 rounded-full flex flex-col items-center justify-center text-center shadow-lg">
+                                        <span id="donutTotalCount" class="text-base font-extrabold text-white">0</span>
+                                        <span class="text-[8px] font-bold text-slate-400 uppercase tracking-wider">Total</span>
                                     </div>
                                 </div>
                             </div>
-                            <div id="dusunSideLegend" class="space-y-1 max-h-28 overflow-y-auto custom-scrollbar pr-1"></div>
+                            <div id="dusunSideLegend" class="space-y-1 max-h-36 overflow-y-auto custom-scrollbar pr-1"></div>
                         </div>
                     </div>
                 </div>
@@ -303,29 +303,29 @@
                 <!-- ========================================== -->
                 <!-- TAB 2: BUMIL (DATA IBU HAMIL)              -->
                 <!-- ========================================== -->
-                <div id="tab-bumil" class="tab-content hidden space-y-3">
-                    <div class="bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs flex items-center justify-between">
+                <div id="tab-bumil" class="tab-content hidden space-y-3.5">
+                    <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs flex items-center justify-between">
                         <div>
-                            <h2 class="text-[10.5px] font-extrabold text-slate-900">Data Ibu Hamil (Aktif)</h2>
-                            <p class="text-[8.5px] text-slate-500">Kelola daftar pemeriksaan hamil</p>
+                            <h2 class="text-[11px] font-extrabold text-slate-900">Data Ibu Hamil (Aktif)</h2>
+                            <p class="text-[9.5px] text-slate-500">Kelola daftar pemeriksaan hamil</p>
                         </div>
-                        <button onclick="openBumilModal()" class="px-2.5 py-1.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-[9.5px] rounded-xl shadow-md transition flex items-center gap-1">
-                            <i class="fa-solid fa-user-plus text-[10px]"></i>
+                        <button onclick="openBumilModal()" class="px-3 py-1.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-[10.5px] rounded-xl shadow-md transition flex items-center gap-1">
+                            <i class="fa-solid fa-user-plus text-xs"></i>
                             <span>Tambah</span>
                         </button>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-pink-100 shadow-2xs overflow-hidden">
+                    <div class="bg-white rounded-3xl border border-pink-100 shadow-2xs overflow-hidden">
                         <div class="overflow-x-auto custom-scrollbar">
                             <table class="w-full text-left border-collapse">
                                 <thead>
-                                    <tr class="bg-pink-50/50 border-b border-pink-100 text-[8.5px] font-bold text-slate-500 uppercase tracking-wider">
-                                        <th class="p-2">Identitas & Risiko</th>
-                                        <th class="p-2">HPL</th>
-                                        <th class="p-2 text-center">Aksi</th>
+                                    <tr class="bg-pink-50/50 border-b border-pink-100 text-[9.5px] font-bold text-slate-500 uppercase tracking-wider">
+                                        <th class="p-2.5">Identitas & Risiko</th>
+                                        <th class="p-2.5">HPL</th>
+                                        <th class="p-2.5 text-center">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody id="bumilTableBody" class="divide-y divide-slate-100 text-[9.5px]"></tbody>
+                                <tbody id="bumilTableBody" class="divide-y divide-slate-100 text-[10.5px]"></tbody>
                             </table>
                         </div>
                     </div>
@@ -334,118 +334,120 @@
                 <!-- ========================================== -->
                 <!-- TAB 3: KANTONG PERSALINAN                  -->
                 <!-- ========================================== -->
-                <div id="tab-kantong" class="tab-content hidden space-y-3">
-                    <div class="bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs space-y-2">
+                <div id="tab-kantong" class="tab-content hidden space-y-3.5">
+                    <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5">
                         <div class="flex items-center justify-between">
                             <div>
-                                <h2 class="text-[10.5px] font-extrabold text-slate-900">Kantong Persalinan</h2>
-                                <p class="text-[8.5px] text-slate-500">Pemantauan estimasi HPL & kesiapan persalinan per bulan</p>
+                                <h2 class="text-[11px] font-extrabold text-slate-900">Kantong Persalinan</h2>
+                                <p class="text-[9.5px] text-slate-500">Pemantauan estimasi HPL & kesiapan per bulan</p>
                             </div>
                             <div class="flex items-center gap-1.5 bg-pink-50 px-2.5 py-1 rounded-xl border border-pink-200 flex-shrink-0">
-                                <i class="fa-solid fa-calendar-days text-pink-600 text-[10px]"></i>
-                                <select id="kantongYearSelect" onchange="renderKantongPersalinan()" class="bg-transparent text-pink-600 text-[10px] font-extrabold focus:outline-none cursor-pointer">
+                                <i class="fa-solid fa-calendar-days text-pink-600 text-[11px]"></i>
+                                <select id="kantongYearSelect" onchange="renderKantongPersalinan()" class="bg-transparent text-pink-600 text-[10.5px] font-extrabold focus:outline-none cursor-pointer">
                                 </select>
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between pt-1 border-t border-slate-100">
                             <div class="relative flex-1 mr-2">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 text-slate-400">
-                                    <i class="fa-solid fa-magnifying-glass text-[9.5px]"></i>
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                                    <i class="fa-solid fa-magnifying-glass text-xs"></i>
                                 </span>
                                 <input type="text" id="kantongSearchInput" oninput="renderKantongPersalinan()" placeholder="Cari nama ibu / suami..." 
-                                    class="w-full pl-8 pr-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[9.5px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
+                                    class="w-full pl-9 pr-3 py-2 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[10.5px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
                             </div>
                             <div class="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl border border-slate-200 flex-shrink-0">
-                                <button onclick="setKantongView('tile')" id="btnViewTile" class="px-2 py-0.5 rounded-lg text-[8.5px] font-bold bg-pink-600 text-white shadow-xs transition">Tile</button>
-                                <button onclick="setKantongView('table')" id="btnViewTable" class="px-2 py-0.5 rounded-lg text-[8.5px] font-bold text-slate-600 hover:text-slate-900 transition">List</button>
+                                <button onclick="setKantongView('tile')" id="btnViewTile" class="px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-pink-600 text-white shadow-xs transition">Tile</button>
+                                <button onclick="setKantongView('table')" id="btnViewTable" class="px-2.5 py-1 rounded-lg text-[9.5px] font-bold text-slate-600 hover:text-slate-900 transition">List</button>
                             </div>
                         </div>
                     </div>
 
-                    <div id="kantongMonthsGrid" class="space-y-3"></div>
+                    <div id="kantongMonthsGrid" class="space-y-3.5"></div>
                 </div>
 
                 <!-- ========================================== -->
                 <!-- TAB 4: BULIN (IBU BERSALIN)                -->
                 <!-- ========================================== -->
-                <div id="tab-bulin" class="tab-content hidden space-y-3">
-                    <div class="bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs space-y-2">
-                        <!-- Top Header row: Title on left, Year Filter on right -->
-                        <div class="flex items-start justify-between gap-2">
+                <div id="tab-bulin" class="tab-content hidden space-y-3.5">
+                    <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-3">
+                        <!-- Top Header row with inline minimalistic filters -->
+                        <div class="flex items-center justify-between gap-2">
                             <div>
-                                <h2 class="text-[10.5px] font-extrabold text-slate-900 leading-tight">Data Ibu Bersalin</h2>
-                                <p class="text-[8.5px] text-slate-500 mt-0.5">Rekap persalinan & kondisi bayi</p>
+                                <h2 class="text-[11px] font-extrabold text-slate-900 leading-tight">Data Ibu Bersalin</h2>
+                                <p class="text-[9.5px] text-slate-500 mt-0.5">Rekap persalinan & kondisi bayi</p>
                             </div>
-                            <div class="bg-pink-50 px-2 py-1 rounded-xl border border-pink-200 flex-shrink-0">
-                                <select id="bulinYearFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[9.5px] font-extrabold focus:outline-none cursor-pointer">
-                                </select>
+                            <div class="flex items-center gap-1.5 flex-shrink-0">
+                                <div class="bg-pink-50 px-2.5 py-1 rounded-xl border border-pink-200">
+                                    <select id="bulinYearFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[10px] font-extrabold focus:outline-none cursor-pointer">
+                                    </select>
+                                </div>
+                                <div class="bg-pink-50 px-2.5 py-1 rounded-xl border border-pink-200">
+                                    <select id="bulinMonthFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[10px] font-extrabold focus:outline-none cursor-pointer">
+                                        <option value="all">Semua Bulan</option>
+                                        <option value="0">Januari</option>
+                                        <option value="1">Februari</option>
+                                        <option value="2">Maret</option>
+                                        <option value="3">April</option>
+                                        <option value="4">Mei</option>
+                                        <option value="5">Juni</option>
+                                        <option value="6">Juli</option>
+                                        <option value="7">Agustus</option>
+                                        <option value="8">September</option>
+                                        <option value="9">Oktober</option>
+                                        <option value="10">November</option>
+                                        <option value="11">Desember</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <!-- Second row: Search input on left, Month Filter on right -->
-                        <div class="flex items-center gap-2 pt-1 border-t border-slate-100">
-                            <div class="relative flex-1">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 text-slate-400">
-                                    <i class="fa-solid fa-magnifying-glass text-[9.5px]"></i>
+                        <!-- Search input row -->
+                        <div class="pt-1 border-t border-slate-100">
+                            <div class="relative w-full">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                                    <i class="fa-solid fa-magnifying-glass text-xs"></i>
                                 </span>
                                 <input type="text" id="bulinSearchInput" oninput="renderBulinTab()" placeholder="Cari ibu bersalin..." 
-                                    class="w-full pl-8 pr-3 py-1.5 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[9.5px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
-                            </div>
-                            <div class="bg-pink-50 px-2 py-1 rounded-xl border border-pink-200 flex-shrink-0">
-                                <select id="bulinMonthFilter" onchange="renderBulinTab()" class="bg-transparent text-pink-600 text-[9.5px] font-extrabold focus:outline-none cursor-pointer">
-                                    <option value="all">Semua Bulan</option>
-                                    <option value="0">Januari</option>
-                                    <option value="1">Februari</option>
-                                    <option value="2">Maret</option>
-                                    <option value="3">April</option>
-                                    <option value="4">Mei</option>
-                                    <option value="5">Juni</option>
-                                    <option value="6">Juli</option>
-                                    <option value="7">Agustus</option>
-                                    <option value="8">September</option>
-                                    <option value="9">Oktober</option>
-                                    <option value="10">November</option>
-                                    <option value="11">Desember</option>
-                                </select>
+                                    class="w-full pl-9 pr-3 py-2 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-[10.5px] font-medium focus:outline-none focus:ring-2 focus:ring-pink-500 transition">
                             </div>
                         </div>
                     </div>
 
-                    <div id="bulinListContainer" class="space-y-2"></div>
+                    <div id="bulinListContainer" class="space-y-2.5"></div>
                 </div>
 
                 <!-- ========================================== -->
                 <!-- TAB 5: PETA SEBARAN RISTI                  -->
                 <!-- ========================================== -->
-                <div id="tab-peta" class="tab-content hidden space-y-3">
-                    <div class="bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs flex items-center justify-between">
+                <div id="tab-peta" class="tab-content hidden space-y-3.5">
+                    <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs flex items-center justify-between">
                         <div>
-                            <h2 class="text-[10.5px] font-extrabold text-slate-900">Peta Sebaran Risti</h2>
-                            <p class="text-[8.5px] text-slate-500">Pemetaan geografis dusun aktif</p>
+                            <h2 class="text-[11px] font-extrabold text-slate-900">Peta Sebaran Risti</h2>
+                            <p class="text-[9.5px] text-slate-500">Pemetaan geografis dusun aktif</p>
                         </div>
-                        <button onclick="resetLeafletMapView()" class="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[9.5px] flex items-center gap-1 transition">
-                            <i class="fa-solid fa-crosshairs text-[10px]"></i>
+                        <button onclick="resetLeafletMapView()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[10.5px] flex items-center gap-1 transition">
+                            <i class="fa-solid fa-crosshairs text-xs"></i>
                             <span>Reset</span>
                         </button>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-pink-100 shadow-2xs overflow-hidden flex flex-col h-[280px]">
+                    <div class="bg-white rounded-3xl border border-pink-100 shadow-2xs overflow-hidden flex flex-col h-[300px]">
                         <div id="leafletMap" class="w-full h-full z-10"></div>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs space-y-2">
-                        <div class="flex items-center justify-between pb-1.5 border-b border-slate-100">
+                    <div class="bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5">
+                        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
                             <div>
-                                <h3 class="text-[10px] font-extrabold text-slate-900">Rekap Dusun</h3>
-                                <p class="text-[8.5px] text-slate-500">Distribusi per wilayah</p>
+                                <h3 class="text-[11px] font-extrabold text-slate-900">Rekap Dusun</h3>
+                                <p class="text-[9.5px] text-slate-500">Distribusi per wilayah</p>
                             </div>
                             <div class="flex items-center gap-1 bg-pink-50 p-0.5 rounded-xl border border-pink-100">
-                                <button onclick="setMapSummaryMode('tile')" id="mapModeTile" class="px-2 py-0.5 rounded-lg text-[8.5px] font-bold bg-pink-600 text-white shadow-xs transition">Tile</button>
-                                <button onclick="setMapSummaryMode('list')" id="mapModeList" class="px-2 py-0.5 rounded-lg text-[8.5px] font-bold text-slate-600 hover:text-slate-900 transition">List</button>
+                                <button onclick="setMapSummaryMode('tile')" id="mapModeTile" class="px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-pink-600 text-white shadow-xs transition">Tile</button>
+                                <button onclick="setMapSummaryMode('list')" id="mapModeList" class="px-2.5 py-1 rounded-lg text-[9.5px] font-bold text-slate-600 hover:text-slate-900 transition">List</button>
                             </div>
                         </div>
 
-                        <div id="mapSummaryContainer" class="max-h-36 overflow-y-auto custom-scrollbar space-y-1.5 pr-1"></div>
+                        <div id="mapSummaryContainer" class="max-h-40 overflow-y-auto custom-scrollbar space-y-1.5 pr-1"></div>
                     </div>
                 </div>
 
@@ -455,25 +457,25 @@
             <!-- FIXED BOTTOM NAVIGATION BAR (5 TABS)       -->
             <!-- Order: Beranda, Bumil, Kantong, Bulin, Peta -->
             <!-- ========================================== -->
-            <nav id="bottomNavBar" class="absolute bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-pink-100 shadow-lg px-1 py-1.5">
+            <nav id="bottomNavBar" class="absolute bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-pink-100 shadow-lg px-2 py-2">
                 <div class="flex items-center justify-around">
-                    <button onclick="switchTab('tab-dashboard')" id="nav-dashboard" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[9px] font-semibold active">
+                    <button onclick="switchTab('tab-dashboard')" id="nav-dashboard" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold active">
                         <i class="fa-solid fa-chart-pie text-sm"></i>
                         <span>Beranda</span>
                     </button>
-                    <button onclick="switchTab('tab-bumil')" id="nav-bumil" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[9px] font-semibold">
+                    <button onclick="switchTab('tab-bumil')" id="nav-bumil" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold">
                         <i class="fa-solid fa-person-pregnant text-sm"></i>
                         <span>Bumil</span>
                     </button>
-                    <button onclick="switchTab('tab-kantong')" id="nav-kantong" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[9px] font-semibold">
+                    <button onclick="switchTab('tab-kantong')" id="nav-kantong" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold">
                         <i class="fa-solid fa-suitcase-medical text-sm"></i>
-                        <span class="truncate max-w-[55px]">Kantong</span>
+                        <span>Kantong</span>
                     </button>
-                    <button onclick="switchTab('tab-bulin')" id="nav-bulin" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[9px] font-semibold">
+                    <button onclick="switchTab('tab-bulin')" id="nav-bulin" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold">
                         <i class="fa-solid fa-baby text-sm"></i>
                         <span>Bulin</span>
                     </button>
-                    <button onclick="switchTab('tab-peta')" id="nav-peta" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[9px] font-semibold">
+                    <button onclick="switchTab('tab-peta')" id="nav-peta" class="bottom-nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-pink-600 transition p-1 text-[10px] font-semibold">
                         <i class="fa-solid fa-map-location-dot text-sm"></i>
                         <span>Peta</span>
                     </button>
@@ -698,11 +700,11 @@
                     <div class="grid grid-cols-2 gap-2.5">
                         <div>
                             <label class="block text-xs font-bold text-slate-600 mb-1">Latitude</label>
-                            <input type="number" step="any" id="settingPustuLatInput" placeholder="-7.83" class="w-full px-3 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <input type="number" step="any" id="settingPustuLatInput" placeholder="" class="w-full px-3 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-600 mb-1">Longitude</label>
-                            <input type="number" step="any" id="settingPustuLngInput" placeholder="113.97" class="w-full px-3 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <input type="number" step="any" id="settingPustuLngInput" placeholder="" class="w-full px-3 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
                         </div>
                     </div>
                     <div class="flex justify-end gap-2 pt-2">
@@ -775,14 +777,14 @@
             </div>
         </div>
 
-        <!-- Modal Konfirmasi Reset Semua Data -->
+        <!-- Modal Konfirmasi Reset Semua Data dengan Peringatan -->
         <div id="resetConfirmModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-6 space-y-4 border border-rose-100 text-xs">
                 <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto text-lg shadow-inner">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                 </div>
                 <h3 class="text-sm font-extrabold text-slate-900 text-center">Peringatan Reset Data!</h3>
-                <p class="text-xs text-slate-600 text-center leading-relaxed">Tindakan ini akan menghapus seluruh data ibu hamil dan mengosongkan pengaturan desa. Silakan ketik kata <strong class="text-rose-600">RESET</strong> di bawah ini untuk konfirmasi:</p>
+                <p class="text-xs text-slate-600 text-center leading-relaxed">Tindakan ini akan menghapus seluruh data ibu hamil dan mengosongkan pengaturan desa secara permanen. Silakan ketik kata <strong class="text-rose-600">RESET</strong> di bawah ini untuk konfirmasi:</p>
                 <div>
                     <input type="text" id="resetConfirmInput" placeholder="Ketik RESET" class="w-full px-4 py-3 bg-rose-50/50 border border-rose-200 rounded-xl text-center text-rose-600 font-bold text-xs tracking-wider focus:outline-none focus:ring-2 focus:ring-rose-500">
                 </div>
@@ -851,7 +853,7 @@
                     <div class="grid grid-cols-3 gap-2.5">
                         <div>
                             <label class="block text-xs font-bold text-slate-600 mb-1">Usia (Thn)</label>
-                            <input type="number" id="bumilUsia" required placeholder="26" class="w-full px-3 py-3 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                            <input type="number" id="bumilUsia" required placeholder="Contoh: 26" class="w-full px-3 py-3 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-600 mb-1">Dusun</label>
@@ -884,7 +886,7 @@
                             <div class="px-3.5 py-3 bg-slate-100 border border-slate-200 rounded-xl text-slate-700 text-xs font-bold flex items-center justify-center flex-shrink-0">
                                 +62
                             </div>
-                            <input type="text" id="bumilWaLocal" placeholder="81234567890" class="w-full px-3.5 py-3 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            <input type="text" id="bumilWaLocal" placeholder="Contoh: 81234567890" class="w-full px-3.5 py-3 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
                         </div>
                     </div>
 
@@ -932,12 +934,12 @@
             </div>
         </div>
 
-        <!-- Modal Konfirmasi / Input Kelahiran (Bulin) -->
+        <!-- Modal Konfirmasi / Input Kelahiran -->
         <div id="bulinModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4 overflow-y-auto">
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-pink-100 my-auto text-xs">
                 <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
                     <div>
-                        <h3 class="text-sm font-extrabold text-slate-900">Konfirmasi Persalinan </h3>
+                        <h3 class="text-sm font-extrabold text-slate-900">Konfirmasi Persalinan</h3>
                         <p id="bulinModalSubTitle" class="text-[11px] text-pink-600 font-bold">Catat realita kelahiran ibu</p>
                     </div>
                     <button onclick="closeBulinModal()" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
@@ -954,7 +956,7 @@
 
                     <div>
                         <label class="block text-xs font-bold text-slate-600 mb-1">Tempat Melahirkan</label>
-                        <input type="text" id="bulinTempat" required placeholder="Contoh: RSUD / BPM Bidan Ani / Pustu" class="w-full px-3.5 py-3 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
+                        <input type="text" id="bulinTempat" required placeholder="Contoh: RSUD / BPM Bidan / Pustu" class="w-full px-3.5 py-3 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium">
                     </div>
 
                     <div>
@@ -996,7 +998,7 @@
         // ==========================================
         // CONFIG & DATA STATE                        //
         // ==========================================
-        const DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbzrI6ZgcMIrllD5rgP0Ct1qru8NpELM73uonXYPg04Z48Ug9HvyrTwHf4obTXkaHTdC/exec";
+        const DEFAULT_GAS_URL = "";
 
         let appVillageName = "";
         let pustuLocation = {
@@ -1046,10 +1048,10 @@
             if (!input || !icon) return;
             if (input.type === 'password') {
                 input.type = 'text';
-                icon.className = 'fa-solid fa-eye-slash text-[11px]';
+                icon.className = 'fa-solid fa-eye-slash text-xs';
             } else {
                 input.type = 'password';
-                icon.className = 'fa-solid fa-eye text-[11px]';
+                icon.className = 'fa-solid fa-eye text-xs';
             }
         }
 
@@ -1105,7 +1107,7 @@
             const topBarVillage = document.getElementById('topBarVillageName');
             if (topBarVillage) topBarVillage.textContent = appVillageName || "Belum Atur Desa";
             const loginVillageLabel = document.getElementById('loginVillageLabel');
-            if (loginVillageLabel) loginVillageLabel.textContent = appVillageName || "Sistem SEHATI";
+            if (loginVillageLabel) loginVillageLabel.textContent = appVillageName || "Belum Atur Desa";
             const bannerVillageSubtitle = document.getElementById('bannerVillageSubtitle');
             if (bannerVillageSubtitle) bannerVillageSubtitle.textContent = `Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di ${appVillageName || 'Desa'}`;
 
@@ -1455,7 +1457,6 @@
 
         function loadLocalData() {
             const saved = localStorage.getItem('sehati_bumil_data');
-            // DEFAULT: Start with empty array if no saved data
             bumilData = saved ? JSON.parse(saved) : [];
             updateKPIs();
             initChartYearDropdowns();
@@ -1720,11 +1721,11 @@
             const btnTile = document.getElementById('btnViewTile');
             const btnTable = document.getElementById('btnViewTable');
             if (mode === 'tile') {
-                btnTile.className = "px-2 py-0.5 rounded-lg text-[8.5px] font-bold bg-pink-600 text-white shadow-xs transition";
-                btnTable.className = "px-2 py-0.5 rounded-lg text-[8.5px] font-bold text-slate-600 hover:text-slate-900 transition";
+                btnTile.className = "px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-pink-600 text-white shadow-xs transition";
+                btnTable.className = "px-2.5 py-1 rounded-lg text-[9.5px] font-bold text-slate-600 hover:text-slate-900 transition";
             } else {
-                btnTable.className = "px-2 py-0.5 rounded-lg text-[8.5px] font-bold bg-pink-600 text-white shadow-xs transition";
-                btnTile.className = "px-2 py-0.5 rounded-lg text-[8.5px] font-bold text-slate-600 hover:text-slate-900 transition";
+                btnTable.className = "px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-pink-600 text-white shadow-xs transition";
+                btnTile.className = "px-2.5 py-1 rounded-lg text-[9.5px] font-bold text-slate-600 hover:text-slate-900 transition";
             }
             renderKantongPersalinan();
         }
@@ -1743,7 +1744,7 @@
 
             monthsFull.forEach((mName, mIdx) => {
                 const filteredBumil = bumilData.filter(item => {
-                    if (item.status === 'bersalin') return false; // Sembunyikan yang sudah bersalin
+                    if (item.status === 'bersalin') return false;
                     if (!item.hpl) return false;
                     const d = new Date(item.hpl);
                     if (isNaN(d.getTime()) || d.getFullYear() !== targetYear || d.getMonth() !== mIdx) return false;
@@ -1754,65 +1755,65 @@
                 });
 
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs space-y-2";
+                card.className = "bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5";
                 
                 let headerHtml = `
-                    <div class="flex items-center justify-between pb-1.5 border-b border-pink-100">
-                        <h4 class="text-[10px] font-extrabold text-slate-900">${mName}</h4>
-                        <span class="w-4.5 h-4.5 rounded-full bg-pink-100 text-pink-600 text-[9px] font-bold flex items-center justify-center">${filteredBumil.length}</span>
+                    <div class="flex items-center justify-between pb-2 border-b border-pink-100">
+                        <h4 class="text-[11px] font-extrabold text-slate-900">${mName}</h4>
+                        <span class="w-5 h-5 rounded-full bg-pink-100 text-pink-600 text-[10px] font-bold flex items-center justify-center">${filteredBumil.length}</span>
                     </div>
                 `;
 
                 let bodyHtml = '';
                 if (filteredBumil.length === 0) {
-                    bodyHtml = `<div class="py-2 text-center"><p class="text-[9px] text-slate-400 italic">Tidak ada HPL</p></div>`;
+                    bodyHtml = `<div class="py-2.5 text-center"><p class="text-[10px] text-slate-400 italic">Tidak ada HPL</p></div>`;
                 } else {
-                    bodyHtml = `<div class="space-y-1.5 max-h-48 overflow-y-auto custom-scrollbar pr-1">`;
+                    bodyHtml = `<div class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">`;
                     filteredBumil.forEach(item => {
                         const riskColor = item.risiko === 'Tinggi' ? 'bg-rose-500' : item.risiko === 'Sedang' ? 'bg-amber-500' : 'bg-emerald-500';
                         const riskBadge = item.risiko === 'Tinggi' 
-                            ? '<span class="px-1.5 py-0.5 bg-rose-50 text-rose-600 rounded text-[8px] font-bold border border-rose-200">Risti</span>'
+                            ? '<span class="px-1.5 py-0.5 bg-rose-50 text-rose-600 rounded text-[9px] font-bold border border-rose-200">Risti</span>'
                             : item.risiko === 'Sedang'
-                            ? '<span class="px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded text-[8px] font-bold border border-amber-200">Sedang</span>'
-                            : '<span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[8px] font-bold border border-emerald-200">Rendah</span>';
+                            ? '<span class="px-1.5 py-0.5 bg-amber-50 text-amber-600 rounded text-[9px] font-bold border border-amber-200">Sedang</span>'
+                            : '<span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[9px] font-bold border border-emerald-200">Rendah</span>';
 
                         if (kantongViewMode === 'tile') {
                             bodyHtml += `
-                                <div class="p-2 bg-pink-50/40 rounded-xl border border-pink-100 space-y-1">
+                                <div class="p-2.5 bg-pink-50/40 rounded-2xl border border-pink-100 space-y-1.5">
                                     <div class="flex items-start justify-between">
                                         <div class="flex items-center gap-1.5 truncate">
                                             <span class="w-2 h-2 rounded-full ${riskColor} flex-shrink-0"></span>
-                                            <span class="text-[9.5px] font-bold text-slate-900 truncate">${item.nama}</span>
+                                            <span class="text-[10.5px] font-bold text-slate-900 truncate">${item.nama}</span>
                                         </div>
                                         ${riskBadge}
                                     </div>
-                                    <div class="text-[9px] text-slate-600 space-y-0.5 pl-3.5">
+                                    <div class="text-[10px] text-slate-600 space-y-0.5 pl-3.5">
                                         <p>Suami: <strong class="text-slate-900">${item.suami}</strong> | ${item.dusun}</p>
                                         <p class="text-pink-600 font-semibold">HPL: ${item.hpl}</p>
                                     </div>
-                                    <div class="flex items-center justify-end gap-1.5 pt-1">
-                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[8.5px] rounded-lg flex items-center gap-1 shadow-2xs">
+                                    <div class="flex items-center justify-end gap-2 pt-1">
+                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9px] rounded-lg flex items-center gap-1 shadow-2xs">
                                             <i class="fa-brands fa-whatsapp"></i> WhatsApp
                                         </a>
-                                        <button onclick="openBulinModalForBumil('${item.id}')" class="px-2 py-0.5 bg-pink-600 text-white font-bold text-[8.5px] rounded-lg">Melahirkan?</button>
+                                        <button onclick="openBulinModalForBumil('${item.id}')" class="px-2.5 py-1 bg-pink-600 text-white font-bold text-[9px] rounded-lg shadow-2xs">Melahirkan?</button>
                                     </div>
                                 </div>
                             `;
                         } else {
                             bodyHtml += `
-                                <div class="p-2 bg-pink-50/40 rounded-xl border border-pink-100 flex items-center justify-between text-[9px]">
+                                <div class="p-2 bg-pink-50/40 rounded-xl border border-pink-100 flex items-center justify-between text-[10px]">
                                     <div class="flex items-center gap-1.5 truncate">
                                         <span class="w-2 h-2 rounded-full ${riskColor} flex-shrink-0"></span>
                                         <div class="truncate">
                                             <p class="font-bold text-slate-900 truncate">${item.nama} <span class="font-normal text-slate-500">(${item.dusun})</span></p>
-                                            <p class="text-[8.5px] text-pink-600">HPL: ${item.hpl}</p>
+                                            <p class="text-[9.5px] text-pink-600">HPL: ${item.hpl}</p>
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-1">
-                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2 py-0.5 bg-emerald-600 text-white font-bold text-[8.5px] rounded-lg flex items-center gap-1">
+                                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2 py-0.5 bg-emerald-600 text-white font-bold text-[9px] rounded-lg flex items-center gap-1">
                                             <i class="fa-brands fa-whatsapp"></i> WA
                                         </a>
-                                        <button onclick="openBulinModalForBumil('${item.id}')" class="px-2 py-0.5 bg-pink-600 text-white font-bold text-[8.5px] rounded-lg">Bulin</button>
+                                        <button onclick="openBulinModalForBumil('${item.id}')" class="px-2 py-0.5 bg-pink-600 text-white font-bold text-[9px] rounded-lg">Bulin</button>
                                     </div>
                                 </div>
                             `;
@@ -1834,7 +1835,7 @@
             const activeBumil = bumilData.filter(i => i.status !== 'bersalin');
 
             if (activeBumil.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="3" class="p-3 text-center text-slate-500 text-[9.5px]">Belum ada ibu hamil aktif.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-slate-500 text-[10.5px]">Belum ada ibu hamil aktif.</td></tr>`;
                 return;
             }
 
@@ -1842,22 +1843,22 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-pink-50/30 transition";
                 tr.innerHTML = `
-                    <td class="p-2">
-                        <p class="font-bold text-slate-900 text-[10px]">${item.nama}</p>
-                        <p class="text-[8.5px] text-slate-500">Suami: ${item.suami} | ${item.dusun}</p>
-                        <span class="inline-block mt-1 px-1.5 py-0.2 rounded text-[8px] font-bold ${item.risiko==='Tinggi'?'bg-rose-50 text-rose-600 border border-rose-200':item.risiko==='Sedang'?'bg-amber-50 text-amber-600 border border-amber-200':'bg-emerald-50 text-emerald-600 border border-emerald-200'}">${item.risiko}</span>
+                    <td class="p-2.5">
+                        <p class="font-bold text-slate-900 text-[11px]">${item.nama}</p>
+                        <p class="text-[9.5px] text-slate-500">Suami: ${item.suami} | ${item.dusun}</p>
+                        <span class="inline-block mt-1 px-2 py-0.5 rounded text-[9px] font-bold ${item.risiko==='Tinggi'?'bg-rose-50 text-rose-600 border border-rose-200':item.risiko==='Sedang'?'bg-amber-50 text-amber-600 border border-amber-200':'bg-emerald-50 text-emerald-600 border border-emerald-200'}">${item.risiko}</span>
                     </td>
-                    <td class="p-2 text-[9.5px]">
+                    <td class="p-2.5 text-[10.5px]">
                         <span class="font-bold text-pink-600">${item.hpl||'-'}</span>
                     </td>
-                    <td class="p-2 text-center">
+                    <td class="p-2.5 text-center">
                         <div class="flex items-center justify-center gap-1">
-                            <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[8.5px] rounded-lg flex items-center gap-1 shadow-xs" title="WhatsApp">
-                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9px] rounded-lg flex items-center gap-1 shadow-xs" title="WhatsApp">
+                                <i class="fa-brands fa-whatsapp"></i> WA
                             </a>
-                            <button onclick="openBulinModalForBumil('${item.id}')" class="px-2 py-0.5 bg-pink-600 hover:bg-pink-700 text-white font-bold text-[8.5px] rounded-lg">Bulin</button>
-                            <button onclick="editBumil('${item.id}')" class="w-5.5 h-5.5 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-[9px]" title="Edit"><i class="fa-solid fa-pen"></i></button>
-                            <button onclick="deleteBumil('${item.id}')" class="w-5.5 h-5.5 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-[9px]" title="Hapus"><i class="fa-solid fa-trash"></i></button>
+                            <button onclick="openBulinModalForBumil('${item.id}')" class="px-2.5 py-1 bg-pink-600 hover:bg-pink-700 text-white font-bold text-[9px] rounded-lg shadow-xs">Bulin</button>
+                            <button onclick="editBumil('${item.id}')" class="w-6 h-6 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-[10px]" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteBumil('${item.id}')" class="w-6 h-6 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-[10px]" title="Hapus"><i class="fa-solid fa-trash"></i></button>
                         </div>
                     </td>
                 `;
@@ -1940,50 +1941,50 @@
             });
 
             if (bulinList.length === 0) {
-                container.innerHTML = `<div class="bg-white rounded-2xl p-4 text-center border border-pink-100 shadow-2xs"><p class="text-[9.5px] text-slate-400 italic">Belum ada data ibu bersalin.</p></div>`;
+                container.innerHTML = `<div class="bg-white rounded-3xl p-4 text-center border border-pink-100 shadow-2xs"><p class="text-[10px] text-slate-400 italic">Belum ada data ibu bersalin.</p></div>`;
                 return;
             }
 
             bulinList.forEach(item => {
                 const info = item.bulinInfo;
                 const p4kBadge = info.sesuaiP4k === 'Sesuai' 
-                    ? '<span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[8px] font-bold border border-emerald-200">Sesuai P4K</span>'
-                    : '<span class="px-1.5 py-0.5 bg-rose-50 text-rose-600 rounded text-[8px] font-bold border border-rose-200">Tidak Sesuai P4K</span>';
+                    ? '<span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[9px] font-bold border border-emerald-200">Sesuai P4K</span>'
+                    : '<span class="px-2 py-0.5 bg-rose-50 text-rose-600 rounded text-[9px] font-bold border border-rose-200">Tidak Sesuai P4K</span>';
 
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-2xl p-2.5 border border-pink-100 shadow-2xs space-y-2";
+                card.className = "bg-white rounded-3xl p-3.5 border border-pink-100 shadow-2xs space-y-2.5";
                 card.innerHTML = `
-                    <div class="flex items-start justify-between pb-1.5 border-b border-pink-100">
+                    <div class="flex items-start justify-between pb-2 border-b border-pink-100">
                         <div>
-                            <h4 class="text-[10px] font-extrabold text-slate-900">${item.nama} <span class="font-normal text-slate-500">(${item.dusun})</span></h4>
-                            <p class="text-[8.5px] text-slate-500">Suami: ${item.suami}</p>
+                            <h4 class="text-[11px] font-extrabold text-slate-900">${item.nama} <span class="font-normal text-slate-500">(${item.dusun})</span></h4>
+                            <p class="text-[9.5px] text-slate-500">Suami: ${item.suami}</p>
                         </div>
                         ${p4kBadge}
                     </div>
-                    <div class="grid grid-cols-2 gap-1.5 text-[9px] text-slate-700 bg-pink-50/40 p-2 rounded-xl border border-pink-100">
+                    <div class="grid grid-cols-2 gap-2 text-[10px] text-slate-700 bg-pink-50/40 p-2.5 rounded-2xl border border-pink-100">
                         <div>
-                            <p class="text-slate-400 font-bold uppercase text-[8px]">Tgl Lahir</p>
+                            <p class="text-slate-400 font-bold uppercase text-[8.5px]">Tgl Lahir</p>
                             <p class="font-extrabold text-pink-600">${info.tgl}</p>
                         </div>
                         <div>
-                            <p class="text-slate-400 font-bold uppercase text-[8px]">Tempat</p>
+                            <p class="text-slate-400 font-bold uppercase text-[8.5px]">Tempat</p>
                             <p class="font-extrabold text-slate-800 truncate">${info.tempat}</p>
                         </div>
                         <div>
-                            <p class="text-slate-400 font-bold uppercase text-[8px]">Kondisi Ibu</p>
+                            <p class="text-slate-400 font-bold uppercase text-[8.5px]">Kondisi Ibu</p>
                             <p class="font-semibold text-slate-800">${info.kondisiIbu}</p>
                         </div>
                         <div>
-                            <p class="text-slate-400 font-bold uppercase text-[8px]">Kondisi Bayi</p>
+                            <p class="text-slate-400 font-bold uppercase text-[8.5px]">Kondisi Bayi</p>
                             <p class="font-semibold text-slate-800">${info.kondisiBayi}</p>
                         </div>
                     </div>
-                    ${info.catatan ? `<p class="text-[9px] text-slate-600 italic">Catatan: ${info.catatan}</p>` : ''}
+                    ${info.catatan ? `<p class="text-[10px] text-slate-600 italic">Catatan: ${info.catatan}</p>` : ''}
                     <div class="flex items-center justify-between pt-1">
-                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[8.5px] rounded-lg flex items-center gap-1 shadow-xs">
+                        <a href="https://wa.me/${item.wa || ''}" target="_blank" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9.5px] rounded-xl flex items-center gap-1 shadow-xs">
                             <i class="fa-brands fa-whatsapp"></i> WhatsApp
                         </a>
-                        <button onclick="revertBulinToBumil('${item.id}')" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[8.5px] rounded-lg">Kembalikan ke Bumil</button>
+                        <button onclick="revertBulinToBumil('${item.id}')" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[9.5px] rounded-xl">Kembalikan ke Bumil</button>
                     </div>
                 `;
                 container.appendChild(card);
@@ -2116,11 +2117,11 @@
             const btnTile = document.getElementById('mapModeTile');
             const btnList = document.getElementById('mapModeList');
             if (mode === 'tile') {
-                btnTile.className = "px-2 py-0.5 rounded-lg text-[8.5px] font-bold bg-pink-600 text-white shadow-xs transition";
-                btnList.className = "px-2 py-0.5 rounded-lg text-[8.5px] font-bold text-slate-600 hover:text-slate-900 transition";
+                btnTile.className = "px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-pink-600 text-white shadow-xs transition";
+                btnList.className = "px-2.5 py-1 rounded-lg text-[9.5px] font-bold text-slate-600 hover:text-slate-900 transition";
             } else {
-                btnList.className = "px-2 py-0.5 rounded-lg text-[8.5px] font-bold bg-pink-600 text-white shadow-xs transition";
-                btnTile.className = "px-2 py-0.5 rounded-lg text-[8.5px] font-bold text-slate-600 hover:text-slate-900 transition";
+                btnList.className = "px-2.5 py-1 rounded-lg text-[9.5px] font-bold bg-pink-600 text-white shadow-xs transition";
+                btnTile.className = "px-2.5 py-1 rounded-lg text-[9.5px] font-bold text-slate-600 hover:text-slate-900 transition";
             }
             renderMapSummary();
         }
@@ -2142,7 +2143,7 @@
             if (pustuLocation.lat !== "" && pustuLocation.lng !== "") {
                 const pustuIcon = L.divIcon({
                     className: 'custom-pustu-icon',
-                    html: `<div style="background-color: #ec4899; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(236,72,153,0.4); border: 2px solid white;"><i class="fa-solid fa-house-medical text-[10px]"></i></div>`,
+                    html: `<div style="background-color: #ec4899; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(236,72,153,0.4); border: 2px solid white;"><i class="fa-solid fa-house-medical text-[11px]"></i></div>`,
                     iconSize: [28, 28], iconAnchor: [14, 14]
                 });
                 const pustuMarker = L.marker([parseFloat(pustuLocation.lat), parseFloat(pustuLocation.lng)], { icon: pustuIcon }).addTo(leafletMap);
@@ -2162,12 +2163,12 @@
 
                 const dusunIcon = L.divIcon({
                     className: 'custom-dusun-icon',
-                    html: `<div style="background-color: ${markerBg}; color: ${textColor}; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9.5px; font-weight: 800; box-shadow: 0 2px 8px rgba(0,0,0,0.25); border: 2px solid #ffffff;">${count}</div>`,
-                    iconSize: [24, 24], iconAnchor: [12, 12]
+                    html: `<div style="background-color: ${markerBg}; color: ${textColor}; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; box-shadow: 0 2px 8px rgba(0,0,0,0.25); border: 2px solid #ffffff;">${count}</div>`,
+                    iconSize: [26, 26], iconAnchor: [13, 13]
                 });
 
-                let popupHtml = `<div style="min-width: 170px; font-size: 9.5px; max-height: 180px; overflow-y: auto;">
-                    <b style="font-size: 10.5px; color: #db2777;">Dusun ${dusunName}</b><br>
+                let popupHtml = `<div style="min-width: 170px; font-size: 10px; max-height: 180px; overflow-y: auto;">
+                    <b style="font-size: 11px; color: #db2777;">Dusun ${dusunName}</b><br>
                     <span style="color: #64748b;">Bumil Aktif: ${count}</span>
                     <hr style="margin: 3px 0; border-color: #f1f5f9;">`;
                 
@@ -2175,21 +2176,21 @@
                     dusunBumilList.forEach(b => {
                         const rColor = b.risiko === 'Tinggi' ? '#f43f5e' : b.risiko === 'Sedang' ? '#f59e0b' : '#10b981';
                         popupHtml += `
-                            <div style="margin-bottom: 4px; padding: 3px; background: #fdf2f8; border-radius: 6px;">
+                            <div style="margin-bottom: 5px; padding: 4px; background: #fdf2f8; border-radius: 6px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <b style="color: #0f172a; font-size: 10px;">${b.nama}</b>
-                                    <span style="background: ${rColor}; color: white; padding: 0.5px 3px; border-radius: 3px; font-size: 7.5px;">${b.risiko}</span>
+                                    <b style="color: #0f172a; font-size: 10.5px;">${b.nama}</b>
+                                    <span style="background: ${rColor}; color: white; padding: 0.5px 4px; border-radius: 3px; font-size: 8px;">${b.risiko}</span>
                                 </div>
-                                <div style="color: #475569; margin-top: 1px; font-size: 9px;">
+                                <div style="color: #475569; margin-top: 1px; font-size: 9.5px;">
                                     Suami: ${b.suami}<br>
                                     HPL: <b style="color: #db2777;">${b.hpl || '-'}</b>
                                 </div>
-                                ${b.wa ? `<a href="https://wa.me/${b.wa}" target="_blank" style="display: inline-block; margin-top: 2px; color: #059669; font-weight: bold; text-decoration: none; font-size: 8.5px;"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>` : ''}
+                                ${b.wa ? `<a href="https://wa.me/${b.wa}" target="_blank" style="display: inline-block; margin-top: 2px; color: #059669; font-weight: bold; text-decoration: none; font-size: 9px;"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>` : ''}
                             </div>
                         `;
                     });
                 } else {
-                    popupHtml += `<i style="color: #94a3b8; font-size: 9px;">Belum ada bumil aktif di dusun ini.</i>`;
+                    popupHtml += `<i style="color: #94a3b8; font-size: 9.5px;">Belum ada bumil aktif di dusun ini.</i>`;
                 }
                 popupHtml += `</div>`;
 
@@ -2230,27 +2231,27 @@
                 Object.keys(dusunStats).forEach(dusun => {
                     const st = dusunStats[dusun];
                     const card = document.createElement('div');
-                    card.className = "p-2 bg-pink-50/40 rounded-xl border border-pink-100 flex flex-col justify-between";
+                    card.className = "p-2.5 bg-pink-50/40 rounded-2xl border border-pink-100 flex flex-col justify-between";
                     card.innerHTML = `
                         <div class="flex items-center justify-between mb-0.5">
-                            <span class="text-[9.5px] font-extrabold text-slate-900 truncate">${dusun}</span>
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-bold ${st.risti > 0 ? 'bg-rose-50 text-rose-600 border border-rose-200' : 'bg-emerald-50 text-emerald-600'}">${st.risti > 0 ? st.risti + ' Risti' : 'Aman'}</span>
+                            <span class="text-[10px] font-extrabold text-slate-900 truncate">${dusun}</span>
+                            <span class="px-1.5 py-0.5 rounded text-[8.5px] font-bold ${st.risti > 0 ? 'bg-rose-50 text-rose-600 border border-rose-200' : 'bg-emerald-50 text-emerald-600'}">${st.risti > 0 ? st.risti + ' Risti' : 'Aman'}</span>
                         </div>
-                        <p class="text-[9px] text-slate-500">Bumil: <strong class="text-slate-900">${st.total}</strong></p>
+                        <p class="text-[9.5px] text-slate-500">Bumil: <strong class="text-slate-900">${st.total}</strong></p>
                     `;
                     grid.appendChild(card);
                 });
                 container.appendChild(grid);
             } else {
                 const list = document.createElement('div');
-                list.className = "space-y-1";
+                list.className = "space-y-1.5";
                 Object.keys(dusunStats).forEach(dusun => {
                     const st = dusunStats[dusun];
                     const row = document.createElement('div');
-                    row.className = "p-2 bg-pink-50/40 rounded-xl border border-pink-100 flex items-center justify-between text-[9.5px]";
+                    row.className = "p-2.5 bg-pink-50/40 rounded-2xl border border-pink-100 flex items-center justify-between text-[10px]";
                     row.innerHTML = `
-                        <div><p class="font-bold text-slate-900">${dusun}</p><p class="text-[8px] text-slate-500">Risti: ${st.risti}</p></div>
-                        <span class="font-extrabold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-lg text-[10px]">${st.total}</span>
+                        <div><p class="font-bold text-slate-900">${dusun}</p><p class="text-[8.5px] text-slate-500">Risti: ${st.risti}</p></div>
+                        <span class="font-extrabold text-pink-600 bg-pink-50 px-2.5 py-0.5 rounded-xl text-[11px]">${st.total}</span>
                     `;
                     list.appendChild(row);
                 });
@@ -2322,11 +2323,12 @@
             const activeCount = bumilData.filter(i => i.status !== 'bersalin').length;
             const ristiCount = bumilData.filter(i => i.status !== 'bersalin' && i.risiko === 'Tinggi').length;
             const bulinCount = bumilData.filter(i => i.status === 'bersalin').length;
-            let msg = `*REKAP SEHATI*%0A📍 ${appVillageName || 'Desa'}%0A• Bumil Aktif: *${activeCount}*%0A• Risti: *${ristiCount}*%0A• Bulin (Bersalin): *${bulinCount}*`;
+            let msg = `*REKAP SEHATI*%0A📍 ${appVillageName || 'Desa'}%0A• Bumil Aktif: *${activeCount}*%0A• Risti: *${ristiCount}*%0A• Bersalin: *${bulinCount}*`;
             window.open(`https://wa.me/?text=${msg}`, '_blank');
         }
 
         function syncWithGoogleSheetsAPI() {
+            if (!DEFAULT_GAS_URL) return;
             fetch(DEFAULT_GAS_URL, {
                 method: "POST", mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
