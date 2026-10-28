@@ -574,7 +574,7 @@
                                     <div class="w-8 h-8 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-sm"><i class="fa-solid fa-trash-can"></i></div>
                                     <div>
                                         <p class="text-xs font-extrabold text-rose-600">Reset Semua Data</p>
-                                        <p class="text-[11px] text-slate-500">Kosongkan seluruh data (0 data)</p>
+                                        <p class="text-[11px] text-slate-500">Kosongkan seluruh data</p>
                                     </div>
                                 </div>
                                 <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
@@ -1292,7 +1292,7 @@
             loadLocalData();
             closeResetConfirmModal();
             closeSettingsModal();
-            alertCustom("Semua data berhasil direset bersih (0 Data).");
+            alertCustom("Semua data berhasil direset bersih.");
         }
 
         function renderDusunSettingsCards() {
@@ -1455,7 +1455,7 @@
 
         function loadLocalData() {
             const saved = localStorage.getItem('sehati_bumil_data');
-            // DEFAULT: Start with empty array (0 data) if no saved data
+            // DEFAULT: Start with empty array if no saved data
             bumilData = saved ? JSON.parse(saved) : [];
             updateKPIs();
             initChartYearDropdowns();
