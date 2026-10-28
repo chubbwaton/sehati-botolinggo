@@ -2018,17 +2018,11 @@
         }
 
         function updateUserDisplay() {
+            // Ubah dari activeUser.name.split(' ')[0] menjadi activeUser.name penuh jika ingin nama lengkap tidak terpotong
             const displayName = activeUser.name ? activeUser.name : "Bidan Desa";
-            const firstName = displayName.split(' ')[0];
-            document.getElementById('headerUserName').textContent = firstName;
-            document.getElementById('welcomeHeading').textContent = `Halo, ${firstName}!`;
+            document.getElementById('headerUserName').textContent = displayName;
+            document.getElementById('welcomeHeading').textContent = `Halo, ${displayName}!`;
             
-            const villageSubEl = document.getElementById('bannerVillageSubtitle');
-            if (villageSubEl) {
-                const vName = appVillageName || "Desa Botolinggo";
-                villageSubEl.textContent = `Pemantauan Kantong Persalinan Ibu Hamil Risiko Tinggi di ${vName}`;
-            }
-
             const headerAvatar = document.getElementById('headerUserAvatar');
             const settingsAvatar = document.getElementById('subSettingsModalAvatar');
             const initials = activeUser.name ? activeUser.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : "BD";
