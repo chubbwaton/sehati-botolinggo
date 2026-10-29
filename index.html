@@ -65,8 +65,8 @@
             <div class="my-auto bg-white rounded-3xl shadow-2xl w-full p-6 border border-white/25">
                 <div class="text-center mb-6">
                     <div class="flex flex-col items-center justify-center mb-3 mt-2">
-                        <div class="flex flex-col items-center justify-center mb-4 mt-8">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-20 h-20 object-contain mx-auto mb-2">
+                        <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-2xl font-extrabold shadow-inner">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                     </div>
                     <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">SEHATI</h1>
@@ -125,8 +125,8 @@
                 <div class="px-4 h-16 flex items-center justify-between">
                     <!-- Brand -->
                     <div class="flex items-center gap-2.5">
-                       <div class="flex flex-col items-center justify-center mb-4 mt-6">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-14 h-14 object-contain mx-auto mb-2">
+                        <div class="w-9 h-9 bg-pink-600 rounded-xl flex items-center justify-center text-white font-extrabold text-sm shadow-xs flex-shrink-0">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                         <div class="min-w-0">
                             <h1 class="text-xs font-extrabold text-slate-900 tracking-tight leading-tight">SEHATI</h1>
@@ -988,6 +988,22 @@
             </div>
         </div>
 
+        <!-- Modal Konfirmasi Hapus Bumil -->
+        <div id="deleteBumilConfirmModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-6 space-y-4 border border-rose-100 text-xs">
+                <input type="hidden" id="deleteBumilTargetId">
+                <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto text-lg shadow-inner">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3 class="text-sm font-extrabold text-slate-900 text-center">Konfirmasi Hapus Data</h3>
+                <p class="text-xs text-slate-600 text-center leading-relaxed">Apakah Anda yakin ingin menghapus data ibu hamil ini?</p>
+                <div class="flex gap-2.5 pt-1">
+                    <button type="button" onclick="closeDeleteBumilConfirmModal()" class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">Tidak</button>
+                    <button type="button" onclick="executeDeleteBumil()" class="flex-1 py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-md transition">Ya, Hapus</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Leaflet JS -->
@@ -1207,14 +1223,19 @@
                 bumilData: bumilData,
                 backupDate: new Date().toISOString()
             };
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
+            const dataStr = JSON.stringify(backupData, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
             const dlAnchor = document.createElement('a');
-            dlAnchor.setAttribute("href", dataStr);
-            dlAnchor.setAttribute("download", `SEHATI_Backup_${appVillageName ? appVillageName.replace(/\s+/g, '_') : 'Desa'}.json`);
+            dlAnchor.href = url;
+            dlAnchor.download = `SEHATI_Backup_${appVillageName ? appVillageName.replace(/\s+/g, '_') : 'Desa'}_${new Date().toISOString().split('T')[0]}.json`;
             document.body.appendChild(dlAnchor);
             dlAnchor.click();
-            dlAnchor.remove();
-            alertCustom("Backup berhasil diunduh!");
+            document.body.removeChild(dlAnchor);
+            URL.revokeObjectURL(url);
+            
+            alertCustom("Backup berhasil diunduh ke folder Unduhan (Downloads) perangkat!");
         }
 
         function importDataBackup(event) {
@@ -1976,12 +1997,12 @@
                     </div>
                     <div class="grid grid-cols-2 gap-2 text-[10px] text-slate-700 bg-pink-50/40 p-2.5 rounded-2xl border border-pink-100">
                         <div>
-                            <p class="text-slate-400 font-bold uppercase text-[9px]">Tgl Lahir</p>
-                            <p class="font-extrabold text-pink-600">${formatTanggalID(info.tgl)}</p>
+                            <p class="text-slate-400 font-bold uppercase text-[9px]">HPHT / HPL</p>
+                            <p class="font-semibold text-slate-800">HPHT: ${formatTanggalID(item.hpht) || '-'}<br>HPL: <span class="font-bold text-pink-600">${formatTanggalID(item.hpl) || '-'}</span></p>
                         </div>
                         <div>
-                            <p class="text-slate-400 font-bold uppercase text-[9px]">Tempat</p>
-                            <p class="font-extrabold text-slate-800 truncate">${info.tempat}</p>
+                            <p class="text-slate-400 font-bold uppercase text-[9px]">Tgl Lahir & Tempat</p>
+                            <p class="font-semibold text-slate-800">${formatTanggalID(info.tgl)}<br><span class="text-slate-500">${info.tempat}</span></p>
                         </div>
                         <div>
                             <p class="text-slate-400 font-bold uppercase text-[9px]">Kondisi Ibu</p>
@@ -2108,7 +2129,7 @@
                 const idx = bumilData.findIndex(i => i.id === id);
                 if (idx !== -1) bumilData[idx] = { ...bumilData[idx], nama, suami, usia, dusun, risiko, hpht, hpl, wa, alamat, p4k, catatan };
             } else {
-                const newId = "BM-" + new Date().getFullYear() + "-" + Math.floor(100 + Math.random() * 900);
+                const newId = "BM-" + Date.now() + "-" + Math.floor(Math.random() * 10000);
                 bumilData.push({ id: newId, status: 'hamil', nama, suami, usia, dusun, risiko, hpht, hpl, wa, alamat, p4k, catatan });
             }
 
@@ -2120,8 +2141,24 @@
         function editBumil(id) { openBumilModal(id); }
 
         function deleteBumil(id) {
+            const targetInput = document.getElementById('deleteBumilTargetId');
+            if (targetInput) targetInput.value = id;
+            const modal = document.getElementById('deleteBumilConfirmModal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeDeleteBumilConfirmModal() {
+            const modal = document.getElementById('deleteBumilConfirmModal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function executeDeleteBumil() {
+            const targetInput = document.getElementById('deleteBumilTargetId');
+            if (!targetInput) return;
+            const id = targetInput.value;
             bumilData = bumilData.filter(i => i.id !== id);
             saveLocalData();
+            closeDeleteBumilConfirmModal();
             alertCustom("Data dihapus.");
         }
 
