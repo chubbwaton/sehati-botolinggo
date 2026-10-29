@@ -65,8 +65,8 @@
             <div class="my-auto bg-white rounded-3xl shadow-2xl w-full p-6 border border-white/25">
                 <div class="text-center mb-6">
                     <div class="flex flex-col items-center justify-center mb-3 mt-2">
-                        <div class="flex flex-col items-center justify-center mb-4 mt-8">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-20 h-20 object-contain mx-auto mb-2">
+                        <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-600 text-2xl font-extrabold shadow-inner">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                     </div>
                     <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">SEHATI</h1>
@@ -125,8 +125,8 @@
                 <div class="px-4 h-16 flex items-center justify-between">
                     <!-- Brand -->
                     <div class="flex items-center gap-2.5">
-                        <div class="flex flex-col items-center justify-center mb-4 mt-6">
-                            <img src="logo-sehati.png" alt="Logo SEHATI" class="w-14 h-14 object-contain mx-auto mb-2">
+                        <div class="w-9 h-9 bg-pink-600 rounded-xl flex items-center justify-center text-white font-extrabold text-sm shadow-xs flex-shrink-0">
+                            <i class="fa-solid fa-person-pregnant"></i>
                         </div>
                         <div class="min-w-0">
                             <h1 class="text-xs font-extrabold text-slate-900 tracking-tight leading-tight">SEHATI</h1>
@@ -143,6 +143,11 @@
                             <div class="text-left hidden xs:block">
                                 <p id="headerUserName" class="text-xs font-bold text-slate-900 leading-tight truncate max-w-[85px]">Bidan</p>
                             </div>
+                        </button>
+
+                        <button onclick="openNotificationModal()" title="Notifikasi HPL" class="w-9 h-9 rounded-2xl bg-slate-100 hover:bg-pink-100 text-slate-700 hover:text-pink-600 flex items-center justify-center transition shadow-xs flex-shrink-0 relative">
+                            <i class="fa-solid fa-bell text-xs"></i>
+                            <span id="notificationBadge" class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 text-white rounded-full text-[9px] font-bold flex items-center justify-center hidden">0</span>
                         </button>
 
                         <button onclick="openSettingsModal()" title="Pengaturan" class="w-9 h-9 rounded-2xl bg-slate-100 hover:bg-pink-100 text-slate-700 hover:text-pink-600 flex items-center justify-center transition shadow-xs flex-shrink-0">
@@ -484,6 +489,25 @@
         <!-- ========================================== -->
         <!-- MODALS SECTION                             -->
         <!-- ========================================== -->
+
+        <!-- Modal Notifikasi -->
+        <div id="notificationModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden border border-pink-100 text-xs">
+                <div class="px-5 py-4 bg-pink-50/50 border-b border-pink-100 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-sm font-extrabold text-slate-900">Notifikasi & Pengingat HPL</h3>
+                        <p class="text-xs text-slate-500">Ibu hamil yang mendekati HPL (7 hari ke depan)</p>
+                    </div>
+                    <button onclick="closeNotificationModal()" class="w-8 h-8 rounded-full bg-white hover:bg-pink-100 text-slate-700 flex items-center justify-center transition shadow-xs">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+                <div id="notificationListContainer" class="p-4 space-y-2.5 max-h-[60vh] overflow-y-auto custom-scrollbar"></div>
+                <div class="px-5 py-3 bg-pink-50/50 border-t border-pink-100 flex items-center justify-end">
+                    <button type="button" onclick="closeNotificationModal()" class="px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs shadow-md transition">Tutup</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Modal Pengaturan -->
         <div id="settingsModal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs hidden flex items-center justify-center p-4 overflow-y-auto">
@@ -1503,6 +1527,7 @@
             const saved = localStorage.getItem('sehati_bumil_data');
             bumilData = saved ? JSON.parse(saved) : [];
             updateKPIs();
+            updateNotificationBadge();
             initChartYearDropdowns();
             initBulinFilterYearDropdowns();
             renderDashboardCharts();
@@ -1515,6 +1540,7 @@
         function saveLocalData() {
             localStorage.setItem('sehati_bumil_data', JSON.stringify(bumilData));
             updateKPIs();
+            updateNotificationBadge();
             initChartYearDropdowns();
             initBulinFilterYearDropdowns();
             renderDashboardCharts();
@@ -1631,6 +1657,84 @@
             document.getElementById('kpiRisti').textContent = activeBumil.filter(i => i.risiko === 'Tinggi').length;
             document.getElementById('kpiSedang').textContent = activeBumil.filter(i => i.risiko === 'Sedang').length;
             document.getElementById('kpiRendah').textContent = activeBumil.filter(i => i.risiko === 'Rendah').length;
+        }
+
+        function updateNotificationBadge() {
+            const badge = document.getElementById('notificationBadge');
+            if (!badge) return;
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            let count = 0;
+            bumilData.filter(i => i.status !== 'bersalin' && i.hpl).forEach(item => {
+                const hplDate = new Date(item.hpl);
+                hplDate.setHours(0,0,0,0);
+                const diffTime = hplDate.getTime() - today.getTime();
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                // HPL dalam 7 hari ke depan atau sudah lewat hari ini
+                if (diffDays >= 0 && diffDays <= 7) {
+                    count++;
+                }
+            });
+
+            if (count > 0) {
+                badge.textContent = count;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function openNotificationModal() {
+            const container = document.getElementById('notificationListContainer');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            const upcomingList = bumilData.filter(item => {
+                if (item.status === 'bersalin' || !item.hpl) return false;
+                const hplDate = new Date(item.hpl);
+                hplDate.setHours(0,0,0,0);
+                const diffTime = hplDate.getTime() - today.getTime();
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                return diffDays >= 0 && diffDays <= 7;
+            });
+
+            if (upcomingList.length === 0) {
+                container.innerHTML = `<div class="py-6 text-center text-slate-400 text-xs italic">Tidak ada ibu hamil yang mendekati HPL dalam 7 hari ke depan.</div>`;
+            } else {
+                upcomingList.forEach(item => {
+                    const hplDate = new Date(item.hpl);
+                    hplDate.setHours(0,0,0,0);
+                    const diffDays = Math.ceil((hplDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+                    let infoText = diffDays === 0 ? 'HPL Hari Ini!' : `HPL dalam ${diffDays} hari (${formatTanggalID(item.hpl)})`;
+
+                    const card = document.createElement('div');
+                    card.className = "p-3 bg-pink-50/50 rounded-2xl border border-pink-100 space-y-1.5";
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <span class="font-extrabold text-slate-900 text-xs">${item.nama}</span>
+                            <span class="px-2 py-0.5 bg-rose-50 text-rose-600 rounded text-[9px] font-bold border border-rose-200">${infoText}</span>
+                        </div>
+                        <p class="text-[10px] text-slate-600">Suami: <strong class="text-slate-900">${item.suami}</strong> | Dusun ${item.dusun}</p>
+                        <div class="flex items-center justify-end gap-2 pt-1">
+                            <a href="${getWaLink(item)}" target="_blank" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[9px] rounded-lg flex items-center gap-1">
+                                <i class="fa-brands fa-whatsapp"></i> Ingatkan WA
+                            </a>
+                            <button onclick="closeNotificationModal(); openBulinModalForBumil('${item.id}')" class="px-2.5 py-1 bg-pink-600 text-white font-bold text-[9px] rounded-lg">Bulin?</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            document.getElementById('notificationModal').classList.remove('hidden');
+        }
+
+        function closeNotificationModal() {
+            document.getElementById('notificationModal').classList.add('hidden');
         }
 
         function renderDashboardCharts() {
