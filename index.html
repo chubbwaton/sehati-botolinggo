@@ -908,7 +908,7 @@
                             <div class="px-3.5 py-3 bg-slate-100 border border-slate-200 rounded-xl text-slate-700 text-xs font-bold flex items-center justify-center flex-shrink-0">
                                 +62
                             </div>
-                            <input type="text" id="bumilWaLocal" placeholder="Contoh: 81234567890" class="w-full px-3.5 py-3 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            <input type="tel" inputmode="numeric" id="bumilWaLocal" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Contoh: 81234567890" class="w-full px-3.5 py-3 bg-pink-50/50 border border-slate-200 rounded-xl text-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-500">
                         </div>
                     </div>
 
